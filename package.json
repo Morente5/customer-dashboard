@@ -1,0 +1,19 @@
+{
+  "name": "client-dashboard",
+  "version": "0.0.0",
+  "description": "Client dashboard and administration panel for Braun Marketing and Consulting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Morente5/client-dashboard.git"
+  },
+  "author": "Alejandro Morente Campos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Morente5/client-dashboard/issues"
+  },
+  "homepage": "https://github.com/Morente5/client-dashboard#readme"
+}
