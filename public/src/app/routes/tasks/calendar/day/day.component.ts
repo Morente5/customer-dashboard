@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -9,6 +10,10 @@ import * as moment from 'moment';
 export class DayComponent implements OnInit {
 
 	@Input() public day: moment.Moment
+
+	public formGroup: FormGroup = new FormGroup({
+		task: new FormControl()
+	})
 
 	constructor() { }
 

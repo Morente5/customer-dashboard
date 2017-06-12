@@ -1,3 +1,5 @@
-<p>
-	{{day}}
-</p>
+<form [formGroup]="formGroup" novalidate>
+	<label>{{day}}
+		<input formControlName="task">
+	</label>
+</form>
