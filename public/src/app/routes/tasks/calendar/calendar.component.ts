@@ -26,7 +26,7 @@ export class CalendarComponent implements OnInit {
 
 		let date = day
 			.clone()  // Makes a copy
-			.startOf('month')  // Sets time to start of a month
+			.startOf('month')  // Sets date to start of a month
 
 		while (date.month() === day.month()) {
 			result.push(date.clone());
@@ -41,8 +41,8 @@ export class CalendarComponent implements OnInit {
 
 		let date = day
 			.clone()  // Makes a copy
-			.startOf('month')  // Sets time to start of a month
-			.startOf('week')  // Sets time to the first day of the week
+			.startOf('month')  // Sets date to start of a month
+			.startOf('week')  // Sets date to the first day of the week
 		// console.log(date)
 
 		while (date.month() <= day.month() || !date.isSame(date.clone().startOf('week'))) {
