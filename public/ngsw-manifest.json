@@ -14,7 +14,46 @@
 		"routes": {
 			"/": {
 				"prefix": false
+			},
+			"/tasks": {
+				"prefix": false
+			},
+			"/social": {
+				"prefix": false
 			}
 		}
+	},
+	"dynamic": {
+		"group": [
+			{
+				"name": "something",
+				"urls": {
+					"/api/checkcachefirst": {
+						"match": "prefix"
+					}
+				},
+				"cache": {
+					"optimizeFor": "performance",
+					"strategy": "lru",
+					"maxAgeMs": 3600000,
+					"maxEntries": 20
+				}
+			},
+			{
+				"name": "something2",
+				"urls": {
+					"/api/checkserverfirst": {
+						"match": "prefix"
+					}
+				},
+				"cache": {
+					"optimizeFor": "freshness",
+					"strategy": "fifo",
+					"maxAgeMs": 3600000,
+					"maxEntries": 100,
+					"networkTimeoutMs": 1000
+				}
+			}
+		]
 	}
 }
