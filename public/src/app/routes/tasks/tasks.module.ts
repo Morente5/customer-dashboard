@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { MomentModule } from 'angular2-moment';
 
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksComponent } from './tasks.component';
@@ -12,7 +13,8 @@ import { DayComponent } from './calendar/day/day.component';
 	imports: [
 		CommonModule,
 		TasksRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		MomentModule
 	],
 	declarations: [TasksComponent, CalendarComponent, DayComponent]
 })

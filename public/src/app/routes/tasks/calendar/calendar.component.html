@@ -1,5 +1,16 @@
-<bmc-day
-	*ngFor="let day of month"
-	[day]="day"
->
-</bmc-day>
+<table cellpadding="0" cellspacing="0" class="daynames" id="Daynames">
+	<thead>
+		<tr>
+			<th class="dayname" *ngFor="let day of weeks[0]">{{ day | amDateFormat:'dddd' }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let week of weeks">
+			<td *ngFor="let day of week">
+				<bmc-day
+					[day]="day"
+				>
+				</bmc-day>
+			</td>
+		</tr>
+	</tbody>
