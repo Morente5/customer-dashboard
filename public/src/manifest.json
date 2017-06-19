@@ -1,0 +1,17 @@
+{
+	"name": "Client Dashboard",
+	"short_name": "CD",
+	"lang": "en",
+	"start_url": "./index.html",
+	"scope": "/",
+	"display": "standalone",
+	"theme_color": "#eda217",
+	"orientation": "any",
+	"description": "Client dashboard and administration panel",
+	"background_color": "#008CBA",
+	"related_applications": [],
+	"prefer_related_applications": false,
+	"icons": [
+
+	]
+}
