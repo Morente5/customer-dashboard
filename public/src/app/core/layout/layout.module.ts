@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeModule } from './../../routes/home/home.module';
+
+/* Routing */
 import { LayoutRoutingModule } from './layout-routing.module';
 
+/* Layout */
 import { LayoutComponent } from './layout.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { MainContentComponent } from './main-content/main-content.component';

@@ -6,6 +6,9 @@ import { LayoutModule } from './core/layout/layout.module';
 
 import { AppComponent } from './app.component';
 
+/**
+ * The app bootstrapper module
+ */
 @NgModule({
 	declarations: [
 		AppComponent

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Moment } from 'moment';
 import * as moment from 'moment';
 import 'moment/locale/es';
 
+/**
+ * Calendar component
+ *
+ * Generates a full view of days in current month
+ */
 @Component({
 	selector: 'bmc-calendar',
 	templateUrl: './calendar.component.html',
@@ -9,9 +15,13 @@ import 'moment/locale/es';
 })
 export class CalendarComponent implements OnInit {
 
-	public today: moment.Moment
-	public month: moment.Moment[] = []
-	public weeks: moment.Moment[][] = []
+	/**
+	 * Respresents a day timestamp
+	 * @type Moment
+	 */
+	public today: Moment
+	public month: Moment[] = []
+	public weeks: Moment[][] = []
 
 	constructor() { }
 
@@ -23,10 +33,15 @@ export class CalendarComponent implements OnInit {
 		console.log(this.weeks)
 	}
 
-	getMonth(day: moment.Moment): moment.Moment[] {
-		const result: moment.Moment[] = []
+	/**
+	 * @type Moment
+	 * Generates a full view of days in current month
+	 * @return fg
+	 */
+	getMonth(day: Moment): Moment[] {
+		const result: Moment[] = []
 
-		const date: moment.Moment = day
+		const date: Moment = day
 			.clone()  // Makes a copy
 			.startOf('month')  // Sets date to start of a month
 
@@ -38,10 +53,10 @@ export class CalendarComponent implements OnInit {
 		return result
 	}
 
-	getFullWeekMonth(day: moment.Moment): moment.Moment[] {
-		const result: moment.Moment[] = []
+	getFullWeekMonth(day: Moment): Moment[] {
+		const result: Moment[] = []
 
-		const date: moment.Moment = day
+		const date: Moment = day
 			.clone()  // Makes a copy
 			.startOf('month')  // Sets date to start of a month
 			.startOf('week')  // Sets date to the first day of the week
@@ -55,8 +70,8 @@ export class CalendarComponent implements OnInit {
 		return result
 	}
 
-	splitWeek(month: moment.Moment[]): moment.Moment[][] {
-		const result: moment.Moment[][] = []
+	splitWeek(month: Moment[]): Moment[][] {
+		const result: Moment[][] = []
 		while (month.length) {
 			result.push(month.splice(0, 7))
 		}

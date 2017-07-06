@@ -1,27 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, FormArray } from '@angular/forms';
-import * as moment from 'moment';
+import { Component, OnChanges, Input } from '@angular/core';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Moment } from 'moment';
 
 @Component({
 	selector: 'bmc-day',
 	templateUrl: './day.component.html',
 	styleUrls: ['./day.component.scss']
 })
-export class DayComponent implements OnInit {
+export class DayComponent implements OnChanges {
 
-	@Input() public day: moment.Moment
+	@Input() public day: Moment
 
-	public formGroup: FormGroup = new FormGroup({
-		tasks: new FormArray([
-			new FormControl()
-		])
-	});
 
-	constructor() { }
+	public formGroup: FormGroup
 
-	ngOnInit() {
-		console.log(this.day.format('LL'))
-		// console.log(this.formArray)
+	constructor() {
+		this.formGroup = new FormGroup({
+			tasks: new FormArray([
+				new FormControl()
+			])
+		});
+	}
+
+	ngOnChanges() {
+		this.check()
+	}
+
+	check() {
+
 	}
 
 }

@@ -1,13 +1,10 @@
-<form [formGroup]="formGroup" >
+<form [formGroup]="formGroup" novalidate>
 
 	<p>{{ ( day.isSame(day.clone().startOf('month')) ) ? ( day | amDateFormat:'D MMMM' ) : ( day | amDateFormat:'D' ) }}</p>
 
 	<div formArrayName="tasks">
 		<div *ngFor="let input of formGroup.controls['tasks'].controls; let i=index">
-			<div>
-				{{input.value}}
-			</div>
-			<input [formControlName]="i" type="text">
+			<input (change)="ngOnChanges()" [formControlName]="i" type="text">
 		</div>
 	</div>
 
