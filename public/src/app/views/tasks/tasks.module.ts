@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 
-import { TasksRoutingModule } from './tasks-routing.module';
+import { TasksRoutingModule } from './tasks.routing';
+
 import { TasksComponent } from './tasks.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './calendar/day/day.component';

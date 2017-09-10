@@ -1,10 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from './core/shared/shared.module';
-import { LayoutModule } from './core/layout/layout.module';
+// Root Component
+import { AppComponent } from 'app/app.component';
 
-import { AppComponent } from './app.component';
+// All components exported by this module
+import { ComponentsModule } from 'app/tools/components/components.module';
+
+// Routing Module
+import { AppRoutingModule } from 'app/app.routing';
 
 /**
  * The app bootstrapper module
@@ -14,10 +18,13 @@ import { AppComponent } from './app.component';
 		AppComponent
 	],
 	imports: [
+		AppRoutingModule,
 		BrowserModule,
-		LayoutModule
+		ComponentsModule,
 	],
-	providers: [],
+	providers: [
+		// Global Services
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
