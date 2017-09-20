@@ -4,19 +4,19 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 
-import { TasksRoutingModule } from './tasks.routing';
+import { ActionsRoutingModule } from './actions.routing';
 
-import { TasksComponent } from './tasks.component';
+import { ActionsComponent } from './actions.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './calendar/day/day.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
-		TasksRoutingModule,
+		ActionsRoutingModule,
 		ReactiveFormsModule,
 		MomentModule
 	],
-	declarations: [TasksComponent, CalendarComponent, DayComponent]
+	declarations: [ActionsComponent, CalendarComponent, DayComponent]
 })
-export class TasksModule { }
+export class ActionsModule { }

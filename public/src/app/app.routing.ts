@@ -7,25 +7,16 @@ const routeBase = 'app/views/';
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: '/home',
-		pathMatch: 'full'
-	},
-	{
-		path: 'home',
 		loadChildren: routeBase + 'home/home.module#HomeModule'
 	},
 	{
-		path: 'tasks',
-		loadChildren: routeBase + 'tasks/tasks.module#TasksModule'
+		path: 'perfil',
+		loadChildren: routeBase + 'profile/profile.module#ProfileModule'
 	},
 	{
-		path: 'social',
-		loadChildren: routeBase + 'social/social.module#SocialModule'
+		path: ':clienteID',
+		loadChildren: routeBase + 'dashboard/dashboard.module#DashboardModule'
 	},
-	{
-		path: 'resources',
-		loadChildren: routeBase + 'resources/resources.module#ResourcesModule'
-	}
 ];
 
 @NgModule({
