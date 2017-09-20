@@ -11,7 +11,9 @@
 		"lint": "ng lint",
 		"e2e": "ng e2e",
 		"docs:build": "compodoc -p tsconfig.json",
-		"docs:serve": "compodoc -s"
+		"docs:serve": "compodoc -s",
+		"c9host": "sudo echo '0.0.0.0 client-dashboard-morente5.c9users.io' >> /etc/hosts",
+		"c9serve": "ng serve --host client-dashboard-morente5.c9users.io --port 8080 --live-reload-port 8081"
 	},
 	"private": true,
 	"dependencies": {
