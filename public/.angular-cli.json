@@ -21,7 +21,9 @@
 			"prefix": "bmc",
 			"serviceWorker": true,
 			"styles": [
-				"styles.scss"
+				"styles.scss",
+				"../node_modules/normalize.css/normalize.css",
+				"../node_modules/font-awesome/css/font-awesome.css"
 			],
 			"scripts": [],
 			"environmentSource": "environments/environment.ts",
