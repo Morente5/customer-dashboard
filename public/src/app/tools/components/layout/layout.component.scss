@@ -1,0 +1,20 @@
+:host {
+	--topbar-height: 50;
+	--sidebar-width: 240;
+	display: grid;
+	grid-template-columns: calc(var(--sidebar-width, 240) * 1px) auto;
+	grid-template-rows: calc(var(--topbar-height, 50) * 1px) calc(100vh - calc(var(--topbar-height, 50) * 1px));
+	grid-template-areas:
+    "topbar topbar"
+    "sidebar main";
+}
+
+bmc-top-bar {
+	grid-area: topbar;
+}
+bmc-side-bar {
+	grid-area: sidebar;
+}
+bmc-main-content {
+	grid-area: main;
+}

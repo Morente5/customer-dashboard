@@ -1,0 +1,28 @@
+:host {
+	--border: 1px solid #e3e9ea;
+	--sidebar-element-height: 50;
+	border-right: var(--border, 1px solid #e3e9ea);
+	z-index: 5;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	border-bottom: var(--border, 1px solid #e3e9ea);
+	> li {
+		width: calc( var(--sidebar-width, 240) * 1px );
+		height: calc( var(--sidebar-element-height) * 1px );
+		display: block;
+		padding: 0 15px 0 15px;
+		cursor: pointer;
+		border-top: var(--border, 1px solid #e3e9ea);
+		box-sizing: border-box;
+		> a {
+			display: block;
+			line-height: calc( var(--sidebar-element-height) * 1px );
+			text-decoration: none;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}

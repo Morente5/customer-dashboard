@@ -1,8 +1,8 @@
 <ul>
 	<li *ngFor="let item of clientes">
-		<a [routerLink]='item'>
-			<i class="icon placeholder"></i>
-			<span>{{item}}</span>
+		<a [routerLink]='slug(item)'>
+			<i class="fa fa-user"></i>
+			{{item}}
 		</a>
 	</li>
 </ul>

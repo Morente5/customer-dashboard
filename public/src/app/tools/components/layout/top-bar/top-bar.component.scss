@@ -1,0 +1,25 @@
+:root {
+	--topbar-bg-color: 216;  // Default color hue
+
+}
+:host {
+	background: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 43%)'));
+	display: flex;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
+	z-index: 10;
+}
+
+a {
+	color: #fff;
+}
+
+.menu-button {
+	display: block;
+	height: calc(var(--topbar-height) * 1px);
+	width: calc(var(--topbar-height) * 1px);
+	text-align: center;
+	i:before {
+		line-height: calc(var(--topbar-height) * 1px);
+		font-size: calc(var(--topbar-height) * .5px);
+	}
+}
