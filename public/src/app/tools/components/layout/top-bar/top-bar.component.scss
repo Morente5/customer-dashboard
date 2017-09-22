@@ -1,18 +1,25 @@
-:root {
-	--topbar-bg-color: 216;  // Default color hue
-
-}
 :host {
+	--topbar-bg-color: 216;  // Default color hue
 	background: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 43%)'));
+}
+
+nav {
 	display: flex;
+	justify-content: space-between;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 	z-index: 10;
+	& * {
+		line-height: calc(var(--topbar-height) * 1px);
+		color: #fff;
+	}
+	.nav-left, .nav-right {
+		display: flex;
+	}
 }
 
-a {
-	color: #fff;
+.title {
+	font-size: 1.1em;
 }
-
 .menu-button {
 	display: block;
 	height: calc(var(--topbar-height) * 1px);

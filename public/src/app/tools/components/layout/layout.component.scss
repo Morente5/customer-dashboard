@@ -6,14 +6,31 @@
 
 	grid-template:
     "topbar topbar" calc(var(--topbar-height, 50) * 1px)
-		"sidebar main" 1fr
-		/ calc(var(--sidebar-width, 240) * 1px) 1fr;
+		"main main" 1fr
+		/ 1fr 1fr;
+		
+	@media screen and (min-width: 720px) {
+		grid-template:
+	    "topbar topbar" calc(var(--topbar-height, 50) * 1px)
+			"sidebar main" 1fr
+			/ minmax(0, calc(var(--topbar-height, 50) * 1px)) 1fr;
+	}
+	@media screen and (min-width: 960px) {
+		grid-template:
+	    "topbar topbar" calc(var(--topbar-height, 50) * 1px)
+			"sidebar main" 1fr
+			/ calc(var(--sidebar-width, 240) * 1px) 1fr;
+	}
 }
 
 bmc-top-bar {
 	grid-area: topbar;
 }
 bmc-side-bar {
+	display:none;
+	@media screen and (min-width: 720px) {
+		display:block;
+	}
 	grid-area: sidebar;
 	overflow-x: hidden;
 	overflow-y: overlay;

@@ -4,6 +4,7 @@
 	--sidebar-element-bg-color: #fff;
 	border-right: var(--border, 1px solid #e3e9ea);
 	z-index: 5;
+	box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 ul {
 	margin: 0;
@@ -27,7 +28,7 @@ ul {
 			display: flex;
 			flex-flow: row;
 			align-items: center;
-			padding: 0 15px 0 15px;
+			padding: 0 calc( var(--sidebar-element-height) * .15px );
 			line-height: calc( var(--sidebar-element-height) * 1px );
 			color: #000;
 			font-weight: 600;
@@ -35,9 +36,11 @@ ul {
 			img.client-logo {
 				height: calc( var(--sidebar-element-height) * .7px );
 				width: calc( var(--sidebar-element-height) * .7px );
+				background-color: #fff;
 				border-radius: 50%;
 				line-height: calc( var(--sidebar-element-height) * 1px );
-				margin-right: 10px;
+				margin-right: calc( var(--sidebar-element-height) * .15px );
+				box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.1);
 			}
 			.client-name {
 				flex: 1;

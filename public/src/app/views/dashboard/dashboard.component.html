@@ -1,3 +1,3 @@
-<div class="dashboard-card {{item}}" *ngFor="let item of dashboardMenu">
-	<a [routerLink]="item">{{item}}</a>
+<div class="dashboard-card {{item}}" *ngFor="let item of keys(dashboardMenu)">
+	<a [routerLink]="item">{{dashboardMenu[item].name}}</a>
 </div>
