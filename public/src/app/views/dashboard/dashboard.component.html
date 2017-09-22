@@ -1,11 +1,3 @@
-<p>
-	Dashboard de: {{clienteID}}
-</p>
-<div>
-	Ir a:
-	<ul>
-		<li *ngFor="let item of dashboardMenu">
-			<a [routerLink]="item">{{item}}</a>
-		</li>
-	</ul>
+<div class="dashboard-card {{item}}" *ngFor="let item of dashboardMenu">
+	<a [routerLink]="item">{{item}}</a>
 </div>

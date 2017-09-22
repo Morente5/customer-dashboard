@@ -2,11 +2,12 @@
 	--topbar-height: 50;
 	--sidebar-width: 240;
 	display: grid;
-	grid-template-columns: calc(var(--sidebar-width, 240) * 1px) auto;
-	grid-template-rows: calc(var(--topbar-height, 50) * 1px) calc(100vh - calc(var(--topbar-height, 50) * 1px));
-	grid-template-areas:
-    "topbar topbar"
-    "sidebar main";
+	height: 100%;
+
+	grid-template:
+    "topbar topbar" calc(var(--topbar-height, 50) * 1px)
+		"sidebar main" 1fr
+		/ calc(var(--sidebar-width, 240) * 1px) 1fr;
 }
 
 bmc-top-bar {
@@ -14,7 +15,22 @@ bmc-top-bar {
 }
 bmc-side-bar {
 	grid-area: sidebar;
+	overflow-x: hidden;
+	overflow-y: overlay;
 }
 bmc-main-content {
 	grid-area: main;
+	overflow-x: hidden;
+	overflow-y: overlay;
+}
+
+*::-webkit-scrollbar {
+	width: 6px !important;
+	height: 6px !important;
+}
+*::-webkit-scrollbar-thumb {
+	background-color: rgba(0,0,0,0.2);
+}
+*::-webkit-scrollbar-track {
+	background: rgba(255,255,255,0.08);
 }

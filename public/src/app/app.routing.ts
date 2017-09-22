@@ -14,7 +14,7 @@ const routes: Routes = [
 		loadChildren: routeBase + 'profile/profile.module#ProfileModule'
 	},
 	{
-		path: ':clienteID',
+		path: ':clientID',
 		loadChildren: routeBase + 'dashboard/dashboard.module#DashboardModule'
 	},
 ];

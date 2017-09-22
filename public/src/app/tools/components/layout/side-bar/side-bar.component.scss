@@ -1,6 +1,7 @@
 :host {
 	--border: 1px solid #e3e9ea;
 	--sidebar-element-height: 50;
+	--sidebar-element-bg-color: #fff;
 	border-right: var(--border, 1px solid #e3e9ea);
 	z-index: 5;
 }
@@ -11,18 +12,40 @@ ul {
 	> li {
 		width: calc( var(--sidebar-width, 240) * 1px );
 		height: calc( var(--sidebar-element-height) * 1px );
+		background-color: var(--sidebar-element-bg-color);
 		display: block;
-		padding: 0 15px 0 15px;
 		cursor: pointer;
 		border-top: var(--border, 1px solid #e3e9ea);
 		box-sizing: border-box;
+		&:hover {
+			--sidebar-element-bg-color: #f2f6fa;
+		}
+		&[selected="true"] {
+			--sidebar-element-bg-color: #d4e2f0;
+		}
 		> a {
-			display: block;
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			padding: 0 15px 0 15px;
 			line-height: calc( var(--sidebar-element-height) * 1px );
+			color: #000;
+			font-weight: 600;
 			text-decoration: none;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
+			img.client-logo {
+				height: calc( var(--sidebar-element-height) * .7px );
+				width: calc( var(--sidebar-element-height) * .7px );
+				border-radius: 50%;
+				line-height: calc( var(--sidebar-element-height) * 1px );
+				margin-right: 10px;
+			}
+			.client-name {
+				flex: 1;
+				display: block;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 		}
 	}
 }
