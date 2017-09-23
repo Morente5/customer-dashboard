@@ -17,16 +17,24 @@ nav {
 	}
 }
 
+i {
+	line-height: calc(var(--topbar-height) * 1px);
+	font-size: calc(var(--topbar-height) * .5px);
+}
+
 .title {
 	font-size: 1.1em;
 }
-.menu-button {
+.topbar-button {
 	display: block;
 	height: calc(var(--topbar-height) * 1px);
 	width: calc(var(--topbar-height) * 1px);
 	text-align: center;
-	i:before {
-		line-height: calc(var(--topbar-height) * 1px);
-		font-size: calc(var(--topbar-height) * .5px);
+	&:hover {
+		background-color: unquote('hsla( var(--topbar-bg-color, 216) , 70%, 25%, .50)')
 	}
+}
+.menu-toggle {
+	cursor: pointer;
+	user-select: none;
 }

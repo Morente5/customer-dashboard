@@ -5,40 +5,62 @@
 	height: 100%;
 
 	grid-template:
-    "topbar topbar" calc(var(--topbar-height, 50) * 1px)
-		"main main" 1fr
-		/ 1fr 1fr;
-		
+		"topbar topbar" calc(var(--topbar-height, 50) * 1px)
+		"sidebar main" 1fr
+		/ minmax(0, calc(var(--topbar-height, 50) * 1px)) 100%;
 	@media screen and (min-width: 720px) {
 		grid-template:
 	    "topbar topbar" calc(var(--topbar-height, 50) * 1px)
 			"sidebar main" 1fr
-			/ minmax(0, calc(var(--topbar-height, 50) * 1px)) 1fr;
+			/ calc(var(--topbar-height, 240) * 1px) 1fr;
 	}
-	@media screen and (min-width: 960px) {
-		grid-template:
-	    "topbar topbar" calc(var(--topbar-height, 50) * 1px)
-			"sidebar main" 1fr
-			/ calc(var(--sidebar-width, 240) * 1px) 1fr;
-	}
-}
 
-bmc-top-bar {
-	grid-area: topbar;
-}
-bmc-side-bar {
-	display:none;
-	@media screen and (min-width: 720px) {
-		display:block;
+	bmc-top-bar {
+		grid-area: topbar;
 	}
-	grid-area: sidebar;
-	overflow-x: hidden;
-	overflow-y: overlay;
-}
-bmc-main-content {
-	grid-area: main;
-	overflow-x: hidden;
-	overflow-y: overlay;
+
+	bmc-main-content {
+		grid-area: main;
+		overflow-x: hidden;
+		overflow-y: overlay;
+	}
+
+	bmc-side-bar {
+		grid-area: sidebar;
+		overflow-x: hidden;
+		overflow-y: overlay;
+
+		display: none;
+		width: calc(var(--sidebar-width, 240) * 1px);
+		max-width: 100%;
+
+		@media screen and (min-width: 720px) {
+			display: initial;
+			width: auto;
+		}
+	}
+
+	&.opened-sidebar {
+		grid-template:
+			"topbar topbar" calc(var(--topbar-height, 50) * 1px)
+			"main main" 1fr
+			/ minmax(0, calc(var(--sidebar-width, 240) * 1px)) 100%;
+		@media screen and (min-width: 720px) {
+			grid-template:
+				"topbar topbar" calc(var(--topbar-height, 50) * 1px)
+				"sidebar main" 1fr
+				/ calc(var(--sidebar-width, 240) * 1px) 1fr;
+		}
+		bmc-side-bar {
+			display: initial;
+			grid-area: main;
+			@media screen and (min-width: 720px) {
+				grid-area: sidebar;
+			}
+		}
+
+	}
+
 }
 
 *::-webkit-scrollbar {

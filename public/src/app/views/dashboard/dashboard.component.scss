@@ -1,8 +1,15 @@
 :host {
 	--card-height: 150;
 	display: grid;
-	grid-gap: 30px;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 15px;
+	@media screen and (min-width: 720px) {
+		grid-gap: 25px;
+	}
+	@media screen and (min-width: 960px) {
+		grid-gap: 30px;
+	}
+	grid-template-columns: repeat(auto-fill, minmax(calc(var(--card-height, 150) * 1.5px), 1fr));
+
 }
 
 .dashboard-card {

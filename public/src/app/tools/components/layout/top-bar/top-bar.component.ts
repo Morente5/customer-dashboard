@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
 	selector: 'bmc-top-bar',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
+	@Output() onToggleSidebar = new EventEmitter();
 	public dashboardMenu = {
 		'analitica': {
 			name: 'Analítica Web'
@@ -27,9 +28,7 @@ export class TopBarComponent implements OnInit {
 
 	ngOnInit() {
 	}
-	
-	keys(obj: Object): string[] {
-		return Object.keys(obj)
+	public toggleSidebar() {
+		this.onToggleSidebar.emit()
 	}
-
 }

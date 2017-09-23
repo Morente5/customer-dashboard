@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { RouterService } from 'app/tools/services/router/router.service';
-
+import { ResizeService } from 'app/tools/services/resize/resize.service';
 
 // import { Observable } from 'rxjs/Observable';
 
@@ -13,7 +13,7 @@ import { RouterService } from 'app/tools/services/router/router.service';
 	styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent implements OnInit {
-
+	@Input() opened: Boolean;
 	public clients = {
 		'yofisio': {
 			name: 'YoFisio',
@@ -32,17 +32,17 @@ export class SideBarComponent implements OnInit {
 			logo: 'https://clinicapodologofdezalguacil.es/wp-content/uploads/2017/07/Logo-podologogranada.png'
 		},
 
-
 	}
+
 	constructor(
-		public routerService: RouterService
+		public routerService: RouterService,
+		private resizeService: ResizeService
 	) {	}
 
 	ngOnInit() {
-
 	}
 
-	keys(obj: Object): string[] {
+	public keys(obj: Object): string[] {
 		return Object.keys(obj)
 	}
 

@@ -1,3 +1,10 @@
 :host {
-	padding: 25px
+	padding: 15px;
+	@media screen and (min-width: 720px) {
+		padding: 25px;
+	}
+	@media screen and (min-width: 960px) {
+		padding: 30px;
+	}
+
 }

@@ -1,8 +1,8 @@
 <ul>
 	<li *ngFor="let clientSlug of keys(clients)" [attr.selected]="clientSlug === routerService.clientID">
 		<a [routerLink]="clientSlug">
-			<img class="client-logo"[src]="clients[clientSlug].logo" [alt]="clients[clientSlug].name">
-			<span class="client-name">{{clients[clientSlug].name}}</span>
+			<img class="client-logo" [src]="clients[clientSlug].logo" [alt]="clients[clientSlug].name" [title]="clients[clientSlug].name">
+			<span *ngIf="opened" class="client-name">{{clients[clientSlug].name}}</span>
 		</a>
 	</li>
 </ul>

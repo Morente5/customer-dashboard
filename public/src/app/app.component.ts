@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	
+	public openedSidebar: Boolean
+	public stateSidebar($event) {
+		this.openedSidebar = $event
+	}
 }

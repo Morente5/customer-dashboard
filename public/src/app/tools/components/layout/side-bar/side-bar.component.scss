@@ -2,16 +2,18 @@
 	--border: 1px solid #e3e9ea;
 	--sidebar-element-height: 50;
 	--sidebar-element-bg-color: #fff;
+	--sidebar-bg-color: #fff;
 	border-right: var(--border, 1px solid #e3e9ea);
 	z-index: 5;
 	box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.1);
+	background-color: var(--sidebar-bg-color);
 }
 ul {
 	margin: 0;
 	padding: 0;
 	border-bottom: var(--border, 1px solid #e3e9ea);
 	> li {
-		width: calc( var(--sidebar-width, 240) * 1px );
+		//width: calc( var(--sidebar-width, 240) * 1px );
 		height: calc( var(--sidebar-element-height) * 1px );
 		background-color: var(--sidebar-element-bg-color);
 		display: block;
@@ -28,7 +30,7 @@ ul {
 			display: flex;
 			flex-flow: row;
 			align-items: center;
-			padding: 0 calc( var(--sidebar-element-height) * .15px );
+			//padding-right: calc( var(--sidebar-element-height) * .15px );
 			line-height: calc( var(--sidebar-element-height) * 1px );
 			color: #000;
 			font-weight: 600;
@@ -39,7 +41,7 @@ ul {
 				background-color: #fff;
 				border-radius: 50%;
 				line-height: calc( var(--sidebar-element-height) * 1px );
-				margin-right: calc( var(--sidebar-element-height) * .15px );
+				margin: calc( var(--sidebar-element-height) * .15px );
 				box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.1);
 			}
 			.client-name {

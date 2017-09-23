@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Providers
 import { RouterService } from 'app/tools/services/router/router.service';
+import { ResizeService } from 'app/tools/services/resize/resize.service';
 
 export const firebaseConfig = {
 	apiKey: 'AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM',
@@ -43,7 +44,8 @@ export const firebaseConfig = {
 	],
 	providers: [
 		// Global Services
-		RouterService
+		RouterService,
+		ResizeService
 	],
 	bootstrap: [AppComponent]
 })
