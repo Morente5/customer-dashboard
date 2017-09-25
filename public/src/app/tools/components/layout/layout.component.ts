@@ -24,26 +24,38 @@ export class LayoutComponent implements OnInit {
 
 		this.resizeService.windowWidth$.subscribe(width => {
 			console.log(width)
-			if (
-				this.openedSidebar && this.windowWidth >= 960 && width < 960 ||  // From open to close below 960px
-				!this.openedSidebar && this.windowWidth < 960 && width >= 960    // From close to open over 960px
-			) {
-				this.toggleSidebar()
+			if ( this.windowWidth >= 960 && width < 960 ) {  // From open to close below 960px
+				this.closeSidebar()
+			}
+			if ( this.windowWidth < 960 && width >= 960 ) {  // From close to open over 960px
+				this.openSidebar()
 			}
 			this.windowWidth = width
 		})
 	}
 
+	private isMobile(): boolean {
+		return this.windowWidth < 720
+	}
 
 	private openSidebar() {
-		this.openedSidebar = true
-		this.onToggleSidebar.emit(true);
+		if (!this.openedSidebar) {
+			this.toggleSidebar()
+		}
 	}
 	private closeSidebar() {
-		this.openedSidebar = false
-		this.onToggleSidebar.emit(false);
+		if (this.openedSidebar) {
+			this.toggleSidebar()
+		}
 	}
 	public toggleSidebar() {
-		this.openedSidebar ? this.closeSidebar() : this.openSidebar()
+		this.openedSidebar = !this.openedSidebar
+		this.onToggleSidebar.emit(this.openedSidebar);
+	}
+
+	public mobileCloseSidebar() {
+		if (this.isMobile()) {
+			this.closeSidebar()
+		}
 	}
 }

@@ -1,1 +1,4 @@
-<bmc-layout (onToggleSidebar)="stateSidebar($event)" [ngClass]="openedSidebar ? 'opened-sidebar' : 'closed-sidebar'"></bmc-layout>
+<bmc-layout
+	[ngClass]="openedSidebar ? 'opened-sidebar' : 'closed-sidebar'"
+	(onToggleSidebar)="stateSidebar($event)"
+></bmc-layout>

@@ -1,9 +1,5 @@
 :host {
-	--border: 1px solid #e3e9ea;
-	--sidebar-element-height: 50;
-	--sidebar-element-bg-color: #fff;
-	--sidebar-bg-color: #fff;
-	border-right: var(--border, 1px solid #e3e9ea);
+	border-right: var(--sidebar-border, 1px solid #e3e9ea);
 	z-index: 5;
 	box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.1);
 	background-color: var(--sidebar-bg-color);
@@ -11,20 +7,20 @@
 ul {
 	margin: 0;
 	padding: 0;
-	border-bottom: var(--border, 1px solid #e3e9ea);
+	border-bottom: var(--sidebar-border, 1px solid #e3e9ea);
 	> li {
 		//width: calc( var(--sidebar-width, 240) * 1px );
 		height: calc( var(--sidebar-element-height) * 1px );
 		background-color: var(--sidebar-element-bg-color);
 		display: block;
 		cursor: pointer;
-		border-top: var(--border, 1px solid #e3e9ea);
+		border-top: var(--sidebar-border, 1px solid #e3e9ea);
 		box-sizing: border-box;
 		&:hover {
-			--sidebar-element-bg-color: #f2f6fa;
+			--sidebar-element-bg-color: var(--sidebar-element-bg-color-hover);
 		}
 		&[selected="true"] {
-			--sidebar-element-bg-color: #d4e2f0;
+			--sidebar-element-bg-color: var(--sidebar-element-bg-color-selected);
 		}
 		> a {
 			display: flex;
@@ -33,7 +29,6 @@ ul {
 			//padding-right: calc( var(--sidebar-element-height) * .15px );
 			line-height: calc( var(--sidebar-element-height) * 1px );
 			color: #000;
-			font-weight: 600;
 			text-decoration: none;
 			img.client-logo {
 				height: calc( var(--sidebar-element-height) * .7px );

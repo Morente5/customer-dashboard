@@ -1,3 +1,13 @@
-<bmc-top-bar (onToggleSidebar)="toggleSidebar()"></bmc-top-bar>
-<bmc-side-bar [opened]="openedSidebar" [ngClass]="openedSidebar ? 'opened' : 'closed'"></bmc-side-bar>
+<bmc-top-bar
+	(onToggleSidebar)="toggleSidebar()"
+></bmc-top-bar>
+<bmc-side-bar
+	(onSelectClient)="mobileCloseSidebar()"
+	[opened]="openedSidebar"
+	[ngClass]="openedSidebar ? 'opened' : 'closed'"
+></bmc-side-bar>
+<div
+	*ngIf="isMobile() && openedSidebar"
+	class="sidebar-overlay"
+></div>
 <bmc-main-content></bmc-main-content>

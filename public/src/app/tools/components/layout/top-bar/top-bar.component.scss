@@ -1,5 +1,4 @@
 :host {
-	--topbar-bg-color: 216;  // Default color hue
 	background: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 43%)'));
 }
 

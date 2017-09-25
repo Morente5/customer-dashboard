@@ -1,18 +1,16 @@
 :host {
-	--topbar-height: 50;
-	--sidebar-width: 240;
 	display: grid;
 	height: 100%;
 
 	grid-template:
 		"topbar topbar" calc(var(--topbar-height, 50) * 1px)
 		"sidebar main" 1fr
-		/ minmax(0, calc(var(--topbar-height, 50) * 1px)) 100%;
+		/ minmax(0, calc(var(--sidebar-element-height, 50) * 1px)) 100%;
 	@media screen and (min-width: 720px) {
 		grid-template:
 	    "topbar topbar" calc(var(--topbar-height, 50) * 1px)
 			"sidebar main" 1fr
-			/ calc(var(--topbar-height, 240) * 1px) 1fr;
+			/ calc(var(--sidebar-element-height, 240) * 1px) 1fr;
 	}
 
 	bmc-top-bar {
@@ -42,9 +40,9 @@
 
 	&.opened-sidebar {
 		grid-template:
-			"topbar topbar" calc(var(--topbar-height, 50) * 1px)
-			"main main" 1fr
-			/ minmax(0, calc(var(--sidebar-width, 240) * 1px)) 100%;
+			"topbar" calc(var(--topbar-height, 50) * 1px)
+			"main" 1fr
+			/ 100%;
 		@media screen and (min-width: 720px) {
 			grid-template:
 				"topbar topbar" calc(var(--topbar-height, 50) * 1px)
@@ -61,6 +59,12 @@
 
 	}
 
+}
+
+.sidebar-overlay {
+	grid-area: main;
+	z-index: 2;
+	background-color: unquote('hsla( var(--topbar-bg-color, 216) , 50%, 20%, .60)')
 }
 
 *::-webkit-scrollbar {

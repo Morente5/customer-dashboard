@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { RouterService } from 'app/tools/services/router/router.service';
 import { ResizeService } from 'app/tools/services/resize/resize.service';
@@ -14,6 +14,7 @@ import { ResizeService } from 'app/tools/services/resize/resize.service';
 })
 export class SideBarComponent implements OnInit {
 	@Input() opened: Boolean;
+	@Output() onSelectClient = new EventEmitter();
 	public clients = {
 		'yofisio': {
 			name: 'YoFisio',
@@ -40,6 +41,10 @@ export class SideBarComponent implements OnInit {
 	) {	}
 
 	ngOnInit() {
+	}
+
+	public select(client: string): void {
+		this.onSelectClient.emit()
 	}
 
 	public keys(obj: Object): string[] {

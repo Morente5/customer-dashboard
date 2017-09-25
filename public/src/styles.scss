@@ -1,5 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+	--topbar-bg-color: 216;  // Hue
+	--topbar-height: 50;
+
+	--sidebar-bg-color: #fff;
+	--sidebar-width: 240;
+	--sidebar-border: 1px solid #e3e9ea;
+	--sidebar-element-height: 50;
+	--sidebar-element-bg-color: #fff;
+	--sidebar-element-bg-color-hover: #f4f5f5;
+	--sidebar-element-bg-color-selected: #e9ebeb;
+
+	--dashboard-card-color: #444;
+	--dashboard-card-height: 150;
+
+}
+
 html, body {
 	height: 100%;
 }
