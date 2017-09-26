@@ -2,3 +2,9 @@
 	[ngClass]="openedSidebar ? 'opened-sidebar' : 'closed-sidebar'"
 	(onToggleSidebar)="stateSidebar($event)"
 ></bmc-layout>
+<div> {{ (authService.items | async) | json }} </div>
+<div> {{ (authService.user | async) | json }} </div>
+<div> {{ (authService.userID | async) | json }} </div>
+<input #email type="email"/>
+<input #password type="password"/>
+<button (click)="authService.createUser(email.value, password.value)"></button>

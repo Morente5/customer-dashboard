@@ -18,13 +18,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 // Providers
 import { RouterService } from 'app/tools/services/router/router.service';
 import { ResizeService } from 'app/tools/services/resize/resize.service';
+import { LoginService } from 'app/tools/services/login/login.service'
 
 export const firebaseConfig = {
-	apiKey: 'AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM',
-	authDomain: 'dashboard-braun-marketing.firebaseapp.com',
-	databaseURL: 'https://dashboard-braun-marketing.firebaseio.com/',
-	storageBucket: 'your-domain-name.appspot.com',
-	messagingSenderId: '774638353867'
+  apiKey: "AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM",
+  authDomain: "dashboard-braun-marketing.firebaseapp.com",
+  databaseURL: "https://dashboard-braun-marketing.firebaseio.com",
+  projectId: "dashboard-braun-marketing",
+  storageBucket: "dashboard-braun-marketing.appspot.com",
+  messagingSenderId: "774638353867"
 };
 
 /**
@@ -45,7 +47,8 @@ export const firebaseConfig = {
 	providers: [
 		// Global Services
 		RouterService,
-		ResizeService
+		ResizeService,
+		LoginService
 	],
 	bootstrap: [AppComponent]
 })

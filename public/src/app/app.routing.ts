@@ -14,6 +14,10 @@ const routes: Routes = [
 		loadChildren: routeBase + 'profile/profile.module#ProfileModule'
 	},
 	{
+		path: 'admin',
+		loadChildren: routeBase + 'admin/admin.module#AdminModule'
+	},
+	{
 		path: ':clientID',
 		loadChildren: routeBase + 'dashboard/dashboard.module#DashboardModule'
 	},

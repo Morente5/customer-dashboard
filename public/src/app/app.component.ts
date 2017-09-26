@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from 'app/tools/services/auth/auth.service'
+
 @Component({
 	selector: 'bmc-root',
 	templateUrl: './app.component.html',
@@ -10,6 +12,9 @@ export class AppComponent implements OnInit {
 	public stateSidebar($event) {
 		this.openedSidebar = $event
 	}
+	constructor(
+		public authService: AuthService
+	) {}
 	ngOnInit() {
 		if (window.innerWidth >= 960) {
 			this.openedSidebar = true
