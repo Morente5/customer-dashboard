@@ -1,0 +1,11 @@
+<h2>Iniciar Sesión</h2>
+<form #formData (ngSubmit)="onSubmit(formData)">
+	<input name="email" type="email">
+	<input name="password" type="password">
+	<div>
+		<button [disabled]="">LOGIN</button>
+	</div>
+</form>
+<div>
+	<button (click)="loginWithGoogle()">LOGIN CON GOOGLE</button>
+</div>
