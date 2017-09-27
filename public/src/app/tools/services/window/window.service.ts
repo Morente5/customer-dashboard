@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class ResizeService {
+export class WindowService {
 
 	public windowWidth$ = new BehaviorSubject<number>(this.innerWidth())
 
