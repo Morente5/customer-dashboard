@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Router, RoutesRecognized } from '@angular/router';
+import { Router, RoutesRecognized, ActivatedRoute } from '@angular/router';
 
 @Injectable()
 export class RouterService {
@@ -9,7 +9,8 @@ export class RouterService {
 	public clientID
 	public section
 	constructor(
-		private router: Router
+		private router: Router,
+		private activatedRoute: ActivatedRoute
 	) {
 		this.router$ = this.router.events
 		this.router$.subscribe(val => {
@@ -23,6 +24,7 @@ export class RouterService {
 				console.log(this.clientID, this.section)
 			}
 		});
+
 	}
 
 }
