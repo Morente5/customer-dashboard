@@ -17,16 +17,24 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Providers
 import { RouterService } from 'app/tools/services/router/router.service';
-import { ResizeService } from 'app/tools/services/resize/resize.service';
-import { LoginService } from 'app/tools/services/login/login.service'
+import { WindowService } from 'app/tools/services/window/window.service';
+import { AuthService } from 'app/tools/services/auth/auth.service'
+import { AuthGuard } from './tools/services/auth/auth-guard.service';
+
+import {
+	SimpleNotificationsModule,
+	PushNotificationsModule,
+	NotificationsService,
+	PushNotificationsService
+} from 'angular2-notifications';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM",
-  authDomain: "dashboard-braun-marketing.firebaseapp.com",
-  databaseURL: "https://dashboard-braun-marketing.firebaseio.com",
-  projectId: "dashboard-braun-marketing",
-  storageBucket: "dashboard-braun-marketing.appspot.com",
-  messagingSenderId: "774638353867"
+	apiKey: 'AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM',
+	authDomain: 'dashboard-braun-marketing.firebaseapp.com',
+	databaseURL: 'https://dashboard-braun-marketing.firebaseio.com',
+	projectId: 'dashboard-braun-marketing',
+	storageBucket: 'dashboard-braun-marketing.appspot.com',
+	messagingSenderId: '774638353867'
 };
 
 /**
@@ -43,12 +51,19 @@ export const firebaseConfig = {
 		AngularFireDatabaseModule,
 		AngularFireAuthModule,
 		ComponentsModule,
+
+		SimpleNotificationsModule.forRoot(),
+		PushNotificationsModule,
 	],
 	providers: [
 		// Global Services
 		RouterService,
-		ResizeService,
-		LoginService
+		WindowService,
+		AuthService,
+
+		NotificationsService,
+		PushNotificationsService,
+		AuthGuard
 	],
 	bootstrap: [AppComponent]
 })

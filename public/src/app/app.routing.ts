@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 // Lazy Loading routes
 import { Routes, RouterModule } from '@angular/router';
 
+// Router Auth Guard
+import { AuthGuard } from 'app/tools/services/auth/auth-guard.service';
+
 const routeBase = 'app/views/';
 const routes: Routes = [
 	{
@@ -14,7 +17,12 @@ const routes: Routes = [
 		loadChildren: routeBase + 'profile/profile.module#ProfileModule'
 	},
 	{
+		path: 'login',
+		loadChildren: routeBase + 'login/login.module#LoginModule'
+	},
+	{
 		path: 'admin',
+		canActivate: [AuthGuard],
 		loadChildren: routeBase + 'admin/admin.module#AdminModule'
 	},
 	{
