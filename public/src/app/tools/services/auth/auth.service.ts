@@ -1,63 +1,70 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
+
+import { Router } from '@angular/router'
+import { Observable } from 'rxjs/Observable'
+
+import { FirebaseApp } from 'angularfire2';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 
-import { Observable } from 'rxjs/Observable'
+import { NotificationsService } from 'angular2-notifications';
 
 @Injectable()
 export class AuthService {
 
-	private user: Observable<firebase.User>
-	private userID: Observable<firebase.User>
-	private items: FirebaseListObservable<any[]>;
-	private createUserApp
+	public user$: Observable<firebase.User>
+	public user: firebase.User
+
+	public clients$: FirebaseListObservable<any[]>
+	public clients: any[]
 
 	constructor(
+		private router: Router,
 		private afAuth: AngularFireAuth,
-		private db: AngularFireDatabase
+		private db: AngularFireDatabase,
+		private notificationsService: NotificationsService
 	) {
-		this.user = this.afAuth.authState
-		this.userID = this.afAuth.idToken
-		const ref = this.db.database.ref('/test')
-		this.items = this.db.list('/test')
-		this.logout()
-		this.login()
-		console.log(this.items)
-		const firebaseConfig = {
-		  apiKey: "AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM",
-		  authDomain: "dashboard-braun-marketing.firebaseapp.com",
-		  databaseURL: "https://dashboard-braun-marketing.firebaseio.com",
-		  projectId: "dashboard-braun-marketing",
-		  storageBucket: "dashboard-braun-marketing.appspot.com",
-		  messagingSenderId: "774638353867"
-		};
-		this.createUserApp = firebase.initializeApp(firebaseConfig, "createUserApp");
-	}
-	
-	login() {
-  	this.afAuth.auth.signInWithPopup(
-  		new firebase.auth.GoogleAuthProvider()
-  	).then(
-  		userInfo => console.log(userInfo)
-  	).catch(
-  		error => console.log('error', error)
-  	)
+		this.user$ = this.afAuth.authState // User Observable
+		this.user$.subscribe(user => {
+			this.user = user
+			console.log(this.user)
+		})
+		this.clients$ = this.db.list('/projects')
+		this.clients$.subscribe(clients => {
+			this.clients = clients
+			console.log(this.clients)
+		})
+		// this.login()
 	}
 
-	logout() {
-	  this.afAuth.auth.signOut()
+	public login(email, password) {
+		this.afAuth.auth.signInWithEmailAndPassword(email, password)
+			.then(userInfo => {
+				this.router.navigate([''])
+				console.log(userInfo, this.user$)
+			})
+			.catch(error => {
+				this.notificationsService.error('No se ha podido iniciar sesión', error.message)
+				console.log('error', error)
+			})
 	}
-	
-	createUser(em, pwd) {
-		
+	public loginWithGoogle() {
+		this.afAuth.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider() )
+			.then(userInfo => {
+				// this.router.navigate([''])
+				console.log(userInfo, this.user$)
+			})
+			.catch(error => {
+				this.notificationsService.error('No se ha podido iniciar sesión', error.message)
+				console.log('error', error)
+			})
+	}
 
-		this.createUserApp.auth().createUserWithEmailAndPassword(em, pwd).then(firebaseUser => {
-	    console.log("User " + firebaseUser.uid + " created successfully!");
-	    //I don't know if the next statement is necessary 
-	    this.createUserApp.auth().signOut();
-		});
+	public logout() {
+		this.afAuth.auth.signOut()
+		this.router.navigate(['/'])
 	}
 
 }
