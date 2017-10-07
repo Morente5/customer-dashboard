@@ -1,0 +1,11 @@
+
+<bmc-sidebar-project
+	*ngFor="let projectKey of keys(projects$ | async)"
+	[attr.selected]="projectKey === routerService.clientID"
+	(click)="select(projectKey)"
+	[projectKey]="projectKey"
+	[project$]="getProject(projectKey)"
+	[opened]="opened"
+>
+
+<bmc-sidebar-project>

@@ -1,0 +1,6 @@
+:host {
+	border-right: var(--sidebar-border, 1px solid #e3e9ea);
+	z-index: 5;
+	box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.1);
+	background-color: var(--sidebar-bg-color);
+}
