@@ -5,9 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LayoutComponent } from './layout/layout.component';
-import { TopBarComponent } from './layout/top-bar/top-bar.component';
-import { SideBarComponent } from './layout/side-bar/side-bar.component';
-import { MainContentComponent } from './layout/main-content/main-content.component';
+import { TopbarComponent } from './layout/topbar/topbar.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { MainComponent } from './layout/main/main.component';
+import { SidebarProjectComponent } from './layout/sidebar/sidebar-project/sidebar-project.component';
 
 import { SimpleNotificationsComponent, SimpleNotificationsModule } from 'angular2-notifications';
 
@@ -19,14 +20,15 @@ import { RouterModule } from '@angular/router';
 		RouterModule,
 		BrowserModule,
 		BrowserAnimationsModule,
-		SimpleNotificationsModule.forRoot(),
+		SimpleNotificationsModule,
 	],
 	declarations: [
 		LayoutComponent,
 
-		TopBarComponent,
-		MainContentComponent,
-		SideBarComponent,
+		TopbarComponent,
+		MainComponent,
+		SidebarComponent,
+		SidebarProjectComponent,
 	],
 	exports: [
 		LayoutComponent

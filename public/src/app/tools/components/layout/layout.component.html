@@ -1,13 +1,20 @@
-<bmc-top-bar
+<bmc-topbar
 	(onToggleSidebar)="toggleSidebar()"
-></bmc-top-bar>
-<bmc-side-bar
-	(onSelectClient)="mobileCloseSidebar()"
+	[user]="user"
+	[projects$]="projects$"
+	></bmc-topbar>
+	<bmc-sidebar
+	*ngIf="user && projects$ | async"
+	[projects$]="projects$"
+	(onSelectProject)="mobileCloseSidebar()"
 	[opened]="openedSidebar"
 	[ngClass]="openedSidebar ? 'opened' : 'closed'"
-></bmc-side-bar>
+></bmc-sidebar>
 <div
 	*ngIf="isMobile() && openedSidebar"
 	class="sidebar-overlay"
 ></div>
-<bmc-main-content></bmc-main-content>
+<bmc-main></bmc-main>
+<simple-notifications
+	[options]="notificationsDefaultOptions"
+></simple-notifications>

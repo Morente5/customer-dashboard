@@ -1,6 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { ResizeService } from 'app/tools/services/resize/resize.service';
+import { SimpleNotificationsComponent } from 'angular2-notifications';
+
+import { WindowService } from 'app/tools/services/window/window.service';
 
 @Component({
 	selector: 'bmc-layout',
@@ -9,10 +11,19 @@ import { ResizeService } from 'app/tools/services/resize/resize.service';
 })
 export class LayoutComponent implements OnInit {
 	@Output() onToggleSidebar = new EventEmitter<boolean>();
-	private windowWidth: number = this.resizeService.innerWidth()
+	@Input() user;
+	@Input() projects$;
+
+	private windowWidth: number = this.windowService.innerWidth()
 	public openedSidebar: boolean
+
+	public notificationsDefaultOptions = {
+		position: ['top', 'right'],
+		timeOut: 2000,
+		lastOnBottom: true,
+	};
 	constructor(
-		private resizeService: ResizeService
+		private windowService: WindowService
 	) { }
 
 	ngOnInit() {
@@ -22,7 +33,7 @@ export class LayoutComponent implements OnInit {
 			this.closeSidebar()
 		}
 
-		this.resizeService.windowWidth$.subscribe(width => {
+		this.windowService.windowWidth$.subscribe(width => {
 			console.log(width)
 			if ( this.windowWidth >= 960 && width < 960 ) {  // From open to close below 960px
 				this.closeSidebar()
