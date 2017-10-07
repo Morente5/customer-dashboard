@@ -1,11 +1,11 @@
 import { FirebaseListObservable } from 'angularfire2/database';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { RouterService } from 'app/tools/services/router/router.service';
-import { WindowService } from 'app/tools/services/window/window.service';
+import { RouterService } from '../../../services/router/router.service';
+import { WindowService } from '../../../services/window/window.service';
 
-import { AuthService } from 'app/tools/services/auth/auth.service';
-import { ProjectsService } from 'app/tools/services/projects/projects.service';
+import { AuthService } from '../../../services/auth/auth.service';
+import { ProjectsService } from '../../../services/projects/projects.service';
 
 // import { Observable } from 'rxjs/Observable';
 

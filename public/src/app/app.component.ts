@@ -4,8 +4,8 @@ import * as firebase from 'firebase/app';
 import { FirebaseApp } from 'angularfire2';
 import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
-import { AuthService } from 'app/tools/services/auth/auth.service'
-import { ProjectsService } from 'app/tools/services/projects/projects.service'
+import { AuthService } from './tools/services/auth/auth.service'
+import { ProjectsService } from './tools/services/projects/projects.service'
 
 import { PushNotificationsService } from 'angular2-notifications';
 

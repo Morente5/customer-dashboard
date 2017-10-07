@@ -1,7 +1,7 @@
 import { FirebaseListObservable } from 'angularfire2/database';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
-import { AuthService } from 'app/tools/services/auth/auth.service'
+import { AuthService } from '../../../services/auth/auth.service'
 
 import { Router } from '@angular/router'
 

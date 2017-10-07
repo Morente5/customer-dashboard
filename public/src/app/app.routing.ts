@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Router Auth Guard
-import { AuthGuard } from 'app/tools/services/auth/auth-guard.service';
+import { AuthGuard } from './tools/services/auth/auth-guard.service';
 
-const routeBase = 'app/views/';
+const routeBase = './views/';
 const routes: Routes = [
 	{
 		path: '',

@@ -1,27 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { environment } from '../environments/environment';
+
 // Root Component
-import { AppComponent } from 'app/app.component';
+import { AppComponent } from './app.component';
 
 // All components exported by this module
-import { ComponentsModule } from 'app/tools/components/components.module';
+import { ComponentsModule } from './tools/components/components.module';
 
 // Routing Module
-import { AppRoutingModule } from 'app/app.routing';
+import { AppRoutingModule } from './app.routing';
 
 // Firebase
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+// import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Providers
-import { RouterService } from 'app/tools/services/router/router.service';
-import { WindowService } from 'app/tools/services/window/window.service';
-import { AuthService } from 'app/tools/services/auth/auth.service'
-import { AuthGuard } from 'app/tools/services/auth/auth-guard.service';
-import { ProjectsService } from 'app/tools/services/projects/projects.service'
-import { ProjectsGuard } from 'app/tools/services/projects/projects-guard.service';
+import { RouterService } from './tools/services/router/router.service';
+import { WindowService } from './tools/services/window/window.service';
+import { AuthService } from './tools/services/auth/auth.service'
+import { AuthGuard } from './tools/services/auth/auth-guard.service';
+import { ProjectsService } from './tools/services/projects/projects.service'
+import { ProjectsGuard } from './tools/services/projects/projects-guard.service';
 
 import {
 	SimpleNotificationsModule,
@@ -29,15 +32,6 @@ import {
 	NotificationsService,
 	PushNotificationsService
 } from 'angular2-notifications';
-
-export const firebaseConfig = {
-	apiKey: 'AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM',
-	authDomain: 'dashboard-braun-marketing.firebaseapp.com',
-	databaseURL: 'https://dashboard-braun-marketing.firebaseio.com',
-	projectId: 'dashboard-braun-marketing',
-	storageBucket: 'dashboard-braun-marketing.appspot.com',
-	messagingSenderId: '774638353867'
-};
 
 /**
  * The app bootstrapper module
@@ -49,8 +43,8 @@ export const firebaseConfig = {
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
-		AngularFireModule.initializeApp(firebaseConfig),
-		AngularFireDatabaseModule,
+		AngularFireModule.initializeApp(environment.firebaseConfig),
+		AngularFirestoreModule,
 		AngularFireAuthModule,
 		ComponentsModule,
 

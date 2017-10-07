@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'app/tools/services/auth/auth.service';
+import { AuthService } from '../../tools/services/auth/auth.service';
 
 @Component({
 	selector: 'bmc-login',

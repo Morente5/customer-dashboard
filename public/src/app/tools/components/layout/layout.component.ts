@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { SimpleNotificationsComponent } from 'angular2-notifications';
 
-import { WindowService } from 'app/tools/services/window/window.service';
+import { WindowService } from '../../services/window/window.service';
 
 @Component({
 	selector: 'bmc-layout',
