@@ -19,7 +19,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterService } from 'app/tools/services/router/router.service';
 import { WindowService } from 'app/tools/services/window/window.service';
 import { AuthService } from 'app/tools/services/auth/auth.service'
-import { AuthGuard } from './tools/services/auth/auth-guard.service';
+import { AuthGuard } from 'app/tools/services/auth/auth-guard.service';
+import { ProjectsService } from 'app/tools/services/projects/projects.service'
+import { ProjectsGuard } from 'app/tools/services/projects/projects-guard.service';
 
 import {
 	SimpleNotificationsModule,
@@ -45,8 +47,8 @@ export const firebaseConfig = {
 		AppComponent
 	],
 	imports: [
-		AppRoutingModule,
 		BrowserModule,
+		AppRoutingModule,
 		AngularFireModule.initializeApp(firebaseConfig),
 		AngularFireDatabaseModule,
 		AngularFireAuthModule,
@@ -60,10 +62,13 @@ export const firebaseConfig = {
 		RouterService,
 		WindowService,
 		AuthService,
+		ProjectsService,
 
 		NotificationsService,
 		PushNotificationsService,
-		AuthGuard
+
+		AuthGuard,
+		ProjectsGuard
 	],
 	bootstrap: [AppComponent]
 })

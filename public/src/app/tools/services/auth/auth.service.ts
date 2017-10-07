@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core'
+import { Injectable, Inject } from '@angular/core'
 
-import { Router } from '@angular/router'
+//import { Router } from '@angular/router'
 import { Observable } from 'rxjs/Observable'
 
 import { FirebaseApp } from 'angularfire2';
@@ -17,11 +17,8 @@ export class AuthService {
 	public user$: Observable<firebase.User>
 	public user: firebase.User
 
-	public clients$: FirebaseListObservable<any[]>
-	public clients: any[]
-
 	constructor(
-		private router: Router,
+		//private router: Router,
 		private afAuth: AngularFireAuth,
 		private db: AngularFireDatabase,
 		private notificationsService: NotificationsService
@@ -29,20 +26,13 @@ export class AuthService {
 		this.user$ = this.afAuth.authState // User Observable
 		this.user$.subscribe(user => {
 			this.user = user
-			console.log(this.user)
 		})
-		this.clients$ = this.db.list('/projects')
-		this.clients$.subscribe(clients => {
-			this.clients = clients
-			console.log(this.clients)
-		})
-		// this.login()
 	}
 
 	public login(email, password) {
 		this.afAuth.auth.signInWithEmailAndPassword(email, password)
 			.then(userInfo => {
-				this.router.navigate([''])
+				//this.router.navigate([''])
 				console.log(userInfo, this.user$)
 			})
 			.catch(error => {
@@ -64,7 +54,7 @@ export class AuthService {
 
 	public logout() {
 		this.afAuth.auth.signOut()
-		this.router.navigate(['/'])
+		//this.router.navigate(['/'])
 	}
 
 }

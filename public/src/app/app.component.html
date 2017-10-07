@@ -1,4 +1,6 @@
 <bmc-layout
-	[ngClass]="!authService.user ? 'no-sidebar' : openedSidebar ? 'opened-sidebar' : 'closed-sidebar'"
+	[user]="user"
+	[projects$]="projects$"
+	[ngClass]="( !(projects$ | async) || !user ) ? 'no-sidebar' : openedSidebar ? 'opened-sidebar' : 'closed-sidebar'"
 	(onToggleSidebar)="stateSidebar($event)"
 ></bmc-layout>
