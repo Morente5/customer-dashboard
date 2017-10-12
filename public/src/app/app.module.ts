@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
 
@@ -22,7 +23,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { RouterService } from './tools/services/router/router.service';
 import { WindowService } from './tools/services/window/window.service';
 import { AuthService } from './tools/services/auth/auth.service'
-import { AuthGuard } from './tools/services/auth/auth-guard.service';
+import { AdminGuard, DashboardGuard, AuthGuard, LoginGuard } from './tools/services/auth/auth-guard.service';
 import { ProjectsService } from './tools/services/projects/projects.service'
 import { ProjectsGuard } from './tools/services/projects/projects-guard.service';
 
@@ -44,8 +45,9 @@ import {
 		BrowserModule,
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebaseConfig),
-		AngularFirestoreModule,
+		AngularFirestoreModule.enablePersistence(),
 		AngularFireAuthModule,
+		FormsModule,
 		ComponentsModule,
 
 		SimpleNotificationsModule.forRoot(),
@@ -62,7 +64,10 @@ import {
 		PushNotificationsService,
 
 		AuthGuard,
-		ProjectsGuard
+		AdminGuard,
+		LoginGuard,
+		DashboardGuard,
+		ProjectsGuard,
 	],
 	bootstrap: [AppComponent]
 })
