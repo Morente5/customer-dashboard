@@ -1,11 +1,33 @@
+<a [routerLink]="['/']">
+	<i class="material-icons">home</i>
+</a>
 <h2>Iniciar Sesión</h2>
-<form #formData (ngSubmit)="onSubmit(formData)">
-	<input name="email" type="email">
-	<input name="password" type="password">
+<form
+	#loginForm="ngForm"
+	(ngSubmit)="onSubmit()"
+>
+	<input
+		type="email"
+		name="email"
+		required
+		[(ngModel)]="loginFormData.email"
+		#name="ngModel"
+	>
+	<input
+		type="password"
+		name="password"
+		required
+		minlength="6"
+		[(ngModel)]="loginFormData.password"
+		#password="ngModel"
+	>
 	<div>
-		<button [disabled]="">LOGIN</button>
+		<input
+			type="submit"
+			[disabled]="loginForm.invalid"
+		>LOGIN
 	</div>
 </form>
 <div>
-	<button (click)="loginWithGoogle()">LOGIN CON GOOGLE</button>
+	<button type="button" (click)="loginWithGoogle()">LOGIN CON GOOGLE</button>
 </div>

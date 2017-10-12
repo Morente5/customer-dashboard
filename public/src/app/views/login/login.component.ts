@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../tools/services/auth/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
 	selector: 'bmc-login',
@@ -10,6 +11,8 @@ import { AuthService } from '../../tools/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+	loginFormData = {email: '', password: ''}
+	loginForm: NgForm
 	constructor(
 		private authService: AuthService,
 		private router: Router
@@ -24,11 +27,9 @@ export class LoginComponent implements OnInit {
 		this.authService.loginWithGoogle()
 	}
 
-	private onSubmit(formData) {
-		if (formData.valid) {
-			console.log(formData.value)
-			//this.authService.login(formData.value.email, formData.value.password)
-		}
+	public onSubmit() {
+		console.log(this.loginFormData)
+		this.authService.login(this.loginFormData.email, this.loginFormData.password)
 	}
 
 }
