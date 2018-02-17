@@ -1,6 +1,8 @@
 <bmc-layout
-	[user]="user"
-	[projects$]="projects$"
-	[ngClass]="( !(projects$ | async) || !user ) ? 'no-sidebar' : openedSidebar ? 'opened-sidebar' : 'closed-sidebar'"
-	(onToggleSidebar)="stateSidebar($event)"
-></bmc-layout>
+
+	(onToggleSidebar)="stateSidebar($event)">
+</bmc-layout>
+<simple-notifications
+	[options]="notificationsDefaultOptions"
+></simple-notifications>
+<ng2-slim-loading-bar [color]="'#3dcc6d'" [height]="'2px'"></ng2-slim-loading-bar>

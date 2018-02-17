@@ -1,0 +1,5 @@
+<div class="dashboard-top-bar" *ngIf="projectService.project$ | async as project">
+	<h2>{{project.name}}</h2>
+</div>
+
+<router-outlet></router-outlet>

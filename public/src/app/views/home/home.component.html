@@ -1,3 +1,17 @@
-<p>
-  home works!
-</p>
+<h1>Customer Area</h1>
+
+<ng-container *ngIf="authService.user$ | async as user; then homeTemplate; else loginTemplate">
+</ng-container>
+
+<ng-template #loginTemplate>
+	<a [routerLink]="[ '/login' ]">Log In</a>
+</ng-template>
+
+<ng-template #homeTemplate>
+	<h2>Welcome</h2>
+	<img [src]="authService.user.photoURL" />
+	<p>{{authService.user.displayName}}</p>
+	<p *ngFor="let project of projectsService.projects$ | async">
+		{{ project.name}}
+	</p>
+</ng-template>

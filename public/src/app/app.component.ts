@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import * as firebase from 'firebase/app';
-import { FirebaseApp } from 'angularfire2';
-import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
-import { AuthService } from './tools/services/auth/auth.service'
-import { ProjectsService } from './tools/services/projects/projects.service'
+import { Router } from '@angular/router'
 
-import { PushNotificationsService } from 'angular2-notifications';
+import { SimpleNotificationsComponent, NotificationsService } from 'angular2-notifications';
+
+
+import { AuthService } from './shared/services/auth/auth.service'
+import { ProjectsService } from './shared/services/projects/projects.service'
 
 @Component({
 	selector: 'bmc-root',
@@ -17,31 +18,37 @@ import { PushNotificationsService } from 'angular2-notifications';
 export class AppComponent implements OnInit {
 	public openedSidebar: boolean
 
-	public user: firebase.User
-	public projects$: FirebaseObjectObservable<any>
+	notificationsDefaultOptions = {
+		position: ['top', 'right'],
+		timeOut: 3000,
+		showProgressBar: true,
+		pauseOnHover: true,
+		clickToClose: true
+	}
 
 	constructor(
+		private router: Router,
 		public authService: AuthService,
 		public projectsService: ProjectsService,
-
-		private pushNotificationsService: PushNotificationsService
-	) {}
+	) {
+		console.log(
+			'%c  %c ¡ATENCIÓN! %c  %c ESTA CONSOLA ES PARA DESARROLLADORES, ' +
+			'CUALQUIER SCRIPT AQUÍ EJECUTADO PODRÁ BRINDAR TUS DATOS A POSIBLES ATACANTES: https://es.wikipedia.org/wiki/Self-XSS %c  ',
+			'line-height:2.5em; padding: 5px 0; background-color: #205EBA',
+			'line-height:2.5em; padding: 5px 0; background-color: #444; color: #ccc',
+			'line-height:2.5em; padding: 5px 0; background-color: #205EBA',
+			'line-height:2.5em; padding: 5px 0; background-color: #18468B; color: #fff',
+			'line-height:2.5em; padding: 5px 0; background-color: #205EBA'
+		)
+	}
 	ngOnInit() {
-		// Request permission to push notifications
-		this.pushNotificationsService.requestPermission()
-
 		if (window.innerWidth >= 960) {
 			this.openedSidebar = true
 		} else {
 			this.openedSidebar = false
 		}
-		this.authService.user$.subscribe(user => {
-			if (user) {
-				this.user = user
-				this.projects$ = this.projectsService.getProjectList()
-			}
-		})
 	}
+
 	public stateSidebar($event) {
 		this.openedSidebar = $event
 	}

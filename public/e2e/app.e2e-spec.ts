@@ -1,14 +1,14 @@
-import { ClientDashboardPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('client-dashboard App', () => {
-	let page: ClientDashboardPage;
+describe('customer-dashboard App', () => {
+	let page: AppPage;
 
 	beforeEach(() => {
-		page = new ClientDashboardPage();
+		page = new AppPage();
 	});
 
 	it('should display welcome message', () => {
 		page.navigateTo();
-		expect(page.getParagraphText()).toEqual('Welcome to app!');
+		expect(page.getParagraphText()).toEqual('Welcome to bmc!');
 	});
 });

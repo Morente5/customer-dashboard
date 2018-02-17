@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../tools/services/auth/auth.service';
+import { AuthService } from '../../shared/services/auth/auth.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -11,10 +11,11 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-	loginFormData = {email: '', password: ''}
+	loginFormData = { email: undefined, password: undefined, rememberMe: false}
 	loginForm: NgForm
+
 	constructor(
-		private authService: AuthService,
+		public authService: AuthService,
 		private router: Router
 	) {
 
@@ -23,13 +24,13 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	private loginWithGoogle(): void {
+	public loginWithGoogle(): void {
 		this.authService.loginWithGoogle()
 	}
 
 	public onSubmit() {
 		console.log(this.loginFormData)
-		this.authService.login(this.loginFormData.email, this.loginFormData.password)
+		this.authService.login(this.loginFormData.email, this.loginFormData.password, this.loginFormData.rememberMe)
 	}
 
 }

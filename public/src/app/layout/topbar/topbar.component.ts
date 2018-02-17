@@ -1,0 +1,42 @@
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+
+import { AuthService } from './../../shared/services/auth/auth.service';
+import { ProjectsService } from './../../shared/services/projects/projects.service';
+
+import { NbMenuService, NbSidebarService, NbMenuItem } from '@nebular/theme';
+
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+// import { withLatestFrom } from 'rxjs/operators';
+
+@Component({
+	selector: 'bmc-topbar',
+	templateUrl: './topbar.component.html',
+	styleUrls: ['./topbar.component.scss']
+})
+export class TopbarComponent implements OnInit {
+	@Input() sidebarState: 'expanded' | 'compacted' | 'collapsed';
+
+	adminMenu: NbMenuItem[] = [{ title: 'Profile', link: '/perfil' }, { title: 'Admin Panel', link: '/admin' }, { title: 'Log out' }];
+	userMenu: NbMenuItem[] = [{ title: 'Profile', link: '/perfil' }, { title: 'Log out' }];
+
+
+
+	constructor(
+		private sidebarService: NbSidebarService,
+		public authService: AuthService,
+		public projectsService: ProjectsService,
+		private menuService: NbMenuService,
+	) {	}
+
+	ngOnInit() {
+	}
+	public toggleSidebar() {
+		this.sidebarService.toggle(true);
+	}
+
+	public logoutClick(): void {
+		this.authService.logout();
+	}
+
+}

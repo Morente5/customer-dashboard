@@ -1,0 +1,33 @@
+:host {
+	margin: 5px;
+	display: block;
+	padding: 0;
+
+	> a {
+		display: flex;
+		align-items: center;
+		padding: 0;
+		.project-logo {
+			flex: 0 0 calc( var(--sidebar-element-height, 50) * .75px);
+			line-height: calc( var(--sidebar-element-height, 50) * .75px);
+			height: calc( var(--sidebar-element-height, 50) * .75px );
+			width: calc( var(--sidebar-element-height, 50) * .75px );
+			color: #2a2a2a;
+			border: solid 2px #bcc3cc;
+			background-color: #fff;
+			background-position: center;
+			background-size: cover;
+			border-radius: 50%;
+			margin: calc( var(--sidebar-element-height, 50) * .125px );
+			border: 0px 0px 5px 0 rgba(255, 255, 255, 0.1);
+		}
+		.project-name {
+			//color: #fff;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			padding: 7.5px;
+			letter-spacing: -0.2px;
+			font-size: .9rem;
+		}
+	}
+}

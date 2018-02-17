@@ -6,11 +6,14 @@ import { LoginRoutingModule } from './login.routing';
 
 import { LoginComponent } from './login.component';
 
+import { SharedModule } from './../../shared/shared.module'
+
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
-		LoginRoutingModule
+		LoginRoutingModule,
+		SharedModule
 	],
 	declarations: [LoginComponent]
 })

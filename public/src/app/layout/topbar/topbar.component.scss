@@ -1,0 +1,29 @@
+:host {
+	display: flex;
+	justify-content: space-between;
+	-webkit-box-pack: justify;
+	width: 100%;
+
+}
+
+i {
+	line-height: calc(var(--topbar-height, 50) * 1px);
+	font-size: calc(var(--topbar-height, 50) * .5px);
+}
+
+.title {
+	font-size: 1.1em;
+}
+.topbar-button {
+	display: block;
+	height: calc(var(--topbar-height, 50) * 1px);
+	width: calc(var(--topbar-height, 50) * 1px);
+	text-align: center;
+	&:hover {
+		background-color: unquote('hsla( var(--topbar-bg-color, 216) , 70%, 25%, .50)')
+	}
+}
+.menu-toggle {
+	cursor: pointer;
+	user-select: none;
+}

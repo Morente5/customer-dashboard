@@ -1,0 +1,26 @@
+<ng-template [ngIf]="project">
+<a
+	[routerLink]="project.id"
+	class="btn btn-outline-success btn-block"
+	[class.active]="project.id === routerService.routerProjectID"
+>
+	<div
+		*ngIf="project.imgURL"
+		class="project-logo"
+		[title]="project.name"
+		style.background-image="url({{project.imgURL}})">
+	</div>
+	<div
+		*ngIf="!project.imgURL"
+		class="project-logo background"
+		[title]="project.name"
+	>
+		{{ getInitials() }}
+	</div>
+	<span
+		class="project-name"
+	>
+		{{project.name}}
+	</span>
+</a>
+</ng-template>

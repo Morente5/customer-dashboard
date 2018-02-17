@@ -1,3 +1,54 @@
-<p>
-  PERFIL
-</p>
+<h2>Your profile</h2>
+
+		<nb-card class="profile-card">
+
+			<nb-card-header class="d-flex flex-wrap align-items-center">
+
+				<div class="photo-upload">
+					<nb-user
+						class="profile-user"
+						[picture]="authService.user?.photoURL"
+						[name]="authService.user?.displayName"
+						[size]="'xlarge'"
+						onlyPicture
+					></nb-user>
+					<div class="file-upload-container">
+						<input type="file" class="file-upload" accept="image/*" title=" ">
+						<div class="file-upload-btn">
+							<div class="icon-camera">
+								<i class="ion-camera"></i>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="h6 ml-auto center user-role">
+						{{authService.user?.access}}
+				</div>
+			</nb-card-header>
+
+			<nb-card-body>
+				<div class="header d-flex flex-wrap align-items-center">
+					<h5 class="">Display name</h5>
+					<div class="detail font-w-light ml-auto">
+						{{authService.user?.displayName}}
+					</div>
+				</div>
+				<div class="header d-flex flex-wrap align-items-center">
+					<h5 class="">Email</h5>
+					<div class="detail font-w-light ml-auto">
+						{{authService.user?.email}}
+					</div>
+				</div>
+				<div class="header d-flex flex-wrap">
+					<h5 class="">Projects</h5>
+					<div class="detail font-w-light ml-auto text-right">
+						<!-- <div *ngFor="let project of authService.user?.projects"> -->
+						<div *ngFor="let project of projectsService.projects$ | async">
+							{{project.name}}
+						</div>
+					</div>
+				</div>
+			</nb-card-body>
+
+		</nb-card>

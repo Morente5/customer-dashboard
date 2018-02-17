@@ -1,0 +1,120 @@
+<div *ngIf="user$ | async">
+
+	<form
+		class="user-data-form"
+		#userDataForm="ngForm"
+		(ngSubmit)="save()"
+	>
+
+		<nb-card-header class="d-flex flex-wrap align-items-center">
+
+			<div class="photo-upload">
+				<nb-user
+					class="profile-user"
+					[picture]="user?.photoURL"
+					[name]="user?.displayName"
+					[size]="'xlarge'"
+					onlyPicture
+				></nb-user>
+				<div class="file-upload-container">
+					<input
+						type="file"
+						class="file-upload"
+						accept="image/*"
+						title=" ">
+					<div class="file-upload-btn">
+						<div class="icon-camera">
+							<i class="ion-camera"></i>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="h6 ml-auto center user-role">
+				<div>
+				<label class="custom-control custom-radio">
+					<input class="custom-control-input"
+					type="radio"
+					value="admin"
+					[(ngModel)]="user.access"
+					name="access"
+					>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Admin</span>
+				</label>
+				</div>
+				<div>
+				<label class="custom-control custom-radio">
+					<input class="custom-control-input"
+					type="radio"
+					value="author"
+					[(ngModel)]="user.access"
+					name="access"
+					>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Author</span>
+				</label>
+				</div>
+				<div>
+				<label class="custom-control custom-radio">
+					<input class="custom-control-input"
+					type="radio"
+					value="reader"
+					[(ngModel)]="user.access"
+					name="access"
+					>
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-description">Reader</span>
+				</label>
+
+
+				</div>
+
+			</div>
+		</nb-card-header>
+
+		<nb-card-body>
+			<div class="header d-flex flex-wrap align-items-center">
+				<h5 class="">Display name</h5>
+				<div class="detail font-w-light ml-auto">
+					<input
+						class="form-control"
+						placeholder="Name"
+						type="text"
+						[(ngModel)]="user.displayName"
+						name="displayName"
+					>
+				</div>
+			</div>
+			<div class="header d-flex flex-wrap align-items-center">
+				<h5 class="">Email</h5>
+				<div class="detail font-w-light ml-auto">
+					<input
+						class="form-control"
+						placeholder="Email"
+						type="email"
+						[(ngModel)]="user.email"
+						name="email"
+					>
+				</div>
+			</div>
+			<div *ngIf="true || user.access !== 'admin'" class="header d-flex flex-wrap">
+				<h5 class="">Projects</h5>
+				<div class="detail font-w-light ml-auto text-right">
+					<!-- <div *ngFor="let project of authService.userData?.projects"> -->
+					<div *ngFor="let project of projectsService.projects">
+						<nb-checkbox name="{{project.name}}" [(ngModel)]="user.projects[project.id]">{{project.name}}</nb-checkbox>
+					</div>
+				</div>
+			</div>
+			<input
+				class="form-control"
+				type="submit"
+				value="Save"
+				class="btn btn-hero-success"
+				[disabled]="userDataForm.pristine || userDataForm.invalid"
+			/>
+		</nb-card-body>
+
+	</form>
+</div>

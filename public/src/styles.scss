@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'app/scss/theme';
 
 :root {
 	--topbar-bg-color: 216;  // Hue
@@ -7,7 +7,7 @@
 	--sidebar-bg-color: #fff;
 	--sidebar-width: 240;
 	--sidebar-border: 1px solid #e3e9ea;
-	--sidebar-element-height: 50;
+	--sidebar-element-height: 56;
 	--sidebar-element-bg-color: #fff;
 	--sidebar-element-bg-color-hover: #f4f5f5;
 	--sidebar-element-bg-color-selected: #e9ebeb;
@@ -22,8 +22,113 @@ html, body {
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+	// font-family: -apple-system, BlinkMacSystemFont,
+  //   "Segoe UI", "Roboto", "Oxygen",
+  //   "Ubuntu", "Cantarell", "Fira Sans",
+	// 	"Droid Sans", "Helvetica Neue", sans-serif;
+	//background: linear-gradient(135deg, hsl( var(--topbar-bg-color, 216) , 70%, 20%), hsl( var(--topbar-bg-color, 216) , 70%, 32%));
+	background-color: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 20%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)'));
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+.loader-container {
+	display: flex;
+	align-items: center;
+  justify-content: center;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.loader-cube {
+  width: 40px;
+  height: 40px;
+  position: relative;
+	transform: rotateZ(45deg);
+	.cube {
+		float: left;
+		width: 50%;
+		height: 50%;
+		position: relative;
+		transform: scale(1.1);
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #FFF;
+			animation: fold-cube 2.4s infinite linear both;
+			transform-origin: 100% 100%;
+		}
+		@for $i from 2 through 4 {
+			&.cube#{$i} {
+				transform: scale(1.1) rotateZ(($i - 1) * 90deg);
+				&:before {
+					animation-delay: ($i - 1) * 0.3s;
+				}
+			}
+		}
+	}
+}
+
+@keyframes fold-cube {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+
+
+.header {
+	padding-bottom: .675rem;
+	margin-bottom: .675rem;
+	border-bottom: 1px solid #ebeef2;
+}
+
+.icon {
+  display: inline-block;
+  width: 4rem;
+  padding: 1.25rem 0;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+nb-user.profile-user .user-container {
+	display: block;
+}
+
+nb-checkbox .custom-control-indicator {
+	left: 0
+}
+
+.full-frame {
+	height: 100%;
+	width: 100%;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.3);
+	border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background: linear-gradient(90deg,#CCC,#999)
 }

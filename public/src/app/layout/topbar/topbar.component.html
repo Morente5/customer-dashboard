@@ -1,0 +1,28 @@
+<div class="header-container left" size="medium">
+	<a
+		*ngIf="projectsService.projects$ | async"
+		class="navigation topbar-button menu-toggle"
+		(click)="toggleSidebar()"
+	>
+		<i class="material-icons">menu</i>
+	</a>
+</div>
+
+<nb-actions class="header-container medium right" size="medium">
+	<nb-action class="control-item disabled" icon="nb-notifications"></nb-action>
+	<nb-action class="control-item" icon="nb-email"></nb-action>
+	<nb-action>
+		<nb-user
+			*ngIf="authService.user$ | async as user"
+			[picture]="user.photoURL"
+			[name]="user.displayName"
+			[menu]="user.access === 'admin' ? adminMenu : userMenu"
+			(menuClick)="logoutClick()"
+		>
+	</nb-user>
+
+	</nb-action>
+
+
+
+</nb-actions>

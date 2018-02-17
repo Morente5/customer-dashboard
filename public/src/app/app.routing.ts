@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Router Auth Guard
-import { AuthGuard } from './tools/services/auth/auth-guard.service';
+import { AuthGuard, LoginGuard, AdminGuard, DashboardGuard } from './shared/services/auth/auth-guard.service';
 
 const routeBase = './views/';
 const routes: Routes = [
@@ -13,21 +13,28 @@ const routes: Routes = [
 		loadChildren: routeBase + 'home/home.module#HomeModule'
 	},
 	{
-		path: 'perfil',
-		loadChildren: routeBase + 'profile/profile.module#ProfileModule'
-	},
-	{
 		path: 'login',
+		canActivate: [LoginGuard],
 		loadChildren: routeBase + 'login/login.module#LoginModule'
 	},
 	{
-		path: 'admin',
+		path: 'perfil',
 		canActivate: [AuthGuard],
+		loadChildren: routeBase + 'profile/profile.module#ProfileModule'
+	},
+	{
+		path: 'admin',
+		canActivate: [AdminGuard],
 		loadChildren: routeBase + 'admin/admin.module#AdminModule'
 	},
 	{
-		path: ':clientID',
-		loadChildren: routeBase + 'dashboard/dashboard.module#DashboardModule'
+		path: 'access-denied',
+		loadChildren: routeBase + 'access-denied/access-denied.module#AccessDeniedModule'
+	},
+	{
+		path: ':projectID',
+		canActivate: [DashboardGuard],
+		loadChildren: routeBase + 'project/project.module#ProjectModule'
 	},
 ];
 

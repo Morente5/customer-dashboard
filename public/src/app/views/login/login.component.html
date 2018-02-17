@@ -1,33 +1,56 @@
-<a [routerLink]="['/']">
-	<i class="material-icons">home</i>
-</a>
-<h2>Iniciar Sesión</h2>
 <form
+	class="login-form"
 	#loginForm="ngForm"
 	(ngSubmit)="onSubmit()"
 >
-	<input
-		type="email"
-		name="email"
-		required
-		[(ngModel)]="loginFormData.email"
-		#name="ngModel"
-	>
-	<input
-		type="password"
-		name="password"
-		required
-		minlength="6"
-		[(ngModel)]="loginFormData.password"
-		#password="ngModel"
-	>
-	<div>
-		<input
-			type="submit"
-			[disabled]="loginForm.invalid"
-		>LOGIN
-	</div>
+<nb-card class="form-container">
+
+	<nb-card-header>
+		<h2 class="title center">Sign In</h2>
+	</nb-card-header>
+		<nb-card-body>
+			<div class="form-group">
+				<input
+					class="form-control"
+					type="email"
+					name="email"
+					placeholder="Email"
+					required
+					[(ngModel)]="loginFormData.email"
+					#name="ngModel"
+				/>
+			</div>
+			<div class="form-group">
+				<input
+					class="form-control"
+					type="password"
+					name="password"
+					placeholder="Password"
+					required
+					minlength="6"
+					[(ngModel)]="loginFormData.password"
+					#password="ngModel"
+				/>
+			</div>
+			<div class="form-group">
+				<nb-checkbox
+					name="rememberMe"
+					[(ngModel)]="loginFormData.rememberMe"
+				>Remember me
+				</nb-checkbox>
+
+			</div>
+			<input
+				class="form-control"
+				type="submit"
+				value="Sign In"
+				class="btn btn-block btn-hero-success"
+				[disabled]="loginForm.invalid"
+			/>
+
+
+
+			<!-- <button class="btn btn-block btn-hero-success" type="button" (click)="loginWithGoogle()">LOGIN CON GOOGLE</button> -->
+		</nb-card-body>
+	</nb-card>
 </form>
-<div>
-	<button type="button" (click)="loginWithGoogle()">LOGIN CON GOOGLE</button>
-</div>

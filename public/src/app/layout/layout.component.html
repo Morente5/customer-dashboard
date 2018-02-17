@@ -1,0 +1,31 @@
+<nb-layout class="window-mode with-scroll">
+	<nb-layout-header
+		*ngIf="authService.user$ | async as user"
+		fixed
+		class="fixed"
+		>
+		<bmc-topbar
+			[sidebarState]="sidebarState"
+		></bmc-topbar>
+	</nb-layout-header>
+
+	<nb-sidebar
+		*ngIf="projectsService.projects$ | async as projects"
+		left
+		responsive
+		class="menu-sidebar"
+	>
+
+		<bmc-sidebar-project
+			*ngFor="let project of projects"
+			[project]="project"
+			[opened]="openedSidebar"
+			>
+		</bmc-sidebar-project>
+
+	</nb-sidebar>
+
+	<nb-layout-column>
+		<bmc-main></bmc-main>
+	</nb-layout-column>
+</nb-layout>

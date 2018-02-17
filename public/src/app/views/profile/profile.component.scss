@@ -1,0 +1,66 @@
+.profile-card {
+	.header {
+		h5 {
+			margin: 0;
+		}
+		&:first-child {
+			padding-top: .675rem;
+			border-top: 1px solid #ebeef2;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+}
+.photo-upload {
+	position: relative;
+	.file-upload-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 64px;
+		height: 64px;
+		opacity: 0;
+		transition: .3s opacity;
+		&:hover {
+			opacity: .5;
+		}
+
+
+		.file-upload-btn {
+			position: absolute;
+			width: 48px;
+			height: 48px;
+			margin: 8px;
+			font-size: 32px;
+			background-color: #000000;
+			border-radius: 50%;
+			.icon-camera {
+				width: 48px;
+				height: 48px;
+				text-align: center;
+				i {
+					width: 48px;
+					height: 48px;
+					color: #fff;
+					line-height: 48px;
+					margin: auto
+				}
+			}
+		}
+
+		.file-upload {
+			position: absolute;
+			width: 64px;
+			height: 64px;
+			opacity: 0;
+			overflow: hidden;
+			z-index: 1;
+		}
+	}
+
+}
+.user-role {
+	text-transform: uppercase;
+}

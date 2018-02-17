@@ -1,0 +1,66 @@
+:host {
+	display: grid;
+	grid-gap: 15px;
+	@media screen and (min-width: 720px) {
+		grid-gap: 20px;
+	}
+	@media screen and (min-width: 960px) {
+		grid-gap: 25px;
+	}
+	grid-template-columns: repeat(auto-fill, minmax(calc(var(--dashboard-card-height, 150) * 2px), 1fr));
+
+}
+
+nb-card.dashboard-card {
+	margin: 0;
+	a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		.icon-container {
+			margin: .5rem
+		}
+		.title {
+			margin: 0;
+			padding: .5rem
+		}
+	}
+	&:hover, &:active {
+		box-shadow: inset 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+	}
+}
+
+// .dashboard-card {
+// 	text-align: center;
+// 	height: calc( var(--dashboard-card-height, 150) * 1px );
+//   background-color: var(--dashboard-card-color, #444);
+//   border-radius: 2px;
+// 	font-size: 1.5em;
+// 	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+// 	&:active {
+// 		box-shadow: inset 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
+
+// 	}
+// 	&.analitica {
+// 		--dashboard-card-color: #117A3D
+// 	}
+// 	&.acciones {
+// 		--dashboard-card-color: #8B5E3C
+// 	}
+// 	&.tareas {
+// 		--dashboard-card-color: #C23347
+// 	}
+// 	&.suscripciones {
+// 		--dashboard-card-color: #DDA14A
+// 	}
+// 	&.biblioteca {
+// 		--dashboard-card-color: #0F76BC
+// 	}
+// 	a {
+// 		display: block;
+// 		line-height: calc( var(--dashboard-card-height, 150) * 1px );
+// 		width: 100%;
+// 		color: #fff;
+// 		text-decoration: none
+// 	}
+// }

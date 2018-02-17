@@ -1,0 +1,67 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+// import Nebular Theme System and the default theme
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+$nb-themes: nb-register-theme((
+	//font-main: Roboto,
+ 	font-secondary: Exo,
+	font-size-lg: 2rem,
+	//layout-bg: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 20%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)')),
+	//header-fg:	#ffffff,
+	//header-bg:	linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 25%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 40%)')),
+	shadow: 0 .5px .5px 0 #dfe3eb,
+	header-height:	calc(var(--topbar-height, 50) * 1px),
+	header-padding: 0,
+	sidebar-width: calc(var(--sidebar-width, 50) * 1px),
+	sidebar-width-compact:	calc(var(--sidebar-element-height, 50) * 1px + 14px),
+	sidebar-padding: 0,
+	//sidebar-bg: unquote('hsl( var(--topbar-bg-color, 216) , 70%, 30%)'),
+), default, default);
+
+$nb-themes: nb-register-theme((
+	font-main: Roboto,
+	font-secondary: Exo,
+	font-size-lg: 2rem,
+	layout-bg: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 20%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)')),
+	header-fg:	#ffffff,
+	header-bg:	linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 25%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 40%)')),
+	shadow: 0 .5px .5px 0 #dfe3eb,
+	header-height:	calc(var(--topbar-height, 50) * 1px),
+	header-padding: 0,
+	sidebar-width: calc(var(--sidebar-width, 50) * 1px),
+	sidebar-width-compact:	calc(var(--sidebar-element-height, 50) * 1px + 14px),
+	sidebar-padding: 0,
+	sidebar-bg: unquote('hsl( var(--topbar-bg-color, 216) , 70%, 30%)'),
+	form-control-sm-padding: 0.375rem 0.75rem
+), dark, default);
+
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
+
+// .nb-theme-default nb-route-tabset ul {
+// 	font-size: 1rem;
+// }
+
+// .nb-theme-default ng2-smart-table thead tr.ng2-smart-filters th .ng2-smart-filter input[type="checkbox"] {
+// 	width: auto;
+// 	margin: auto;
+// 	& + a {
+// 		display: block;
+//     text-align: center;
+// 	}
+// }
+
+// .nb-theme-default .input-group-addon, .nb-theme-default .form-control {
+// 	padding: 0.375rem 0.75rem;
+// }
+
+simple-notifications .simple-notification-wrapper.top {
+	top: 76px;
+}
+

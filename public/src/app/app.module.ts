@@ -4,11 +4,20 @@ import { FormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
 
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import {
+	NbThemeModule,
+	NbMenuModule,
+	NbSidebarService,
+	NbMenuService,
+	NbMediaBreakpointsService
+} from '@nebular/theme';
+
 // Root Component
 import { AppComponent } from './app.component';
 
 // All components exported by this module
-import { ComponentsModule } from './tools/components/components.module';
+import { LayoutModule } from './layout/layout.module';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
@@ -20,20 +29,17 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Providers
-import { RouterService } from './tools/services/router/router.service';
-import { WindowService } from './tools/services/window/window.service';
-import { AuthService } from './tools/services/auth/auth.service'
-import { AdminGuard, DashboardGuard, AuthGuard, LoginGuard } from './tools/services/auth/auth-guard.service';
-import { ProjectsService } from './tools/services/projects/projects.service'
-import { ProjectsGuard } from './tools/services/projects/projects-guard.service';
+import { SharedModule } from './shared/shared.module';
 
 import {
 	SimpleNotificationsModule,
-	PushNotificationsModule,
-	NotificationsService,
-	PushNotificationsService
+	NotificationsService
 } from 'angular2-notifications';
 
+
+import {
+	PushNotificationsModule, PushNotificationsService
+} from 'ng-push';
 /**
  * The app bootstrapper module
  */
@@ -43,31 +49,32 @@ import {
 	],
 	imports: [
 		BrowserModule,
+		FormsModule,
+
 		AppRoutingModule,
+		LayoutModule,
+		SharedModule.withProviders(),
+
 		AngularFireModule.initializeApp(environment.firebaseConfig),
 		AngularFirestoreModule.enablePersistence(),
 		AngularFireAuthModule,
-		FormsModule,
-		ComponentsModule,
+
+		SlimLoadingBarModule.forRoot(),
+
+		NbMenuModule.forRoot(),
+		NbThemeModule.forRoot({ name: 'default' }),
 
 		SimpleNotificationsModule.forRoot(),
 		PushNotificationsModule,
 	],
 	providers: [
 		// Global Services
-		RouterService,
-		WindowService,
-		AuthService,
-		ProjectsService,
-
 		NotificationsService,
 		PushNotificationsService,
 
-		AuthGuard,
-		AdminGuard,
-		LoginGuard,
-		DashboardGuard,
-		ProjectsGuard,
+		NbSidebarService,
+		NbMenuService,
+		NbMediaBreakpointsService,
 	],
 	bootstrap: [AppComponent]
 })
