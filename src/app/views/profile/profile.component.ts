@@ -12,13 +12,19 @@ import { ProjectsService } from './../../shared/services/projects/projects.servi
 })
 export class ProfileComponent implements OnInit {
 
+	displayName: string
+
 	constructor(
 		public authService: AuthService,
 		public projectsService: ProjectsService
 	) { }
 
 	ngOnInit() {
+		this.displayName = this.authService.user.displayName.slice()
+	}
 
+	setName() {
+		this.authService.setName(this.displayName)
 	}
 
 }

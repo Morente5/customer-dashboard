@@ -28,11 +28,18 @@
 			</nb-card-header>
 
 			<nb-card-body>
+
 				<div class="header d-flex flex-wrap align-items-center">
 					<h5 class="">Display name</h5>
+					<form #nameForm="ngForm" class="detail input-group input-group-sm ml-auto text-right">
+						<input class="form-control" type="text" [(ngModel)]="displayName" name="displayName" #name="ngModel" required minlength="4">
+						<button [disabled]="name.invalid || name.pristine" class="btn btn-primary btn-tn" type="submit" (click)="setName()">Set</button>
+					</form>
 					<div class="detail font-w-light ml-auto">
 						{{authService.user?.displayName}}
 					</div>
+
+
 				</div>
 				<div class="header d-flex flex-wrap align-items-center">
 					<h5 class="">Email</h5>

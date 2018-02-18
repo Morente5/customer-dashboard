@@ -108,7 +108,7 @@ export class AuthService {
 		this.afAuth.auth.signInWithPopup( new firebase.auth.GoogleAuthProvider() )
 			.then(userInfo => {
 				this.router.navigate(['/'])
-				//console.log(userInfo, this.authState$)
+				// console.log(userInfo, this.authState$)
 			})
 			.catch(error => {
 				this.notificationsService.error('No se ha podido iniciar sesión', error.message)
@@ -120,6 +120,21 @@ export class AuthService {
 		this.afAuth.auth.signOut().then(() => {
 			this.router.navigate(['/login'])
 		})
+	}
+
+
+	public setName(newName: string) {
+		// Save name on Firebase Auth
+		this.afAuth.auth.currentUser.updateProfile({
+			displayName: newName,
+			photoURL: this.afAuth.auth.currentUser.photoURL
+		})
+
+		// Save name on Firestore (DB)
+		this.afs.doc(`users/${this.user.id}`).set(
+			{displayName: newName},
+			{merge: true}
+		)
 	}
 
 }
