@@ -1,8 +1,5 @@
-import * as functions from 'firebase-functions';
+/// Organized cloud functions
+import * as createUser from './create-user'
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+/// Export functions for deployment
+export const newUser = createUser.newUser
