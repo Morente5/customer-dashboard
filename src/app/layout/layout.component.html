@@ -10,7 +10,7 @@
 	</nb-layout-header>
 
 	<nb-sidebar
-		*ngIf="projectsService.projects$ | async as projects"
+		*ngIf="(authService.user$ | async) && (projectsService.projects$ | async)?.length && projectsService.projects$ | async as projects"
 		left
 		responsive
 		class="menu-sidebar"
