@@ -27,6 +27,7 @@ export class TopbarComponent implements OnInit {
 		public authService: AuthService,
 		public projectsService: ProjectsService,
 		private menuService: NbMenuService,
+		private router: Router,
 	) {	}
 
 	ngOnInit() {
@@ -37,6 +38,10 @@ export class TopbarComponent implements OnInit {
 
 	public logoutClick(): void {
 		this.authService.logout();
+	}
+
+	public homeClick(): void {
+		this.router.navigate(['/']);
 	}
 
 }
