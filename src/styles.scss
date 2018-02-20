@@ -115,8 +115,13 @@ nb-checkbox .custom-control-indicator {
 }
 
 .full-frame {
-	height: 100%;
 	width: 100%;
+	max-width: 1080px;
+	height: calc(100% - 60px);
+}
+.full-frame-calendar {
+	width: 100%;
+	height: calc(100% - 60px);
 }
 
 ::-webkit-scrollbar {
