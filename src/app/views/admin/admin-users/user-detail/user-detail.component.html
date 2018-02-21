@@ -1,10 +1,4 @@
-<div *ngIf="user$ | async">
-
-	<form
-		class="user-data-form"
-		#userDataForm="ngForm"
-		(ngSubmit)="save()"
-	>
+<div *ngIf="user$ | async as user">
 
 		<nb-card-header class="d-flex flex-wrap align-items-center">
 
@@ -30,91 +24,131 @@
 				</div>
 
 			</div>
-			<div class="h6 ml-auto center user-role">
-				<div>
-				<label class="custom-control custom-radio">
-					<input class="custom-control-input"
-					type="radio"
-					value="admin"
-					[(ngModel)]="user.access"
-					name="access"
-					>
-					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">Admin</span>
-				</label>
-				</div>
-				<div>
-				<label class="custom-control custom-radio">
-					<input class="custom-control-input"
-					type="radio"
-					value="author"
-					[(ngModel)]="user.access"
-					name="access"
-					>
-					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">Author</span>
-				</label>
-				</div>
-				<div>
-				<label class="custom-control custom-radio">
-					<input class="custom-control-input"
-					type="radio"
-					value="reader"
-					[(ngModel)]="user.access"
-					name="access"
-					>
-					<span class="custom-control-indicator"></span>
-					<span class="custom-control-description">Reader</span>
-				</label>
-
-
-				</div>
-
+			<div class="h6 ml-auto text-right user-role">
+				<form #roleForm="ngForm">
+					<div>
+						<label class="custom-control custom-radio right">
+							<input class="custom-control-input"
+								type="radio"
+								value="admin"
+								[(ngModel)]="user.access"
+								name="access"
+							>
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description" i18n>Admin</span>
+						</label>
+					</div>
+					<div>
+						<label class="custom-control custom-radio right">
+							<input class="custom-control-input"
+								type="radio"
+								value="author"
+								[(ngModel)]="user.access"
+								name="access"
+							>
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description" i18n>Author</span>
+						</label>
+					</div>
+					<div>
+						<label class="custom-control custom-radio right">
+							<input class="custom-control-input"
+								type="radio"
+								value="reader"
+								[(ngModel)]="user.access"
+								name="access"
+							>
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description" i18n>Reader</span>
+						</label>
+					</div>
+					<button
+						[disabled]=""
+						class="btn btn-primary btn-tn ml-auto"
+						type="submit"
+						(click)="setRoles()"
+						i18n
+					>Set</button>
+				</form>
 			</div>
 		</nb-card-header>
 
 		<nb-card-body>
-			<div class="header d-flex flex-wrap align-items-center">
-				<h5 class="">Display name</h5>
-				<div class="detail font-w-light ml-auto">
+			<div class="header d-flex flex-wrap align-items-text-right">
+				<h5 i18n>Display name</h5>
+				<div class="detail ml-auto mr-2 font-w-light">
+					{{user.displayName}}
+				</div>
+				<form #nameForm="ngForm" class="detail input-group input-group-sm text-right">
 					<input
 						class="form-control"
-						placeholder="Name"
 						type="text"
-						[(ngModel)]="user.displayName"
+						[(ngModel)]="userData.displayName"
 						name="displayName"
+						#name="ngModel"
+						required
+						minlength="6"
 					>
-				</div>
+					<button
+						[disabled]="name.invalid || name.pristine || userData.displayName === user.displayName"
+						class="btn btn-primary btn-tn"
+						type="submit"
+						(click)="setName()"
+						i18n
+					>Set</button>
+				</form>
+
 			</div>
+
 			<div class="header d-flex flex-wrap align-items-center">
-				<h5 class="">Email</h5>
-				<div class="detail font-w-light ml-auto">
+				<h5 i18n>Email</h5>
+				<div class="detail ml-auto mr-2 font-w-light">
+					{{user.email}}
+				</div>
+				<form #emailForm="ngForm" class="detail input-group input-group-sm text-right">
 					<input
 						class="form-control"
-						placeholder="Email"
 						type="email"
-						[(ngModel)]="user.email"
+						[(ngModel)]="userData.email"
 						name="email"
+						#email="ngModel"
+						email="true"
+						required
 					>
-				</div>
+					<button
+						[disabled]="email.invalid || email.pristine"
+						class="btn btn-primary btn-tn"
+						type="submit"
+						(click)="setEmail()"
+						i18n
+					>Set</button>
+				</form>
+
 			</div>
-			<div *ngIf="true || user.access !== 'admin'" class="header d-flex flex-wrap">
-				<h5 class="">Projects</h5>
-				<div class="detail font-w-light ml-auto text-right">
-					<!-- <div *ngFor="let project of authService.userData?.projects"> -->
-					<div *ngFor="let project of projectsService.projects">
-						<nb-checkbox name="{{project.name}}" [(ngModel)]="user.projects[project.id]">{{project.name}}</nb-checkbox>
+
+			<div
+				*ngIf="user.access !== 'testuser'; 'admin'"
+				class="header d-flex flex-wrap"
+			>
+				<h5 i18n>Projects</h5>
+				<form #projectsForm="ngForm" class="detail font-w-light ml-auto text-right">
+					<div *ngFor="let project of (projectsService.projects$ | async)">
+
+						<nb-checkbox
+							class="right"
+							name="{{project.id}}"
+							[(ngModel)]="user.projects[project.id]"
+						>{{project.name}}</nb-checkbox>
 					</div>
-				</div>
+					<button
+						[disabled]=""
+						class="btn btn-primary btn-tn"
+						type="submit"
+						(click)="setProjects()"
+						i18n
+					>Set</button>
+				</form>
 			</div>
-			<input
-				class="form-control"
-				type="submit"
-				value="Save"
-				class="btn btn-hero-success"
-				[disabled]="userDataForm.pristine || userDataForm.invalid"
-			/>
 		</nb-card-body>
 
-	</form>
 </div>

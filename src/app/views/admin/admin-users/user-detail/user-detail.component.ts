@@ -22,7 +22,7 @@ import { switchMap, map } from 'rxjs/operators';
 export class UserDetailComponent implements OnInit {
 
 	user$: Observable<User>
-	user: User
+	userData: User
 
 	userDataForm: NgForm
 
@@ -49,7 +49,7 @@ export class UserDetailComponent implements OnInit {
 			})
 		)
 
-		this.user$.subscribe(user => this.user = user)
+		this.user$.subscribe(user => this.userData = user)
 
 	}
 
