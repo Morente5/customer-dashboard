@@ -31,7 +31,7 @@
 							<input class="custom-control-input"
 								type="radio"
 								value="admin"
-								[(ngModel)]="user.access"
+								[(ngModel)]="userData.access"
 								name="access"
 							>
 							<span class="custom-control-indicator"></span>
@@ -43,7 +43,7 @@
 							<input class="custom-control-input"
 								type="radio"
 								value="author"
-								[(ngModel)]="user.access"
+								[(ngModel)]="userData.access"
 								name="access"
 							>
 							<span class="custom-control-indicator"></span>
@@ -55,7 +55,7 @@
 							<input class="custom-control-input"
 								type="radio"
 								value="reader"
-								[(ngModel)]="user.access"
+								[(ngModel)]="userData.access"
 								name="access"
 							>
 							<span class="custom-control-indicator"></span>
@@ -63,10 +63,10 @@
 						</label>
 					</div>
 					<button
-						[disabled]=""
+						[disabled]="userData.access === user.access"
 						class="btn btn-primary btn-tn ml-auto"
 						type="submit"
-						(click)="setRoles()"
+						(click)="setAccess()"
 						i18n
 					>Set</button>
 				</form>
@@ -137,7 +137,7 @@
 						<nb-checkbox
 							class="right"
 							name="{{project.id}}"
-							[(ngModel)]="user.projects[project.id]"
+							[(ngModel)]="userData.projects[project.id]"
 						>{{project.name}}</nb-checkbox>
 					</div>
 					<button

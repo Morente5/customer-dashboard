@@ -60,4 +60,28 @@ export class AdminUsersService {
 		// createUserApp.delete()
 	}
 
+	public setName(userID: string, newName: string) {
+		// Save name on Firestore (DB)
+		this.afs.doc(`users/${userID}`).set(
+			{ displayName: newName },
+			{ merge: true }
+		)
+	}
+	public setAccess(userID: string, access: string) {
+		console.log(access)
+		// Save name on Firestore (DB)
+		this.afs.doc(`users/${userID}`).set(
+			{ access: access },
+			{ merge: true }
+		)
+	}
+	public setProjects(userID: string, projects: { [name: string]: boolean; }) {
+		console.log(projects)
+		// Save name on Firestore (DB)
+		this.afs.doc(`users/${userID}`).set(
+			{ projects: projects },
+			{ merge: true }
+		)
+	}
+
 }

@@ -53,8 +53,17 @@ export class UserDetailComponent implements OnInit {
 
 	}
 
-	save() {
-		console.log('save')
+	setName() {
+		this.adminUsersService.setName(this.userData.id, this.userData.displayName)
+	}
+	setEmail() {
+		return
+	}
+	setAccess() {
+		this.adminUsersService.setAccess(this.userData.id, this.userData.access)
+	}
+	setProjects() {
+		this.adminUsersService.setProjects(this.userData.id, this.userData.projects)
 	}
 
 }
