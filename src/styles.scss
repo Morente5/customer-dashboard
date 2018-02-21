@@ -110,9 +110,19 @@ nb-user.profile-user .user-container {
 	display: block;
 }
 
-nb-checkbox .custom-control-indicator {
-	left: 0
+/* Nebular has to fix this */
+.custom-control-indicator {
+	position: absolute;
 }
+nb-checkbox, .custom-radio {
+	&:not(.right) .custom-control-indicator {
+		left: 0;
+	}
+	&.right .custom-control-indicator {
+		right: 0;
+	}
+}
+
 
 .full-frame {
 	width: 100%;

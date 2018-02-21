@@ -34,12 +34,6 @@ export class UsersTableComponent implements OnInit {
 			displayName: {
 				title: 'Name',
 			},
-			emailVerified: {
-				title: 'Verified',
-				filter: {
-					type: 'checkbox'
-				}
-			},
 			access: {
 				title: 'Access',
 				filter: {
@@ -57,9 +51,9 @@ export class UsersTableComponent implements OnInit {
 		},
 		noDataMessage: 'No data found',
 		actions: {
-			position: 'right'
+			position: 'none'
 		},
-		mode: 'external'
+		mode: 'external',
 	}
 
 	source: Array<User>
@@ -85,10 +79,6 @@ export class UsersTableComponent implements OnInit {
 
 	}
 
-	delete() {
-
-	}
-
 	userRowSelect() {
 
 	}
@@ -97,12 +87,5 @@ export class UsersTableComponent implements OnInit {
 		this.router.navigate(['/admin/users', $event.data.id])
 	}
 
-	onDeleteConfirm(event): void {
-		if (window.confirm('Are you sure you want to delete?')) {
-			event.confirm.resolve();
-		} else {
-			event.confirm.reject();
-		}
-	}
 
 }

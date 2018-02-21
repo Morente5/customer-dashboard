@@ -1,4 +1,4 @@
-<h2>Your profile</h2>
+<h2 i18n>Your profile</h2>
 
 		<nb-card class="profile-card">
 
@@ -30,10 +30,10 @@
 			<nb-card-body>
 
 				<div class="header d-flex flex-wrap align-items-center">
-					<h5 class="">Display name</h5>
+					<h5 i18n>Display name</h5>
 					<form #nameForm="ngForm" class="detail input-group input-group-sm ml-auto text-right">
 						<input class="form-control" type="text" [(ngModel)]="displayName" name="displayName" #name="ngModel" required minlength="4">
-						<button [disabled]="name.invalid || name.pristine" class="btn btn-primary btn-tn" type="submit" (click)="setName()">Set</button>
+						<button [disabled]="name.invalid || name.pristine" class="btn btn-primary btn-tn" type="submit" (click)="setName()" i18n>Set</button>
 					</form>
 					<div class="detail font-w-light ml-auto">
 						{{authService.user?.displayName}}
@@ -42,13 +42,13 @@
 
 				</div>
 				<div class="header d-flex flex-wrap align-items-center">
-					<h5 class="">Email</h5>
+					<h5 i18n>Email</h5>
 					<div class="detail font-w-light ml-auto">
 						{{authService.user?.email}}
 					</div>
 				</div>
 				<div class="header d-flex flex-wrap">
-					<h5 class="">Projects</h5>
+					<h5 i18n>Projects</h5>
 					<div class="detail font-w-light ml-auto text-right">
 						<!-- <div *ngFor="let project of authService.user?.projects"> -->
 						<div *ngFor="let project of projectsService.projects$ | async">

@@ -1,17 +1,44 @@
-<h1>Customer Area</h1>
+<nb-card
+	class="card-container"
+>
 
-<ng-container *ngIf="authService.user$ | async as user; then homeTemplate; else loginTemplate">
-</ng-container>
+	<nb-card-header>
+		<h1
+			class="title h2 text-center"
+			i18n
+		>Customer Area</h1>
+	</nb-card-header>
 
-<ng-template #loginTemplate>
-	<a [routerLink]="[ '/login' ]">Log In</a>
-</ng-template>
+	<nb-card-body>
+		<p
+			class="text-center"
+			i18n
+		>Description of the app, the service or whatever we decide to put in here</p>
+		<p
+			class="text-center"
+			i18n
+		>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, repellat rem aliquam ea autem nihil dolor blanditiis dignissimos consectetur accusantium quasi laudantium. Libero repellendus sapiente pariatur velit quam possimus exercitationem obcaecati delectus blanditiis non necessitatibus, dolor est quae architecto rerum beatae consequuntur dolores asperiores quibusdam reiciendis iusto. Sunt aliquid quasi voluptatibus similique impedit incidunt neque aperiam numquam, nisi excepturi atque.</p>
 
-<ng-template #homeTemplate>
-	<h2>Welcome</h2>
-	<img [src]="authService.user.photoURL" />
-	<p>{{authService.user.displayName}}</p>
-	<p *ngFor="let project of projectsService.projects$ | async">
-		{{ project.name}}
-	</p>
-</ng-template>
+		<ng-container
+			*ngIf="authService.user$ | async as user; then homeTemplate; else loginTemplate"
+		></ng-container>
+
+		<ng-template #loginTemplate>
+			<a
+				[routerLink]="[ '/login' ]"
+				class="btn btn-block btn-hero-success"
+				i18n
+			>Log In</a>
+		</ng-template>
+
+		<ng-template #homeTemplate>
+			<h2
+				class="h3 text-center"
+				i18n
+			>Welcome</h2>
+			<p
+				class="text-center h5">{{authService.user.displayName}}</p>
+		</ng-template>
+
+	</nb-card-body>
+</nb-card>

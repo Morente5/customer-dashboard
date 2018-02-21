@@ -8,7 +8,9 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+		"e2e": "ng e2e",
+		"locale": "ng xi18n --locale en --outputPath src/locale --outFile source.xlf",
+		"serve-es": "ng serve --aot --locale es --i18nFile src/locale/source.es.xlf --i18nFormat xlf --missingTranslation error"
   },
   "private": true,
   "dependencies": {

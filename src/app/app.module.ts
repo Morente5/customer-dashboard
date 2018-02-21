@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
@@ -40,6 +40,12 @@ import {
 import {
 	PushNotificationsModule, PushNotificationsService
 } from 'ng-push';
+
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import localeEsExtra from '@angular/common/locales/extra/es';
+registerLocaleData(localeEs, 'es', localeEsExtra);
+
 /**
  * The app bootstrapper module
  */

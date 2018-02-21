@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="da269ca709234f076e4327da8fee98105c42c047" datatype="html">
+        <source>Acceso restringido!!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/access-denied/access-denied.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04dc903f90ccdc796d55703bcd30eb3e8545a6bf" datatype="html">
+        <source>Tu cuenta no tiene permisos para realizar operaciones.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/access-denied/access-denied.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a39f8284d6a607caeb2e6bc6589d5d38f5adf188" datatype="html">
+        <source>Cerrar Sesión!!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/access-denied/access-denied.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9aa65a4064ef7d2460d8bf67daf5cedbdc523e79" datatype="html">
+        <source>Admin Panel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2ce750c56b29367ce0bd8f5acd7ebfde867fc8a6" datatype="html">
+        <source>⬆️ Select the appropriate tab</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-empty/admin-empty.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="408cb6073e60c5d966296a3207fc596adca75e01" datatype="html">
+        <source>Admin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d7293b61e9088c66421df2e367e0ccc00346cf9f" datatype="html">
+        <source>Author</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="67285728e08cc77a7c44c7e31c695eec6485d355" datatype="html">
+        <source>Reader</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bc155f9fc3be3f32083f19b2c77d4ad3b696d9b9" datatype="html">
+        <source>Display name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="55dd9f44e64851bca3b7bfc9283a5ff36f030228" datatype="html">
+        <source>Set</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="244aae9346da82b0922506c2d2581373a15641cc" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/login/login.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2a7deb7096cada2c3177157652680fe7e6de0ed" datatype="html">
+        <source>Projects</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-projects/project-detail/project-detail.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="52c9a103b812f258bcddc3d90a6e3f46871d25fe" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-projects/project-detail/project-detail.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8a2e250c552f95764c86ed0f04972ae0fa6cd79a" datatype="html">
+        <source>Customer Area</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/home/home.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a37c66b76e5d395855cb09dba1512effb06903d2" datatype="html">
+        <source>Description of the app, the service or whatever we decide to put in here</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/home/home.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fc3280aa5f47af032c2c65aeb1e14f1625a83d6d" datatype="html">
+        <source>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, repellat rem aliquam ea autem nihil dolor blanditiis dignissimos consectetur accusantium quasi laudantium. Libero repellendus sapiente pariatur velit quam possimus exercitationem obcaecati delectus blanditiis non necessitatibus, dolor est quae architecto rerum beatae consequuntur dolores asperiores quibusdam reiciendis iusto. Sunt aliquid quasi voluptatibus similique impedit incidunt neque aperiam numquam, nisi excepturi atque.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/home/home.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dcd47f4d6b26b045a1b041b2fc73123bc0cfc118" datatype="html">
+        <source>Log In</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/home/home.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="65cc4ab3b4c438e07c89be2b677d08369fb62da2" datatype="html">
+        <source>Welcome</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/home/home.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ba4f24bf9bf3dc4db3d6bc1b8b63339295f0b806" datatype="html">
+        <source>Sign In</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/login/login.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/login/login.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/login/login.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3264a392c8706a87b7e2dfadcd8126f7cdf48090" datatype="html">
+        <source>Remember me
+				</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/login/login.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="36c443571c295bd28548c8b22042a7a387f59143" datatype="html">
+        <source>Your profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

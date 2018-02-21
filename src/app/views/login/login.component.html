@@ -6,7 +6,7 @@
 <nb-card class="form-container">
 
 	<nb-card-header>
-		<h2 class="title center">Sign In</h2>
+		<h1 class="title h2 text-center" i18n>Sign In</h1>
 	</nb-card-header>
 		<nb-card-body>
 			<div class="form-group">
@@ -15,6 +15,7 @@
 					type="email"
 					name="email"
 					placeholder="Email"
+					i18n-placeholder
 					required
 					[(ngModel)]="loginFormData.email"
 					#name="ngModel"
@@ -26,6 +27,7 @@
 					type="password"
 					name="password"
 					placeholder="Password"
+					i18n-placeholder
 					required
 					minlength="6"
 					[(ngModel)]="loginFormData.password"
@@ -36,6 +38,7 @@
 				<nb-checkbox
 					name="rememberMe"
 					[(ngModel)]="loginFormData.rememberMe"
+					i18n
 				>Remember me
 				</nb-checkbox>
 
@@ -44,6 +47,7 @@
 				class="form-control"
 				type="submit"
 				value="Sign In"
+				i18n-value
 				class="btn btn-block btn-hero-success"
 				[disabled]="loginForm.invalid"
 			/>
