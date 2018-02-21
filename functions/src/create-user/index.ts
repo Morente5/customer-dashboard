@@ -1,8 +1,6 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 
-admin.initializeApp(functions.config().firebase);
-
 export const newUser = functions.auth.user().onCreate(event => {
 	const user = event.data; // The Firebase user.
 
@@ -11,17 +9,32 @@ export const newUser = functions.auth.user().onCreate(event => {
 
 	const userDoc = admin.firestore().collection('users').doc(uid)
 
-	const data = {
-		email: email,
-		displayName: email,
-		emailVerified: true,
-		access: 'reader'
-	}
+	// Array of project IDs
+	let projectsID = []
 
-	console.log(data)
+	admin.firestore().collection('projects').get()
+		.then(querySnapshot => {
+			projectsID = querySnapshot.docs.map(project => project.id)
 
-	return userDoc.set(data)
+			const projectsFalse = {}
+
+			projectsID.forEach(projectID => {
+				projectsFalse[projectID] = false;
+			})
+
+			const data = {
+				email: email,
+				displayName: email,
+				emailVerified: true,
+				access: 'reader',
+				projects: projectsFalse
+			}
+
+			console.log(data)
+
+			return userDoc.set(data)
+		})
 		.then(() => console.log('Written User Data!'))
-		.catch(error => console.log(error));
+		.catch(console.log)
 
 })
