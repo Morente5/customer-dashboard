@@ -15,9 +15,6 @@ export class AdminUsersComponent implements OnInit {
 
 	public newUserData = {email: '', password: ''}
 
-	close: (string) => any
-	d: (string) => any
-
 	constructor(
 		// public authService: AuthService,
 		private router: Router,
