@@ -37,62 +37,73 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="bceb00c745ce685e6f6f3eda4fd9a4dab5279296" datatype="html">
+        <source>Master</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="408cb6073e60c5d966296a3207fc596adca75e01" datatype="html">
         <source>Admin</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d7293b61e9088c66421df2e367e0ccc00346cf9f" datatype="html">
         <source>Author</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="67285728e08cc77a7c44c7e31c695eec6485d355" datatype="html">
         <source>Reader</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">61</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="bc155f9fc3be3f32083f19b2c77d4ad3b696d9b9" datatype="html">
-        <source>Display name</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="55dd9f44e64851bca3b7bfc9283a5ff36f030228" datatype="html">
         <source>Set</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">111</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">162</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="bc155f9fc3be3f32083f19b2c77d4ad3b696d9b9" datatype="html">
+        <source>Display name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/profile/profile.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="244aae9346da82b0922506c2d2581373a15641cc" datatype="html">
         <source>Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">117</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/login/login.component.ts</context>
@@ -107,7 +118,7 @@
         <source>Projects</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">146</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/views/profile/profile.component.ts</context>

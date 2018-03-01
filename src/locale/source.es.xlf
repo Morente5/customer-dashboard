@@ -42,6 +42,14 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+			<trans-unit id="bceb00c745ce685e6f6f3eda4fd9a4dab5279296" datatype="html">
+        <source>Master</source>
+        <target>Master</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/views/admin/admin-users/user-detail/user-detail.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
 			<trans-unit id="408cb6073e60c5d966296a3207fc596adca75e01" datatype="html">
         <source>Admin</source>
         <target>Administrador</target>
