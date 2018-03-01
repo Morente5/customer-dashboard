@@ -12,7 +12,7 @@ export const newUser = functions.auth.user().onCreate(event => {
 	// Array of project IDs
 	let projectsID = []
 
-	admin.firestore().collection('projects').get()
+	return admin.firestore().collection('projects').get()
 		.then(querySnapshot => {
 			projectsID = querySnapshot.docs.map(project => project.id)
 
