@@ -8,9 +8,9 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-		"e2e": "ng e2e",
-		"locale": "ng xi18n --locale en --outputPath src/locale --outFile source.xlf",
-		"serve-es": "ng serve --aot --locale es --i18nFile src/locale/source.es.xlf --i18nFormat xlf --missingTranslation error"
+    "e2e": "ng e2e",
+    "locale": "ng xi18n --locale en --outputPath src/locale --outFile source.xlf",
+    "serve-es": "ng serve --aot --locale es --i18nFile src/locale/source.es.xlf --i18nFormat xlf --missingTranslation error"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "@angular/router": "^5.2.5",
     "@angular/service-worker": "^5.2.5",
     "@nebular/theme": "^2.0.0-rc.5",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0",
     "angular2-moment": "^1.7.1",
     "angular2-notifications": "^0.9.7",
     "angularfire2": "^5.0.0-rc.4",
@@ -45,7 +46,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "^1.7.0",
+    "@angular/cli": "^1.7.2",
     "@angular/compiler-cli": "^5.2.5",
     "@angular/language-service": "^5.2.5",
     "@compodoc/compodoc": "^1.0.5",
