@@ -14,20 +14,6 @@ import { Router } from '@angular/router'
 export class ProjectsTableComponent implements OnInit {
 
 	settings = {
-		add: {
-			addButtonContent: '<i class="nb-plus"></i>',
-			createButtonContent: '<i class="nb-checkmark"></i>',
-			cancelButtonContent: '<i class="nb-close"></i>'
-		},
-		edit: {
-			editButtonContent: '<i class="nb-edit"></i>',
-			saveButtonContent: '<i class="nb-checkmark"></i>',
-			cancelButtonContent: '<i class="nb-close"></i>'
-		},
-		delete: {
-			deleteButtonContent: '<i class="nb-trash"></i>',
-			confirmDelete: true
-		},
 		columns: {
 			name: {
 				title: 'Name',
@@ -38,7 +24,7 @@ export class ProjectsTableComponent implements OnInit {
 		},
 		noDataMessage: 'No data found',
 		actions: {
-			position: 'right'
+			position: 'none'
 		},
 		mode: 'external'
 	}
@@ -58,32 +44,13 @@ export class ProjectsTableComponent implements OnInit {
 		})
 	}
 
-	create() {
+	projectRowSelect() {
 
 	}
 
-	edit() {
-
-	}
-
-	delete() {
-
-	}
-
-	userRowSelect() {
-
-	}
-
-	userDetail($event) {
+	projectDetail($event) {
 		this.router.navigate(['/admin/projects', $event.data.id])
 	}
 
-	onDeleteConfirm(event): void {
-		if (window.confirm('Are you sure you want to delete?')) {
-			event.confirm.resolve();
-		} else {
-			event.confirm.reject();
-		}
-	}
 
 }

@@ -60,7 +60,7 @@ export class ProjectDetailComponent implements OnInit {
 	}
 
 	sectionNames() {
-		return Object.keys(this.projectData.sections)
+		return this.projectData.sections ? Object.keys(this.projectData.sections) : undefined
 	}
 
 	setName(): Promise<any> {
@@ -71,8 +71,8 @@ export class ProjectDetailComponent implements OnInit {
 
 	setSections(): Promise<any> {
 		return this.adminProjectsService.setSections(this.projectData.id, this.projectData.sections)
-			.then(() => this.notificationsService.success('Se han modificado los proyectos del usuario'))
-			.catch(error => this.notificationsService.error('Se ha producido un error al modificar los proyectos', error))
+			.then(() => this.notificationsService.success('Se han modificado las secciones del proyecto'))
+			.catch(error => this.notificationsService.error('Se ha producido un error al modificar las secciones', error))
 	}
 
 	deleteProject(): Promise<any> {

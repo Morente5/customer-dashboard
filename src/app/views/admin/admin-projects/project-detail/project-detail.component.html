@@ -75,14 +75,24 @@
 					>Set</button>
 				</form>
 			</div>
-			<!--<div *ngIf="true || user.access !== 'admin'" class="header d-flex flex-wrap">
-				<h5 class="">Projects</h5>
-				<div class="detail font-w-light ml-auto text-right">
-					<div *ngFor="let project of projectsService.projects">
-						<nb-checkbox name="{{project.name}}" [(ngModel)]="user.projects[project.id]">{{project.name}}</nb-checkbox>
-					</div>
+			<button class="btn btn-danger btn-icon btn-xl" (click)="open(deleteProject)" i18n>
+				<i class="nb-trash"></i>
+			</button>
+			<ng-template #deleteProject let-c="close" let-d="dismiss">
+				<div class="modal-header">
+					<h4 class="modal-title" i18n>Are you sure you want to delete this project?</h4>
+					<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-			</div>-->
+				<div class="modal-body">
+					<p i18n>This action cannot be undone</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" (click)="c('Deleted Project')" i18n>Delete Project</button>
+					<button class="btn btn-secondary" (click)="d('Close Button')" i18n>Cancel</button>
+				</div>
+			</ng-template>
 		</nb-card-body>
 
 </div>
