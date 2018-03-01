@@ -13,6 +13,8 @@ import {
 	NbMediaBreakpointsService
 } from '@nebular/theme';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 // Root Component
 import { AppComponent } from './app.component';
 
@@ -69,6 +71,8 @@ registerLocaleData(localeEs, 'es', localeEsExtra);
 
 		NbMenuModule.forRoot(),
 		NbThemeModule.forRoot({ name: 'default' }),
+
+		NgbModule.forRoot(),
 
 		SimpleNotificationsModule.forRoot(),
 		PushNotificationsModule,
