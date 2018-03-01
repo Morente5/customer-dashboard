@@ -31,7 +31,7 @@ export class User implements IUser {
 	}
 	// Returns true if user is admin
 	get isAdmin(): boolean {
-		return this.access === 'admin' || this.access === 'master'
+		return (this.access === 'admin' || this.access === 'master')
 	}
 
 	get verified(): boolean {
