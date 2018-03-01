@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-// import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { Router } from '@angular/router';
+import { AdminUsersService } from './../services/users/admin-users.service';
 
-// import { AuthService } from './../../../shared/services/auth/auth.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
 	selector: 'bmc-admin-users',
@@ -11,9 +13,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminUsersComponent implements OnInit {
 
+	public newUserData = {email: '', password: ''}
+
+	close: (string) => any
+	d: (string) => any
+
 	constructor(
-		// public authService: AuthService
+		// public authService: AuthService,
+		private router: Router,
+		private adminUsersService: AdminUsersService,
+		private modalService: NgbModal,
+		private notificationsService: NotificationsService
 	) {}
 
+
 	ngOnInit() {}
+
+	createUser(email: string, password: string): Promise<any> {
+		return this.adminUsersService.createUser(email, password)
+			.then(() => {
+				this.notificationsService.success('Se ha creado el usuario')
+			})
+			.catch(error => this.notificationsService.error('Se ha producido un error al crear el usuario', error.message))
+	}
+
+	open(content): Promise<any> {
+		return this.modalService.open(content).result
+			.then(
+				result => this.createUser(this.newUserData.email, this.newUserData.password),
+				reason => { }
+			);
+	}
 }

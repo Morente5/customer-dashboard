@@ -1,2 +1,59 @@
+<div class="d-flex align-items-center flex-row m-2">
+	<button class="btn btn-success btn-icon btn-xl" (click)="open(createUser)" i18n>
+		<i class="nb-plus"></i>
+	</button>
+	<div class="p-2" i18n>Add New User</div>
+</div>
+<ng-template #createUser let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" i18n>Add New User</h4>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form #newUserForm=ngForm>
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label" for="email" i18n>Email</label>
+				<div class="col-sm-9">
+					<input
+						class="form-control"
+						type="email"
+						name="email"
+						email="true"
+						#email="ngModel"
+						placeholder="Email"
+						i18n-placeholder
+						required
+						autocomplete="off"
+						[(ngModel)]="newUserData.email"
+					>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label" for="password" i18n>Password</label>
+				<div class="col-sm-9">
+					<input
+						class="form-control"
+						type="password"
+						name="password"
+						#password="ngModel"
+						placeholder="Password"
+						i18n-placeholder
+						required
+						minlength="6"
+						autocomplete="off"
+						[(ngModel)]="newUserData.password"
+					>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-success" (click)="close('Create User')" i18n>Create User</button>
+		<button class="btn btn-secondary" (click)="d('Close Button')" i18n>Cancel</button>
+	</div>
+</ng-template>
+
 <bmc-users-table>
 </bmc-users-table>

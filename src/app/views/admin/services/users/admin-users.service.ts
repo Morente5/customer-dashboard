@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+
+import { environment } from './../../../../../environments/environment';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -18,9 +21,9 @@ export class AdminUsersService {
 	public users: User[]
 	constructor(
 		public afAuth: AngularFireAuth,
-		private afs: AngularFirestore
+		private afs: AngularFirestore,
+		private router: Router
 	) {
-		// this.createUser(Math.random().toString(36).substring(2, 9) + '@hotmail.es', Math.random().toString(36).substring(7))
 		this.usersCollection = afs.collection<User>('users');
 		this.usersCollection$ = this.usersCollection.snapshotChanges()
 		this.users$ = this.usersCollection$.map(user => {
@@ -38,47 +41,44 @@ export class AdminUsersService {
 
 	}
 
-	getUserDocument$(id) {
+	getUserDocument$(id): AngularFirestoreDocument<User> {
 		return this.afs.doc<User>(`users/${id}`)
 	}
-	// addItem(item: Item) {
-	// 	this.itemsCollection.add(item);
-	// }
 
-
-	createUser(em, pwd) {
-		this.afAuth.auth.createUserWithEmailAndPassword(em, pwd)
+	createUser(em, pwd): Promise<any> {
+		const createUserFirebaseApp = firebase.initializeApp(environment.firebaseConfig, 'createUser')
+		return createUserFirebaseApp.auth().createUserWithEmailAndPassword(em, pwd)
 			.then(firebaseUser => {
-				console.log('Creado:', firebaseUser)
-				// createUserApp.auth().currentUser.sendEmailVerification()
-				// createUserApp.auth().signOut()
-				console.log('hola', this.afAuth.auth.currentUser)
+				const uid = firebaseUser.uid
+				createUserFirebaseApp.auth().currentUser.sendEmailVerification()
+				createUserFirebaseApp.auth().signOut()
+				createUserFirebaseApp.delete()
+				this.router.navigate(['admin', 'users', uid])
 			})
-			.catch(error => {
-				console.log('error:', error)
-			})
-		// createUserApp.delete()
 	}
 
-	public setName(userID: string, newName: string) {
+	public deleteUser(userID: string): Promise<any> {
+		// Delete user from Firestore (DB)
+		return this.afs.doc(`users/${userID}`).delete()
+	}
+
+	public setName(userID: string, newName: string): Promise<any> {
 		// Save name on Firestore (DB)
-		this.afs.doc(`users/${userID}`).set(
+		return this.afs.doc(`users/${userID}`).set(
 			{ displayName: newName },
 			{ merge: true }
 		)
 	}
-	public setAccess(userID: string, access: string) {
-		console.log(access)
-		// Save name on Firestore (DB)
-		this.afs.doc(`users/${userID}`).set(
+	public setAccess(userID: string, access: string): Promise<any> {
+		// Save access on Firestore (DB)
+		return this.afs.doc(`users/${userID}`).set(
 			{ access: access },
 			{ merge: true }
 		)
 	}
-	public setProjects(userID: string, projects: { [name: string]: boolean; }) {
-		console.log(projects)
-		// Save name on Firestore (DB)
-		this.afs.doc(`users/${userID}`).set(
+	public setProjects(userID: string, projects: { [name: string]: boolean; }): Promise<any> {
+		// Save projects on Firestore (DB)
+		return this.afs.doc(`users/${userID}`).set(
 			{ projects: projects },
 			{ merge: true }
 		)

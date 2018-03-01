@@ -11,6 +11,8 @@ import { SharedModule } from './../../shared/shared.module';
 import { AdminUsersService } from './services/users/admin-users.service';
 import { AdminProjectsService } from './services/projects/admin-projects.service';
 
+import { AngularFireModule } from 'angularfire2';
+
 import { AdminComponent } from './admin.component';
 
 import { AdminEmptyComponent } from './admin-empty/admin-empty.component';
