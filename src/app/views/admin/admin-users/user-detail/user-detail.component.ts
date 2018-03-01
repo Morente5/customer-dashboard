@@ -61,7 +61,7 @@ export class UserDetailComponent implements OnInit {
 
 	setName(): Promise<any> {
 		return this.adminUsersService.setName(this.userData.id, this.userData.displayName)
-			.then(() => this.notificationsService.success(`Se ha modificado el nombre correctamente ${this.userData.displayName}`))
+			.then(() => this.notificationsService.success('Se ha modificado el nombre correctamente', this.userData.displayName))
 			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el nombre', error))
 	}
 	setEmail() {
@@ -69,7 +69,7 @@ export class UserDetailComponent implements OnInit {
 	}
 	setAccess(): Promise<any> {
 		return this.adminUsersService.setAccess(this.userData.id, this.userData.access)
-			.then(() => this.notificationsService.success(`Se ha modificado el acceso del usuario a "${this.userData.displayName}"`))
+			.then(() => this.notificationsService.success('Se ha modificado el acceso del usuario', this.userData.displayName))
 			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el acceso', error))
 	}
 	setProjects(): Promise<any> {
