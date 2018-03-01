@@ -21,7 +21,7 @@
 			*ngIf="authService.user$ | async as user"
 			[picture]="user.photoURL"
 			[name]="user.displayName"
-			[menu]="user.access === 'admin' ? adminMenu : userMenu"
+			[menu]="user.access === 'admin' || user.access === 'master' ? adminMenu : userMenu"
 			(menuClick)="logoutClick()"
 		>
 	</nb-user>

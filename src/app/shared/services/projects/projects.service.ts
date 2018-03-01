@@ -24,7 +24,7 @@ export class ProjectsService {
 			distinctUntilChanged(),
 			switchMap(userId => {
 				if (userId) {
-					const projectsCollection = this.authService.user.isAdmin ?
+					const projectsCollection = (this.authService.user.access === 'admin' || this.authService.user.access === 'master') ?
 						this.afs.collection('projects') :
 						this.afs.collection('projects', ref => ref.where(`users.${userId}`, '==', true))
 					return projectsCollection.snapshotChanges().map(project => {

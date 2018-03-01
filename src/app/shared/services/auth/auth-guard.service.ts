@@ -39,7 +39,7 @@ export class AdminGuard implements CanActivate {
 		console.log('AdminGuard');
 		return this.authService.user$.pipe(
 			take(1),
-			switchMap(user => Observable.of(user.access === 'admin')),
+			switchMap(user => Observable.of(user.access === 'admin' || user.access === 'master')),
 			tap(isAdmin => {
 				if (!isAdmin) {
 					this.notificationsService.alert(null, 'This is only for Admin users')
@@ -66,7 +66,7 @@ export class DashboardGuard implements CanActivate {
 			take(1),
 			switchMap(user => {
 				console.log(user)
-				if (this.authService.user.access === 'admin') {
+				if (this.authService.user.access === 'admin' || this.authService.user.access === 'master') {
 					return this.projectsService.projects$.switchMap(projects => {
 						return Observable.of(projects.findIndex(project => project.id === next.params.projectID) !== -1)
 					})
