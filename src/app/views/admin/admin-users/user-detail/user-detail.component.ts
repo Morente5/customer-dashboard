@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AdminUsersService } from './../../services/users/admin-users.service';
 
@@ -13,6 +13,9 @@ import { ProjectsService } from './../../../../shared/services/projects/projects
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
 	selector: 'bmc-user-detail',
@@ -28,8 +31,11 @@ export class UserDetailComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
+		private router: Router,
 		private adminUsersService: AdminUsersService,
-		public projectsService: ProjectsService
+		public projectsService: ProjectsService,
+		private modalService: NgbModal,
+		private notificationsService: NotificationsService
 	) { }
 
 	ngOnInit() {
@@ -53,17 +59,41 @@ export class UserDetailComponent implements OnInit {
 
 	}
 
-	setName() {
-		this.adminUsersService.setName(this.userData.id, this.userData.displayName)
+	setName(): Promise<any> {
+		return this.adminUsersService.setName(this.userData.id, this.userData.displayName)
+			.then(() => this.notificationsService.success(`Se ha modificado el nombre correctamente ${this.userData.displayName}`))
+			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el nombre', error))
 	}
 	setEmail() {
 		return
 	}
-	setAccess() {
-		this.adminUsersService.setAccess(this.userData.id, this.userData.access)
+	setAccess(): Promise<any> {
+		return this.adminUsersService.setAccess(this.userData.id, this.userData.access)
+			.then(() => this.notificationsService.success(`Se ha modificado el acceso del usuario a "${this.userData.displayName}"`))
+			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el acceso', error))
 	}
-	setProjects() {
-		this.adminUsersService.setProjects(this.userData.id, this.userData.projects)
+	setProjects(): Promise<any> {
+		return this.adminUsersService.setProjects(this.userData.id, this.userData.projects)
+			.then(() => this.notificationsService.success('Se han modificado los proyectos del usuario'))
+			.catch(error => this.notificationsService.error('Se ha producido un error al modificar los proyectos', error))
+	}
+
+	deleteUser(): Promise<any> {
+		const email = this.userData.email.slice()  // Copy it since it's going to be deleted
+		return this.adminUsersService.deleteUser(this.userData.id)
+			.then(() => {
+				this.notificationsService.success('Se ha borrado el usuario', email)
+				this.router.navigate(['admin', 'users'])
+			})
+			.catch(error => this.notificationsService.error('Se ha producido un error al borrar el usuario', email))
+	}
+
+	open(content): Promise<any> {
+		return this.modalService.open(content).result
+			.then(
+				result => this.deleteUser(),
+				reason => {}
+			);
 	}
 
 }

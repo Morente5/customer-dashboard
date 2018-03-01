@@ -26,7 +26,20 @@
 			</div>
 			<div class="h6 ml-auto text-right user-role">
 				<form #roleForm="ngForm">
-					<div>
+					<div *ngIf="user.access === 'master'">
+						<label class="custom-control custom-radio right">
+							<input class="custom-control-input"
+								type="radio"
+								value="master"
+								[(ngModel)]="userData.access"
+								name="access"
+								disabled
+							>
+							<span class="custom-control-indicator"></span>
+							<span class="custom-control-description" i18n>Master</span>
+						</label>
+					</div>
+					<div *ngIf="!(user.access === 'master')">
 						<label class="custom-control custom-radio right">
 							<input class="custom-control-input"
 								type="radio"
@@ -38,7 +51,7 @@
 							<span class="custom-control-description" i18n>Admin</span>
 						</label>
 					</div>
-					<div>
+					<div *ngIf="!(user.access === 'master')">
 						<label class="custom-control custom-radio right">
 							<input class="custom-control-input"
 								type="radio"
@@ -50,7 +63,7 @@
 							<span class="custom-control-description" i18n>Author</span>
 						</label>
 					</div>
-					<div>
+					<div *ngIf="!(user.access === 'master')">
 						<label class="custom-control custom-radio right">
 							<input class="custom-control-input"
 								type="radio"
@@ -63,6 +76,7 @@
 						</label>
 					</div>
 					<button
+					 	*ngIf="!(user.access === 'master')"
 						[disabled]="userData.access === user.access"
 						class="btn btn-primary btn-tn ml-auto"
 						type="submit"
@@ -127,7 +141,6 @@
 			</div>
 
 			<div
-				*ngIf="user.access !== 'testuser'; 'admin'"
 				class="header d-flex flex-wrap"
 			>
 				<h5 i18n>Projects</h5>
@@ -136,12 +149,12 @@
 
 						<nb-checkbox
 							class="right"
-							name="{{project.id}}"
+							[name]="project.id"
 							[(ngModel)]="userData.projects[project.id]"
 						>{{project.name}}</nb-checkbox>
 					</div>
 					<button
-						[disabled]=""
+						[disabled]="projectsForm.pristine"
 						class="btn btn-primary btn-tn"
 						type="submit"
 						(click)="setProjects()"
@@ -149,6 +162,21 @@
 					>Set</button>
 				</form>
 			</div>
+			<button [disabled]="user.access === 'master'" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)" i18n><i class="nb-trash"></i></button>
+			<ng-template #deleteUser let-c="close" let-d="dismiss">
+				<div class="modal-header">
+					<h4 class="modal-title">Are you sure you want to delete this user?</h4>
+					<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>This action cannot be undone</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" (click)="c('Deleted User')" i18n>Delete User</button>
+					<button class="btn btn-secondary" (click)="d('Close Button')" i18n>Cancel</button>
+				</div>
+			</ng-template>
 		</nb-card-body>
-
 </div>
