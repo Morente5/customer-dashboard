@@ -1,12 +1,11 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 
-export const removeUser = functions.auth.user().onDelete(event => {
-	const uid = event.data.uid;
+export const removeUser = functions.firestore.document('users/{userID}').onDelete(event => {
 
-	const userDoc = admin.firestore().collection('users').doc(uid)
+	const uid = event.data.id;
 
-	userDoc.delete()
+	return admin.auth().deleteUser(uid)
 		.then(() => console.log('Deleted User Data!'))
 		.catch(console.log)
 })
