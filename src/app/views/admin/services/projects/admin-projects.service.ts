@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
@@ -6,14 +7,20 @@ import { Project } from '../../../../shared/model/project';
 import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import { Observable } from 'rxjs/Observable';
 
+import { slugify } from '../../../../shared/tools/tools.module';
+
 @Injectable()
 export class AdminProjectsService {
+
 	private projectsCollection: AngularFirestoreCollection<Project>;
 	private projectsCollection$: Observable<DocumentChangeAction[]>;
 	public projects$: Observable<Project[]>;
 	public projects: Project[]
 
-	constructor(private afs: AngularFirestore) {
+	constructor(
+		private afs: AngularFirestore,
+		private router: Router
+	) {
 		this.projectsCollection = afs.collection<Project>('projects');
 		this.projectsCollection$ = this.projectsCollection.snapshotChanges()
 		this.projects$ = this.projectsCollection$.map(projects => {
@@ -32,6 +39,37 @@ export class AdminProjectsService {
 
 	getProjectDocument$(id) {
 		return this.afs.doc<Project>(`projects/${id}`)
+	}
+
+	createProject(name: string): Promise<any> {
+		const id = slugify(name)
+		return this.afs.collection('projects').doc(id).set({
+			name: name,
+			sections: {
+				actions: false,
+				['ad-words']: false,
+				analytics: false,
+				passwords: false,
+				support: true,
+			},
+			users: {}
+		})
+			.then(project => {
+				this.router.navigate(['admin', 'projects', id])
+			})
+	}
+
+	public deleteUser(userID: string): Promise<any> {
+		// Delete user from Firestore (DB)
+		return this.afs.doc(`users/${userID}`).delete()
+	}
+
+	public setName(userID: string, newName: string): Promise<any> {
+		// Save name on Firestore (DB)
+		return this.afs.doc(`users/${userID}`).set(
+			{ displayName: newName },
+			{ merge: true }
+		)
 	}
 
 

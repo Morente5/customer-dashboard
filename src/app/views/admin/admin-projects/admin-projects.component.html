@@ -1,2 +1,32 @@
+<div class="d-flex align-items-center flex-row m-2">
+	<button class="btn btn-success btn-icon btn-xl" (click)="open(createProject)" i18n>
+		<i class="nb-plus"></i>
+	</button>
+	<div class="p-2" i18n>Add New Project</div>
+</div>
+<ng-template #createProject let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" i18n>Add New Project</h4>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form #newProjectForm=ngForm>
+			<div class="form-group row">
+				<label class="col-sm-3 col-form-label" for="name" i18n>Name</label>
+				<div class="col-sm-9">
+					<input class="form-control" type="text" name="name" #name="ngModel" placeholder="Name" i18n-placeholder
+					 required autocomplete="off" [(ngModel)]="newProjectName">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-success" (click)="c('Create Project')" i18n>Create Project</button>
+		<button class="btn btn-secondary" (click)="d('Close Button')" i18n>Cancel</button>
+	</div>
+</ng-template>
+
 <bmc-projects-table>
 </bmc-projects-table>
