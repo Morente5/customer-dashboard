@@ -1,11 +1,5 @@
 <div *ngIf="project$ | async as project">
 
-	<form
-		class="project-data-form"
-		#projectDataForm="ngForm"
-		(ngSubmit)="save()"
-	>
-
 		<nb-card-header class="d-flex flex-wrap align-items-center">
 
 			<div class="photo-upload">
@@ -36,18 +30,52 @@
 		<nb-card-body>
 			<div class="header d-flex flex-wrap align-items-center">
 				<h5 i18n>Name</h5>
-				<div class="detail font-w-light ml-auto">
+				<div class="detail ml-auto mr-2 font-w-light">
+					{{project.name}}
+				</div>
+				<form #nameForm="ngForm" class="detail input-group input-group-sm text-right">
 					<input
 						class="form-control"
-						placeholder="Name"
 						type="text"
-						[(ngModel)]="project.name"
+						[(ngModel)]="projectData.name"
 						name="name"
+						#name="ngModel"
+						required
+						minlength="6"
 					>
-				</div>
+					<button
+						[disabled]="name.invalid || name.pristine || projectData.name === project.name"
+						class="btn btn-primary btn-tn"
+						type="submit"
+						(click)="setName()"
+						i18n
+					>Set</button>
+				</form>
+
 			</div>
-<!--
-			<div *ngIf="true || user.access !== 'admin'" class="header d-flex flex-wrap">
+			<div
+				class="header d-flex flex-wrap"
+			>
+				<h5 i18n>Sections</h5>
+				<form #sectionsForm="ngForm" class="detail font-w-light ml-auto text-right">
+					<div *ngFor="let sectionName of sectionNames()">
+
+						<nb-checkbox
+							class="right"
+							[name]="sectionName"
+							[(ngModel)]="projectData.sections[sectionName]"
+						>{{sectionName}}</nb-checkbox>
+					</div>
+					<button
+						[disabled]="sectionsForm.pristine"
+						class="btn btn-primary btn-tn"
+						type="submit"
+						(click)="setSections()"
+						i18n
+					>Set</button>
+				</form>
+			</div>
+			<!--<div *ngIf="true || user.access !== 'admin'" class="header d-flex flex-wrap">
 				<h5 class="">Projects</h5>
 				<div class="detail font-w-light ml-auto text-right">
 					<div *ngFor="let project of projectsService.projects">
@@ -57,13 +85,4 @@
 			</div>-->
 		</nb-card-body>
 
-		<input
-			class="form-control"
-			type="submit"
-			value="Save"
-			i18n-value
-			class="btn btn-hero-success"
-			[disabled]="projectDataForm.invalid"
-		/>
-	</form>
 </div>

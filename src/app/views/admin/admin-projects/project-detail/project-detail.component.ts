@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { AdminProjectsService } from './../../services/projects/admin-projects.service';
 
@@ -14,6 +14,9 @@ import { ProjectsService } from './../../../../shared/services/projects/projects
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationsService } from 'angular2-notifications';
+
 @Component({
 	selector: 'bmc-project-detail',
 	templateUrl: './project-detail.component.html',
@@ -22,14 +25,17 @@ import { switchMap, map } from 'rxjs/operators';
 export class ProjectDetailComponent implements OnInit {
 
 	project$: Observable<Project>
-	project: Project
+	projectData: Project
 
 	projectDataForm: NgForm
 
 	constructor(
 		private route: ActivatedRoute,
+		private router: Router,
 		private adminProjectsService: AdminProjectsService,
-		public projectsService: ProjectsService
+		public projectsService: ProjectsService,
+		private modalService: NgbModal,
+		private notificationsService: NotificationsService
 	) { }
 
 	ngOnInit() {
@@ -49,12 +55,42 @@ export class ProjectDetailComponent implements OnInit {
 			})
 		)
 
-		this.project$.subscribe(project => this.project = project)
+		this.project$.subscribe(project => this.projectData = project)
 
 	}
 
-	save() {
-		console.log('save')
+	sectionNames() {
+		return Object.keys(this.projectData.sections)
+	}
+
+	setName(): Promise<any> {
+		return this.adminProjectsService.setName(this.projectData.id, this.projectData.name)
+			.then(() => this.notificationsService.success('Se ha modificado el nombre correctamente', this.projectData.name))
+			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el nombre', error))
+	}
+
+	setSections(): Promise<any> {
+		return this.adminProjectsService.setSections(this.projectData.id, this.projectData.sections)
+			.then(() => this.notificationsService.success('Se han modificado los proyectos del usuario'))
+			.catch(error => this.notificationsService.error('Se ha producido un error al modificar los proyectos', error))
+	}
+
+	deleteProject(): Promise<any> {
+		const name = this.projectData.name.slice()  // Copy it since it's going to be deleted
+		return this.adminProjectsService.deleteProject(this.projectData.id)
+			.then(() => {
+				this.notificationsService.success('Se ha borrado el proyecto', name)
+				this.router.navigate(['admin', 'projects'])
+			})
+			.catch(error => this.notificationsService.error('Se ha producido un error al borrar el proyect', name))
+	}
+
+	open(content): Promise<any> {
+		return this.modalService.open(content).result
+			.then(
+				result => this.deleteProject(),
+				reason => { }
+			);
 	}
 
 }

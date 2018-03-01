@@ -59,15 +59,23 @@ export class AdminProjectsService {
 			})
 	}
 
-	public deleteUser(userID: string): Promise<any> {
-		// Delete user from Firestore (DB)
-		return this.afs.doc(`users/${userID}`).delete()
+	public deleteProject(projectID: string): Promise<any> {
+		// Delete project from Firestore (DB)
+		return this.afs.doc(`projects/${projectID}`).delete()
 	}
 
-	public setName(userID: string, newName: string): Promise<any> {
+	public setName(projectID: string, newName: string): Promise<any> {
 		// Save name on Firestore (DB)
-		return this.afs.doc(`users/${userID}`).set(
-			{ displayName: newName },
+		return this.afs.doc(`projects/${projectID}`).set(
+			{ name: newName },
+			{ merge: true }
+		)
+	}
+
+	public setSections(projectID: string, sections: { [name: string]: boolean; }): Promise<any> {
+		// Save sections on Firestore (DB)
+		return this.afs.doc(`projects/${projectID}`).set(
+			{ sections: sections },
 			{ merge: true }
 		)
 	}
