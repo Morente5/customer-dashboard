@@ -23,10 +23,14 @@ export class ActionsComponent implements OnInit {
 			const path = `actions/${projectID}`
 			if (projectID) {
 				return this.afs.doc(path).snapshotChanges().map(project => {
-					return this.sanitizer.bypassSecurityTrustResourceUrl(project.payload.data().url)
+					if (project && project.payload.data().hasOwnProperty('url')) {
+						return this.sanitizer.bypassSecurityTrustResourceUrl(project.payload.data().url)
+					} else {
+						return undefined
+					}
 				})
 			}
-			return Observable.of(null)
+			return undefined
 		})
 	}
 

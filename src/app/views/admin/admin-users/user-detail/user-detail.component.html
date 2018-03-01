@@ -165,13 +165,13 @@
 			<button [disabled]="user.access === 'master'" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)" i18n><i class="nb-trash"></i></button>
 			<ng-template #deleteUser let-c="close" let-d="dismiss">
 				<div class="modal-header">
-					<h4 class="modal-title">Are you sure you want to delete this user?</h4>
+					<h4 class="modal-title" i18n>Are you sure you want to delete this user?</h4>
 					<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>This action cannot be undone</p>
+					<p i18n>This action cannot be undone</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" (click)="c('Deleted User')" i18n>Delete User</button>

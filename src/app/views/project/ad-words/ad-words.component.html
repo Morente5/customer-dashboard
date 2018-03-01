@@ -1,3 +1,6 @@
 <ng-container *ngIf="url$ | async">
 	<iframe class="full-frame" frameborder="0" style="border:0" [src]="url$ | async"></iframe>
 </ng-container>
+<ng-container *ngIf="!(url$ | async)">
+	<p i18n>There's no data</p>
+</ng-container>

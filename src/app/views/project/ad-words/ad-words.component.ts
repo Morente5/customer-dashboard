@@ -40,9 +40,25 @@ export class AdWordsComponent implements OnInit {
 			distinctUntilChanged(),
 			switchMap(res => {
 				if (res === 'mobile') {
-					return this.frame$.map(frame => this.sanitizer.bypassSecurityTrustResourceUrl(frame.mobile))
+					return this.frame$.map(frame => {
+						if (frame && frame.hasOwnProperty('mobile')) {
+							return this.sanitizer.bypassSecurityTrustResourceUrl(frame.mobile)
+						} else if (frame && frame.hasOwnProperty('desktop')) {
+							return this.sanitizer.bypassSecurityTrustResourceUrl(frame.desktop)
+						} else {
+							return undefined
+						}
+					})
 				} else if (res === 'desktop') {
-					return this.frame$.map(frame => this.sanitizer.bypassSecurityTrustResourceUrl(frame.desktop))
+					return this.frame$.map(frame => {
+						if (frame && frame.hasOwnProperty('desktop')) {
+							return this.sanitizer.bypassSecurityTrustResourceUrl(frame.desktop)
+						} else if (frame && frame.hasOwnProperty('mobile')) {
+							return this.sanitizer.bypassSecurityTrustResourceUrl(frame.mobile)
+						} else {
+							return undefined
+						}
+					})
 				}
 			})
 		)
