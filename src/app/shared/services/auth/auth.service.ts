@@ -12,7 +12,7 @@ import * as firebase from 'firebase/app';
 import { NotificationsService } from 'angular2-notifications';
 import { PushNotificationsService } from 'ng-push';
 
-import { User } from '../../model/user';
+import { User } from '@bmc-shared/model/user';
 
 @Injectable()
 export class AuthService {

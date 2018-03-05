@@ -14,6 +14,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+		],
+		"baseUrl": "src",
+		"paths": {
+			"@bmc-app/*": ["app/*"],
+			"@bmc-layout/*": ["app/layout/*"],
+			"@bmc-shared/*": ["app/shared/*"],
+			"@bmc-views/*": ["app/views/*"],
+			"@bmc-environments/*": ["environments/*"]
+		}
   }
 }

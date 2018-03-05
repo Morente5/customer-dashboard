@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from './../../shared/services/auth/auth.service';
-import { ProjectsService } from './../../shared/services/projects/projects.service';
+import { AuthService } from '@bmc-shared/services/auth/auth.service';
+import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
 
-// import { RolesPipe } from './../../shared/pipes/user-role.pipe';
+// import { RolesPipe } from '@bmc-shared/pipes/user-role.pipe';
 
 @Component({
 	selector: 'bmc-profile',

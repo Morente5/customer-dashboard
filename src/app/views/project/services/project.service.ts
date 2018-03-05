@@ -1,9 +1,12 @@
-import { switchMap } from 'rxjs/operators';
-import { Project } from './../../../shared/model/project';
 import { Injectable } from '@angular/core';
+
 import { AngularFirestore } from 'angularfire2/firestore';
-import { RouterService } from '../../../shared/services/router/router.service';
+
 import { Observable } from 'rxjs/Observable';
+import { switchMap } from 'rxjs/operators';
+
+import { RouterService } from '@bmc-shared/services/router/router.service';
+import { Project } from '@bmc-shared/model/project';
 
 @Injectable()
 export class ProjectService {

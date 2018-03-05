@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { RouterService } from '../../../shared/services/router/router.service';
+import { RouterService } from '@bmc-shared/services/router/router.service';
 import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 
-import { AdminProjectsService } from './../../services/projects/admin-projects.service';
-import { Project } from '../../../../shared/model/project';
+import { AdminProjectsService } from '@bmc-views/admin/services/projects/admin-projects.service';
+import { Project } from '@bmc-shared/model/project';
 
 import { Router } from '@angular/router'
 

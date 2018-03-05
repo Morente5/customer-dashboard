@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-
-import { Project } from '../../../../shared/model/project';
 import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+
 import { Observable } from 'rxjs/Observable';
 
-import { slugify } from '../../../../shared/tools/tools.module';
+import { slugify } from '@bmc-shared/tools/tools.module';
+import { Project } from '@bmc-shared/model/project';
 
 @Injectable()
 export class AdminProjectsService {
@@ -39,6 +39,10 @@ export class AdminProjectsService {
 
 	getProjectDocument$(id) {
 		return this.afs.doc<Project>(`projects/${id}`)
+	}
+
+	getProjectSectionDocument$(id, section) {
+		return this.afs.doc(`${section}/${id}`)
 	}
 
 	createProject(name: string): Promise<any> {

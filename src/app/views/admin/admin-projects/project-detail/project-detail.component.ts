@@ -1,21 +1,25 @@
+
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AdminProjectsService } from './../../services/projects/admin-projects.service';
+import { AdminProjectsService } from '@bmc-views/admin/services/projects/admin-projects.service';
 
-import { AngularFirestoreDocument } from 'angularfire2/firestore';
-// import { RolesPipe } from './../../../../shared/pipes/project-role.pipe';
-import { Project } from '../../../../shared/model/project';
-import { ProjectsService } from './../../../../shared/services/projects/projects.service';
+import { AngularFirestoreDocument, Action } from 'angularfire2/firestore';
+// import { RolesPipe } from '@bmc-shared/pipes/project-role.pipe';
+import { Project } from '@bmc-shared/model/project';
+import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';
 
+import { SectionPipe } from '@bmc-shared/pipes/section.pipe';
+
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsService } from 'angular2-notifications';
+import { DocumentData } from '@firebase/firestore-types';
 
 @Component({
 	selector: 'bmc-project-detail',
@@ -28,6 +32,21 @@ export class ProjectDetailComponent implements OnInit {
 	projectData: Project
 
 	projectDataForm: NgForm
+
+	projectSections$Obj: { [name: string]: Observable<DocumentData> } = {
+		analytics: undefined,
+		['ad-words']: undefined,
+		actions: undefined,
+		passwords: undefined,
+		support: undefined,
+	}
+	projectSectionsData: { [name: string]: any } = {
+		analytics: {},
+		['ad-words']: {},
+		actions: {},
+		passwords: {},
+		support: {},
+	}
 
 	constructor(
 		private route: ActivatedRoute,
@@ -55,7 +74,18 @@ export class ProjectDetailComponent implements OnInit {
 			})
 		)
 
-		this.project$.subscribe(project => this.projectData = project)
+		this.project$.subscribe(project => {
+			this.projectData = project
+
+			this.sectionNames().forEach(sectionName => {
+				this.projectSections$Obj[sectionName] = this.adminProjectsService.getProjectSectionDocument$(project.id, sectionName).snapshotChanges()
+					.map(snapshot => snapshot.payload.data())
+				this.projectSections$Obj[sectionName].subscribe(data => {
+					this.projectSectionsData[sectionName] = data
+				})
+
+			});
+		})
 
 	}
 

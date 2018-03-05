@@ -6,7 +6,7 @@ import { ProfileRoutingModule } from './profile.routing';
 
 import { ProfileComponent } from './profile.component';
 
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '@bmc-shared/shared.module';
 
 @NgModule({
 	imports: [

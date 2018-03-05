@@ -6,7 +6,7 @@ import { LoginRoutingModule } from './login.routing';
 
 import { LoginComponent } from './login.component';
 
-import { SharedModule } from './../../shared/shared.module'
+import { SharedModule } from '@bmc-shared/shared.module'
 
 @NgModule({
 	imports: [

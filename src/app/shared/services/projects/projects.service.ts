@@ -1,13 +1,11 @@
-import { AuthService } from '../auth/auth.service';
 import { Injectable } from '@angular/core'
 
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { map, switchMap, combineLatest, skip, distinctUntilChanged } from 'rxjs/operators'
+import { map, switchMap, distinctUntilChanged } from 'rxjs/operators'
 
-import { Project } from './../../model/project'
-import { Subject } from 'rxjs/Subject';
+import { AuthService } from '@bmc-shared/services/auth/auth.service';
+import { Project } from '@bmc-shared/model/project'
 
 @Injectable()
 export class ProjectsService {

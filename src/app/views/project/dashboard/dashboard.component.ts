@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { RouterService } from './../../../shared/services/router/router.service';
-import { ProjectService } from '../services/project.service';
+import { RouterService } from '@bmc-shared/services/router/router.service';
+import { ProjectService } from '@bmc-views/project/services/project.service';
 
 @Component({
 	selector: 'bmc-dashboard',

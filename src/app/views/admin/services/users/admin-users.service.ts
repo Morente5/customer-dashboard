@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { environment } from './../../../../../environments/environment';
+import { environment } from '@bmc-environments/environment';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -10,7 +10,7 @@ import * as firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
-import { User } from './../../../../shared/model/user'
+import { User } from '@bmc-shared/model/user'
 import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 
 @Injectable()

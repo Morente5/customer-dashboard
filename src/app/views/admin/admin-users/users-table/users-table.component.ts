@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
-
-import { AdminUsersService } from './../../services/users/admin-users.service';
-import { User } from '../../../../shared/model/user';
 
 import { Router } from '@angular/router'
+
+import { LocalDataSource } from 'ng2-smart-table';
+
+import { User } from '@bmc-shared/model/user';
+import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.service';
+
 
 @Component({
 	selector: 'bmc-users-table',
@@ -13,20 +15,6 @@ import { Router } from '@angular/router'
 })
 export class UsersTableComponent implements OnInit {
 	settings = {
-		add: {
-			addButtonContent: '<i class="nb-plus"></i>',
-			createButtonContent: '<i class="nb-checkmark"></i>',
-			cancelButtonContent: '<i class="nb-close"></i>'
-		},
-		edit: {
-			editButtonContent: '<i class="nb-edit"></i>',
-			saveButtonContent: '<i class="nb-checkmark"></i>',
-			cancelButtonContent: '<i class="nb-close"></i>'
-		},
-		delete: {
-			deleteButtonContent: '<i class="nb-trash"></i>',
-			confirmDelete: true
-		},
 		columns: {
 			email: {
 				title: 'Email',

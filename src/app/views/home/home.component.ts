@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from './../../shared/services/auth/auth.service';
-import { ProjectsService } from './../../shared/services/projects/projects.service';
+import { AuthService } from '@bmc-shared/services/auth/auth.service';
+import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
 
 @Component({
 	selector: 'bmc-home',

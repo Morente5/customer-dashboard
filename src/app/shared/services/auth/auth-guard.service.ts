@@ -5,11 +5,11 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs/Observable';
 import { take, map, find, tap, switchMap} from 'rxjs/operators'
 
-import { AuthService } from './../auth/auth.service';
-import { ProjectsService } from './../projects/projects.service';
-import { RouterService } from './../router/router.service';
+import { AuthService } from '@bmc-shared/services/auth/auth.service';
+import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
+import { RouterService } from '@bmc-shared/services/router/router.service';
 
-import { User } from './../../model/user'
+import { User } from '@bmc-shared/model/user'
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
 	) { }
 
 	canActivate(): Observable<boolean> {
-		console.log('AuthGuard');
+		// console.log('AuthGuard');
 		return this.authService.user$.pipe(
 			take(1),
 			switchMap(user => Observable.of(user.emailVerified)),
@@ -36,7 +36,7 @@ export class AdminGuard implements CanActivate {
 	) { }
 
 	canActivate(): Observable<boolean> {
-		console.log('AdminGuard');
+		// console.log('AdminGuard');
 		return this.authService.user$.pipe(
 			take(1),
 			switchMap(user => Observable.of(user.access === 'admin' || user.access === 'master')),
@@ -60,12 +60,12 @@ export class DashboardGuard implements CanActivate {
 	) { }
 
 	canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-		console.log('DashboardGuard', next, state);
+		// console.log('DashboardGuard', next, state);
 		// return this.authService.userData$
 		return this.authService.user$.pipe(
 			take(1),
 			switchMap(user => {
-				console.log(user)
+				// console.log(user)
 				if (this.authService.user.access === 'admin' || this.authService.user.access === 'master') {
 					return this.projectsService.projects$.switchMap(projects => {
 						return Observable.of(projects.findIndex(project => project.id === next.params.projectID) !== -1)

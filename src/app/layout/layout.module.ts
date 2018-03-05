@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { WidgetsModule } from './../shared/widgets/widgets.module';
+import { WidgetsModule } from '@bmc-shared/widgets/widgets.module';
 
 import { NbMenuModule, NbLayoutModule, NbSidebarModule, NbActionsModule, NbUserModule } from '@nebular/theme';
 

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { environment } from '../environments/environment';
+import { environment } from '@bmc-environments/environment';
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import {
@@ -16,13 +16,13 @@ import {
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Root Component
-import { AppComponent } from './app.component';
+import { AppComponent } from '@bmc-app/app.component';
 
 // All components exported by this module
-import { LayoutModule } from './layout/layout.module';
+import { LayoutModule } from '@bmc-layout/layout.module';
 
 // Routing Module
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from '@bmc-app/app.routing';
 
 // Firebase
 import { AngularFireModule } from 'angularfire2';
@@ -31,7 +31,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Providers
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from '@bmc-shared/shared.module';
 
 import {
 	SimpleNotificationsModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
-import { AuthService } from './../../shared/services/auth/auth.service';
-import { ProjectsService } from './../../shared/services/projects/projects.service';
+import { AuthService } from '@bmc-shared/services/auth/auth.service';
+import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
 
 import { NbMenuService, NbSidebarService, NbMenuItem } from '@nebular/theme';
 

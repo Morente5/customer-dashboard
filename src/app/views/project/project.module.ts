@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '@bmc-shared/shared.module';
 import { ProjectService } from './services/project.service';
 
 import { ProjectRoutingModule } from './project.routing';

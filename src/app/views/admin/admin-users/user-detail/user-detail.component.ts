@@ -4,12 +4,12 @@ import { NgForm } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AdminUsersService } from './../../services/users/admin-users.service';
+import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.service';
 
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
-// import { RolesPipe } from './../../../../shared/pipes/user-role.pipe';
-import { User } from '../../../../shared/model/user';
-import { ProjectsService } from './../../../../shared/services/projects/projects.service';
+// import { RolesPipe } from '@bmc-shared/pipes/user-role.pipe';
+import { User } from '@bmc-shared/model/user';
+import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';
