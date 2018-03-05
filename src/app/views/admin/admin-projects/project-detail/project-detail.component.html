@@ -64,7 +64,7 @@
 							class="right"
 							[name]="sectionName"
 							[(ngModel)]="projectData.sections[sectionName]"
-						>{{sectionName}}</nb-checkbox>
+						>{{sectionName | sectionNameP}}</nb-checkbox>
 					</div>
 					<button
 						[disabled]="sectionsForm.pristine"
@@ -74,6 +74,65 @@
 						i18n
 					>Set</button>
 				</form>
+			</div>
+
+			<div class="header d-flex flex-wrap">
+				<h5 i18n>Analytics</h5>
+				<div class="detail ml-auto font-w-light">
+
+					<form
+						#nameForm="ngForm"
+						class="detail align-items-center input-group input-group-sm ml-auto text-right"
+					>
+						<div class="detail ml-auto mr-2 font-w-light">
+							<label i18n>Mobile: </label>
+							<a *ngIf="(projectSections$Obj?.analytics | async)?.mobile" [href]="(projectSections$Obj.analytics | async)?.mobile" i18n>Go to URL</a>
+						</div>
+						<input
+							*ngIf="projectSectionsData.analytics"
+							class="form-control"
+							type="url"
+							[(ngModel)]="projectSectionsData.analytics.mobile"
+							name="name"
+							#name="ngModel"
+							required
+							url="true"
+						>
+						<button
+							[disabled]="name.invalid || name.pristine || projectData.name === project.name"
+							class="btn btn-primary btn-tn"
+							type="submit"
+							(click)="setName()"
+							i18n
+						>Set</button>
+					</form>
+					<form
+						#nameForm="ngForm"
+						class="detail align-items-center input-group input-group-sm ml-auto text-right"
+					>
+						<div class="detail ml-auto mr-2 font-w-light" i18n>
+							Desktop: {{project.name}}
+						</div>
+						<input
+							class="form-control"
+							type="url"
+							[(ngModel)]="projectData.name"
+							name="name"
+							#name="ngModel"
+							required
+							url="true"
+						>
+						<button
+							[disabled]="name.invalid || name.pristine || projectData.name === project.name"
+							class="btn btn-primary btn-tn"
+							type="submit"
+							(click)="setName()"
+							i18n
+						>Set</button>
+					</form>
+
+				</div>
+
 			</div>
 			<button class="btn btn-danger btn-icon btn-xl" (click)="open(deleteProject)" i18n>
 				<i class="nb-trash"></i>
