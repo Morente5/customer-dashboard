@@ -16,6 +16,7 @@ export class RouterService {
 	public routerSection
 	public destinationRouterProjectID
 	public destinationRouterSection
+	public routerTitle$: BehaviorSubject<string> = new BehaviorSubject('');
 	constructor(
 		private router: Router,
 		private slimLoadingBarService: SlimLoadingBarService
@@ -34,6 +35,8 @@ export class RouterService {
 					}
 				}
 				if (val instanceof ActivationEnd) {
+					console.log(val)
+					this.routerTitle$.next(val.snapshot.data.title)
 					this.routerProjectID = this.destinationRouterProjectID
 					this.routerProjectID$.next(this.destinationRouterProjectID)
 					this.routerSection = this.destinationRouterSection

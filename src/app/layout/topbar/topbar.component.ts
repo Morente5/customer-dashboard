@@ -2,8 +2,9 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 import { AuthService } from '@bmc-shared/services/auth/auth.service';
 import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
+import { RouterService } from '@bmc-app/shared/services/router/router.service';
 
-import { NbMenuService, NbSidebarService, NbMenuItem } from '@nebular/theme';
+import { NbSidebarService, NbMenuItem } from '@nebular/theme';
 
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -17,20 +18,22 @@ import { Subscription } from 'rxjs/Subscription';
 export class TopbarComponent implements OnInit {
 	@Input() sidebarState: 'expanded' | 'compacted' | 'collapsed';
 
-	adminMenu: NbMenuItem[] = [{ title: 'Profile', link: '/perfil' }, { title: 'Admin Panel', link: '/admin' }, { title: 'Log out' }];
-	userMenu: NbMenuItem[] = [{ title: 'Profile', link: '/perfil' }, { title: 'Log out' }];
+	adminMenu: NbMenuItem[] = [{ title: 'Profile', link: '/profile' }, { title: 'Admin Panel', link: '/admin' }, { title: 'Log out' }];
+	userMenu: NbMenuItem[] = [{ title: 'Profile', link: '/profile' }, { title: 'Log out' }];
 
-
+	title: string;
 
 	constructor(
 		private sidebarService: NbSidebarService,
 		public authService: AuthService,
 		public projectsService: ProjectsService,
-		private menuService: NbMenuService,
-		private router: Router,
+		public routerService: RouterService,
+		private router: Router
 	) {	}
 
 	ngOnInit() {
+		//this.routerService. .subscribe(pepe => this.title = pepe);
+		this.routerService.routerTitle$.subscribe(title => this.title = title)
 	}
 	public toggleSidebar() {
 		this.sidebarService.toggle(true);
