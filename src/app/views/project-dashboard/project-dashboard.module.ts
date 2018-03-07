@@ -4,20 +4,18 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@bmc-shared/shared.module';
 import { ProjectService } from './services/project.service';
 
-import { ProjectRoutingModule } from './project.routing';
+import { ProjectDashboardRoutingModule } from './project-dashboard.routing';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProjectComponent } from './project.component';
+import { ProjectDashboardComponent } from './project-dashboard.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
-		ProjectRoutingModule,
+		ProjectDashboardRoutingModule,
 		SharedModule
 	],
 	declarations: [
-		ProjectComponent,
-		DashboardComponent
+		ProjectDashboardComponent
 	],
 	providers: [
 		ProjectService

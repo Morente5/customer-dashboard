@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
+import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
 import { RouterService } from '@bmc-shared/services/router/router.service';
-import { ProjectService } from '@bmc-views/project/services/project.service';
 
 @Component({
-	selector: 'bmc-dashboard',
-	templateUrl: './dashboard.component.html',
-	styleUrls: ['./dashboard.component.scss']
+	selector: 'bmc-project',
+	templateUrl: './project-dashboard.component.html',
+	styleUrls: ['./project-dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class ProjectDashboardComponent implements OnInit {
 
 	// TODO Get from database. Externalize service.
 	public dashboardMenu = {
@@ -36,17 +38,12 @@ export class DashboardComponent implements OnInit {
 			name: 'Soporte',
 			icon: 'nb-gear',
 			color: 'warning'
-		},
-		// 'library': {
-		// 	name: 'Biblioteca',
-		// 	icon: 'nb-cloudy',
-		// 	color: 'primary'
-		// },
+		}
 	}
 
 	constructor(
+		public projectService: ProjectService,
 		public routerService: RouterService,
-		public projectService: ProjectService
 	) { }
 
 	ngOnInit() {
