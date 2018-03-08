@@ -1,9 +1,26 @@
-<div class="d-flex align-items-center flex-row m-2">
-	<button class="btn btn-success btn-icon btn-xl" (click)="open(createProject)" i18n>
-		<i class="nb-plus"></i>
-	</button>
-	<div class="p-2" i18n>Add New Project</div>
-</div>
+<nb-card>
+	<div class="d-flex align-items-center flex-row m-2">
+		<a class="btn btn-secondary btn-icon btn-xl" routerLink="/admin">
+			<i class="nb-arrow-thin-left"></i>
+		</a>
+		<div class="p-2" i18n>Admin Panel</div>
+	</div>
+</nb-card>
+
+<nb-card>
+	<div class="d-flex align-items-center flex-row m-2">
+		<button class="btn btn-success btn-icon btn-xl" (click)="open(createProject)">
+			<i class="nb-plus"></i>
+		</button>
+		<div class="p-2" i18n>Add New Project</div>
+	</div>
+</nb-card>
+
+<nb-card>
+	<bmc-projects-table class="m-2">
+	</bmc-projects-table>
+</nb-card>
+
 <ng-template #createProject let-c="close" let-d="dismiss">
 	<div class="modal-header">
 		<h4 class="modal-title" i18n>Add New Project</h4>
@@ -27,6 +44,3 @@
 		<button class="btn btn-secondary" (click)="d('Close Button')" i18n>Cancel</button>
 	</div>
 </ng-template>
-
-<bmc-projects-table>
-</bmc-projects-table>

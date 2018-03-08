@@ -1,6 +1,27 @@
-<h2 i18n>Admin Panel</h2>
+<router-outlet>
+	<nb-card class="dashboard-card">
+		<a routerLink="users">
+			<div class="icon-container">
+				<div class="btn btn-hero-{{adminMenu['users'].color ? adminMenu['users'].color : 'success'}} btn-lg btn-icon">
+					<i class="{{adminMenu['users'].icon ? adminMenu['users'].icon : 'nb-grid-a'}}"></i>
+				</div>
+			</div>
+			<div class="details">
+				<h4 class="title">{{adminMenu['users'].name}}</h4>
+			</div>
+		</a>
+	</nb-card>
+	<nb-card class="dashboard-card">
+		<a routerLink="projects">
+			<div class="icon-container">
+				<div class="btn btn-hero-{{adminMenu['projects'].color ? adminMenu['projects'].color : 'success'}} btn-lg btn-icon">
+					<i class="{{adminMenu['projects'].icon ? adminMenu['projects'].icon : 'nb-grid-a'}}"></i>
+				</div>
+			</div>
+			<div class="details">
+				<h4 class="title">{{adminMenu['projects'].name}}</h4>
+			</div>
+		</a>
+	</nb-card>
 
-<nb-card>
-	<nb-route-tabset [tabs]="tabs">
-	</nb-route-tabset>
-</nb-card>
+</router-outlet>
