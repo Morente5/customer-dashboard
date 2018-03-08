@@ -35,7 +35,7 @@ export class RouterService {
 					}
 				}
 				if (val instanceof ActivationEnd) {
-					console.log(val)
+					// console.log(val)
 					this.routerTitle$.next(val.snapshot.data.title)
 					this.routerProjectID = this.destinationRouterProjectID
 					this.routerProjectID$.next(this.destinationRouterProjectID)
