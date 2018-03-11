@@ -16,7 +16,6 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AdminComponent } from './admin.component';
 
-import { AdminEmptyComponent } from './admin-empty/admin-empty.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminProjectsComponent } from './admin-projects/admin-projects.component';
 
@@ -42,7 +41,6 @@ import { ProjectDetailComponent } from './admin-projects/project-detail/project-
 	],
 	declarations: [
 		AdminComponent,
-		AdminEmptyComponent,
 		AdminUsersComponent,
 		AdminProjectsComponent,
 		UsersTableComponent,
