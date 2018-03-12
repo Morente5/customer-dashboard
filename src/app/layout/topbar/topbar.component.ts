@@ -4,7 +4,7 @@ import { AuthService } from '@bmc-shared/services/auth/auth.service';
 import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
 import { RouterService } from '@bmc-app/shared/services/router/router.service';
 
-import { NbSidebarService, NbMenuItem } from '@nebular/theme';
+import { NbSidebarService, NbMenuItem, NbContextMenuDirective } from '@nebular/theme';
 
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -32,7 +32,7 @@ export class TopbarComponent implements OnInit {
 	) {	}
 
 	ngOnInit() {
-		//this.routerService. .subscribe(pepe => this.title = pepe);
+		// this.routerService. .subscribe(pepe => this.title = pepe);
 		this.routerService.routerTitle$.subscribe(title => this.title = title)
 	}
 	public toggleSidebar() {

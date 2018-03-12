@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { WidgetsModule } from '@bmc-shared/widgets/widgets.module';
 
-import { NbMenuModule, NbLayoutModule, NbSidebarModule, NbActionsModule, NbUserModule } from '@nebular/theme';
+import { NbMenuModule, NbLayoutModule, NbSidebarModule, NbActionsModule, NbUserModule, NbContextMenuModule } from '@nebular/theme';
 
 import { LayoutComponent } from './layout.component';
 import { TopbarComponent } from './topbar/topbar.component';
@@ -32,7 +32,8 @@ import { RouterModule } from '@angular/router';
 		NbSidebarModule,
 		NbMenuModule,
 		NbActionsModule,
-		NbUserModule
+		NbUserModule,
+		NbContextMenuModule
 	],
 	declarations: [
 		LayoutComponent,
