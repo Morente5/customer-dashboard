@@ -1,0 +1,17 @@
+:host {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	-webkit-box-pack: justify;
+	width: 100%;
+	.socials {
+		font-size: 1.25rem;
+		.ion {
+			padding: .5rem;
+			color: #a4abb3;
+			&:hover {
+				color: #212529;
+			}
+		}
+	}
+}

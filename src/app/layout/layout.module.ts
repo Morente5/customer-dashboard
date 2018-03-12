@@ -15,6 +15,7 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarProjectComponent } from './sidebar/sidebar-project/sidebar-project.component';
 import { MainComponent } from './main/main.component';
+import { FooterComponent } from './footer/footer.component';
 
 // import { SimpleNotificationsComponent, SimpleNotificationsModule } from 'angular2-notifications';
 
@@ -39,6 +40,7 @@ import { MainComponent } from './main/main.component';
 		MainComponent,
 		SidebarComponent,
 		SidebarProjectComponent,
+		FooterComponent,
 	],
 	exports: [
 		LayoutComponent
