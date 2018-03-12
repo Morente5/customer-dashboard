@@ -7,7 +7,8 @@ import {
 	NbCardModule,
 	NbActionsModule,
 	NbUserModule,
-	NbCheckboxModule
+	NbCheckboxModule,
+	NbContextMenuModule
 } from '@nebular/theme';
 
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -23,6 +24,7 @@ import { FrameComponent } from './frame/frame.component';
 		NbActionsModule,
 		NbUserModule,
 		NbCheckboxModule,
+		NbContextMenuModule,
 
 		Ng2SmartTableModule
 	],
@@ -36,6 +38,7 @@ import { FrameComponent } from './frame/frame.component';
 		NbActionsModule,
 		NbUserModule,
 		NbCheckboxModule,
+		NbContextMenuModule,
 
 		Ng2SmartTableModule
 	]

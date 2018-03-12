@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '@bmc-shared/services/auth/auth.service';
+import { AuthService } from '@bmc-shared/services/auth.service';
 import { NgForm } from '@angular/forms';
 
 @Component({

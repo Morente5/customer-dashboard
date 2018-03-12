@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 
+import { AngularFireModule } from 'angularfire2';
+
+import { SharedModule } from '@bmc-shared/shared.module';
+
+
 import { AdminRoutingModule } from './admin.routing';
 
-import { NbCheckboxComponent } from '@nebular/theme'
-import { SharedModule } from '@bmc-shared/shared.module';
-import { SectionPipe } from '@bmc-shared/pipes/section.pipe';
+import { AdminUsersService } from './services/users/admin-users.service';
+import { AdminProjectsService } from './services/projects/admin-projects.service';
 
-import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.service';
-import { AdminProjectsService } from '@bmc-views/admin/services/projects/admin-projects.service';
-
-import { AngularFireModule } from 'angularfire2';
 
 import { AdminComponent } from './admin.component';
 
@@ -36,8 +36,7 @@ import { ProjectDetailComponent } from './admin-projects/project-detail/project-
 	],
 	providers: [
 		AdminUsersService,
-		AdminProjectsService,
-		SectionPipe
+		AdminProjectsService
 	],
 	declarations: [
 		AdminComponent,
@@ -46,8 +45,7 @@ import { ProjectDetailComponent } from './admin-projects/project-detail/project-
 		UsersTableComponent,
 		UserDetailComponent,
 		ProjectsTableComponent,
-		ProjectDetailComponent,
-		SectionPipe
+		ProjectDetailComponent
 	]
 })
 export class AdminModule { }

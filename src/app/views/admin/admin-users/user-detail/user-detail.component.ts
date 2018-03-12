@@ -9,7 +9,7 @@ import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.s
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 // import { RolesPipe } from '@bmc-shared/pipes/user-role.pipe';
 import { User } from '@bmc-shared/model/user';
-import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
+import { ProjectsService } from '@bmc-shared/services/projects.service';
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 
+import { RouterService } from '@bmc-shared/services/router.service';
+
 import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
-import { RouterService } from '@bmc-shared/services/router/router.service';
 
 @Component({
 	selector: 'bmc-project',

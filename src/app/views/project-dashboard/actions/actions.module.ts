@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { MomentModule } from 'angular2-moment';
+
+import { SharedModule } from '@bmc-shared/shared.module';
 
 import { ActionsRoutingModule } from './actions.routing';
 
@@ -15,7 +16,8 @@ import { DayComponent } from './calendar/day/day.component';
 		CommonModule,
 		ActionsRoutingModule,
 		ReactiveFormsModule,
-		MomentModule
+
+		SharedModule
 	],
 	declarations: [ActionsComponent, CalendarComponent, DayComponent]
 })

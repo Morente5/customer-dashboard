@@ -5,7 +5,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { switchMap } from 'rxjs/operators';
 
-import { RouterService } from '@bmc-shared/services/router/router.service';
+import { RouterService } from '@bmc-shared/services/router.service';
 import { Project } from '@bmc-shared/model/project';
 
 @Injectable()

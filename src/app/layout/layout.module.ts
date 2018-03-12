@@ -4,19 +4,19 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { WidgetsModule } from '@bmc-shared/widgets/widgets.module';
+import { RouterModule } from '@angular/router';
 
-import { NbMenuModule, NbLayoutModule, NbSidebarModule, NbActionsModule, NbUserModule, NbContextMenuModule } from '@nebular/theme';
+import { SharedModule } from '@bmc-shared/shared.module';
+
+import { NbMenuModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 
 import { LayoutComponent } from './layout.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { MainComponent } from './main/main.component';
 import { SidebarProjectComponent } from './sidebar/sidebar-project/sidebar-project.component';
+import { MainComponent } from './main/main.component';
 
 // import { SimpleNotificationsComponent, SimpleNotificationsModule } from 'angular2-notifications';
-
-import { RouterModule } from '@angular/router';
 
 @NgModule({
 	imports: [
@@ -26,14 +26,11 @@ import { RouterModule } from '@angular/router';
 		BrowserAnimationsModule,
 		// SimpleNotificationsModule,
 
-		WidgetsModule,
+		SharedModule,
 
 		NbLayoutModule,
 		NbSidebarModule,
 		NbMenuModule,
-		NbActionsModule,
-		NbUserModule,
-		NbContextMenuModule
 	],
 	declarations: [
 		LayoutComponent,

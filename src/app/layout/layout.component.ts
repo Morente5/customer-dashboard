@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { RouterService } from '@bmc-shared/services/router/router.service';
-import { AuthService } from '@bmc-shared/services/auth/auth.service';
-import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
+import { RouterService } from '@bmc-shared/services/router.service';
+import { AuthService } from '@bmc-shared/services/auth.service';
+import { ProjectsService } from '@bmc-shared/services/projects.service';
 
-import { WindowService } from '@bmc-shared/services/window/window.service';
+import { WindowService } from '@bmc-shared/services/window.service';
 import { NbSidebarModule, NbSidebarService, NbMediaBreakpointsService, NbMediaBreakpoint } from '@nebular/theme';
 
 @Component({

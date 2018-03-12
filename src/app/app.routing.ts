@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Router Auth Guard
-import { AuthGuard, LoginGuard, AdminGuard, DashboardGuard } from '@bmc-shared/services/auth/auth-guard.service';
+import { AuthGuard, LoginGuard, AdminGuard, DashboardGuard } from '@bmc-shared/guards/auth-guard.service';
 
 const routeBase = './views/';
 const routes: Routes = [
