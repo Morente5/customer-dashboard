@@ -4,7 +4,7 @@ import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 // import { take, map, tap } from 'rxjs/operators'
 
-import { ProjectsService } from '@bmc-shared/services/projects/projects.service';
+import { ProjectsService } from '@bmc-shared/services/projects.service';
 
 @Injectable()
 export class ProjectsGuard implements CanActivate {

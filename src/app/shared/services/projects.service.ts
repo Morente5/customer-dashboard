@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs/Observable';
 import { map, switchMap, distinctUntilChanged } from 'rxjs/operators'
 
-import { AuthService } from '@bmc-shared/services/auth/auth.service';
+import { AuthService } from '@bmc-shared/services/auth.service';
 import { Project } from '@bmc-shared/model/project'
 
 @Injectable()
