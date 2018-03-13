@@ -191,10 +191,7 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/DayComponent.html" >DayComponent</a>
+                                    <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -311,6 +308,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/RouterService.html" >RouterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TitleService.html" >TitleService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/WindowService.html" >WindowService</a>
@@ -569,10 +569,7 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/DayComponent.html" >DayComponent</a>
+                                           <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -689,6 +686,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/RouterService.html" >RouterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TitleService.html" >TitleService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/WindowService.html" >WindowService</a>
@@ -1013,7 +1013,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:29</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:29</a></div>
                                 </td>
                             </tr>
     
@@ -1095,7 +1095,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:27</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:27</a></div>
                                 </td>
                             </tr>
     
@@ -1132,7 +1132,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:37</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:37</a></div>
                                 </td>
                             </tr>
     
@@ -1215,7 +1215,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:16</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/views/admin/admin-users/admin-users.component.ts:16</a></div>
                                 </td>
                             </tr>
     
@@ -1228,7 +1228,7 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
 import { Router } from &#x27;@angular/router&#x27;;
 import { AdminUsersService } from &#x27;@bmc-views/admin/services/users/admin-users.service&#x27;;
@@ -1376,7 +1376,7 @@ export class AdminUsersComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><nb-card>	<div class="d-flex align-items-center flex-row m-2">		<a class="btn btn-secondary btn-icon btn-xl" routerLink="/admin">			<i class="nb-arrow-thin-left"></i>		</a>		<div class="p-2" i18n>Admin Panel</div>	</div></nb-card><nb-card>	<div class="d-flex align-items-center flex-row m-2">		<button class="btn btn-success btn-icon btn-xl" (click)="open(createUser)">			<i class="nb-plus"></i>		</button>		<div class="p-2" i18n>Add New User</div>	</div></nb-card><nb-card>	<bmc-users-table class="m-2">	</bmc-users-table></nb-card><ng-template #createUser let-c="close" let-d="dismiss">	<div class="modal-header">		<h4 class="modal-title" i18n>Add New User</h4>		<button type="button" class="close" aria-label="Close" (click)="d(\'Cross click\')">			<span aria-hidden="true">&times;</span>		</button>	</div>	<div class="modal-body">		<form #newUserForm=ngForm>			<div class="form-group row">				<label class="col-sm-3 col-form-label" for="email" i18n>Email</label>				<div class="col-sm-9">					<input						class="form-control"						type="email"						name="email"						email="true"						#email="ngModel"						placeholder="Email"						i18n-placeholder						required						autocomplete="off"						[(ngModel)]="newUserData.email"					>				</div>			</div>			<div class="form-group row">				<label class="col-sm-3 col-form-label" for="password" i18n>Password</label>				<div class="col-sm-9">					<input						class="form-control"						type="password"						name="password"						#password="ngModel"						placeholder="Password"						i18n-placeholder						required						minlength="6"						autocomplete="off"						[(ngModel)]="newUserData.password"					>				</div>			</div>		</form>	</div>	<div class="modal-footer">		<button type="button" class="btn btn-success" (click)="c(\'Create User\')" i18n>Create User</button>		<button class="btn btn-secondary" (click)="d(\'Close Button\')" i18n>Cancel</button>	</div></ng-template></div>'
-    var COMPONENTS = [{'name': 'AccessDeniedComponent', 'selector': 'bmc-access-denied'},{'name': 'ActionsComponent', 'selector': 'bmc-actions'},{'name': 'AdWordsComponent', 'selector': 'bmc-ad-words'},{'name': 'AdminComponent', 'selector': 'bmc-admin'},{'name': 'AdminProjectsComponent', 'selector': 'bmc-admin-projects'},{'name': 'AdminUsersComponent', 'selector': 'bmc-admin-users'},{'name': 'AnalyticsComponent', 'selector': 'bmc-analytics'},{'name': 'AppComponent', 'selector': 'bmc-root'},{'name': 'CalendarComponent', 'selector': 'bmc-calendar'},{'name': 'DayComponent', 'selector': 'bmc-day'},{'name': 'FrameComponent', 'selector': 'bmc-frame'},{'name': 'HomeComponent', 'selector': 'bmc-home'},{'name': 'LayoutComponent', 'selector': 'bmc-layout'},{'name': 'LoginComponent', 'selector': 'bmc-login'},{'name': 'MainComponent', 'selector': 'bmc-main'},{'name': 'PasswordsComponent', 'selector': 'bmc-passwords'},{'name': 'ProfileComponent', 'selector': 'bmc-profile'},{'name': 'ProjectDashboardComponent', 'selector': 'bmc-project'},{'name': 'ProjectDetailComponent', 'selector': 'bmc-project-detail'},{'name': 'ProjectsTableComponent', 'selector': 'bmc-projects-table'},{'name': 'SidebarComponent', 'selector': 'bmc-sidebar'},{'name': 'SidebarProjectComponent', 'selector': 'bmc-sidebar-project'},{'name': 'SupportComponent', 'selector': 'bmc-support'},{'name': 'TopbarComponent', 'selector': 'bmc-topbar'},{'name': 'UserDetailComponent', 'selector': 'bmc-user-detail'},{'name': 'UsersTableComponent', 'selector': 'bmc-users-table'}];
+    var COMPONENTS = [{'name': 'AccessDeniedComponent', 'selector': 'bmc-access-denied'},{'name': 'ActionsComponent', 'selector': 'bmc-actions'},{'name': 'AdWordsComponent', 'selector': 'bmc-ad-words'},{'name': 'AdminComponent', 'selector': 'bmc-admin'},{'name': 'AdminProjectsComponent', 'selector': 'bmc-admin-projects'},{'name': 'AdminUsersComponent', 'selector': 'bmc-admin-users'},{'name': 'AnalyticsComponent', 'selector': 'bmc-analytics'},{'name': 'AppComponent', 'selector': 'bmc-root'},{'name': 'FooterComponent', 'selector': 'bmc-footer'},{'name': 'FrameComponent', 'selector': 'bmc-frame'},{'name': 'HomeComponent', 'selector': 'bmc-home'},{'name': 'LayoutComponent', 'selector': 'bmc-layout'},{'name': 'LoginComponent', 'selector': 'bmc-login'},{'name': 'MainComponent', 'selector': 'bmc-main'},{'name': 'PasswordsComponent', 'selector': 'bmc-passwords'},{'name': 'ProfileComponent', 'selector': 'bmc-profile'},{'name': 'ProjectDashboardComponent', 'selector': 'bmc-project'},{'name': 'ProjectDetailComponent', 'selector': 'bmc-project-detail'},{'name': 'ProjectsTableComponent', 'selector': 'bmc-projects-table'},{'name': 'SidebarComponent', 'selector': 'bmc-sidebar'},{'name': 'SidebarProjectComponent', 'selector': 'bmc-sidebar-project'},{'name': 'SupportComponent', 'selector': 'bmc-support'},{'name': 'TopbarComponent', 'selector': 'bmc-topbar'},{'name': 'UserDetailComponent', 'selector': 'bmc-user-detail'},{'name': 'UsersTableComponent', 'selector': 'bmc-users-table'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AdminUsersComponent'};
 </script>

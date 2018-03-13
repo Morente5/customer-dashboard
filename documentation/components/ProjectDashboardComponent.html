@@ -191,10 +191,7 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/DayComponent.html" >DayComponent</a>
+                                    <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -311,6 +308,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/RouterService.html" >RouterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TitleService.html" >TitleService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/WindowService.html" >WindowService</a>
@@ -569,10 +569,7 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/DayComponent.html" >DayComponent</a>
+                                           <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -689,6 +686,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/RouterService.html" >RouterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TitleService.html" >TitleService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/WindowService.html" >WindowService</a>
@@ -871,12 +871,14 @@
                                 <a href="#dashboardMenu">dashboardMenu</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#projectService">projectService</a>
+                                <a href="#project">project</a>
+                            </li>
+                            <li>
+                                <a href="#projectID">projectID</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#routerService">routerService</a>
+                                <a href="#projectService">projectService</a>
                             </li>
                         </ul>
                     </td>
@@ -898,6 +900,20 @@
                         </ul>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Accessors</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#project$">project$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </section>
@@ -908,12 +924,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-    <code>constructor(projectService: <a href="../injectables/ProjectService.html">ProjectService</a>, routerService: <a href="../injectables/RouterService.html">RouterService</a>)</code>
+    <code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, projectService: <a href="../injectables/ProjectService.html">ProjectService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -931,10 +947,10 @@
                                             </thead>
                                             <tbody>
                                                     <tr>
-                                                        <td>projectService</td>
+                                                        <td>route</td>
                                                       
                                                             <td>
-                                                                        <code><a href="../injectables/ProjectService.html" target="_self" >ProjectService</a></code>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
                                                             </td>
                                                       
                                                         <td>
@@ -943,10 +959,10 @@
                                                         
                                                     </tr>
                                                     <tr>
-                                                        <td>routerService</td>
+                                                        <td>projectService</td>
                                                       
                                                             <td>
-                                                                        <code><a href="../injectables/RouterService.html" target="_self" >RouterService</a></code>
+                                                                        <code><a href="../injectables/ProjectService.html" target="_self" >ProjectService</a></code>
                                                             </td>
                                                       
                                                         <td>
@@ -994,7 +1010,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:53</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:67</a></div>
                                 </td>
                             </tr>
     
@@ -1063,7 +1079,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:49</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:55</a></div>
                                 </td>
                             </tr>
     
@@ -1144,7 +1160,75 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:16</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:22</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="project"></a>
+                            <span class="name">
+                                <b>
+                                project
+                                </b>
+                                <a href="#project"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>project:     <code><a href="../interfaces/Project.html" target="_self" >Project</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../interfaces/Project.html" target="_self" >Project</a></code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:19</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="projectID"></a>
+                            <span class="name">
+                                <b>
+                                projectID
+                                </b>
+                                <a href="#projectID"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>projectID:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:17</a></div>
                                 </td>
                             </tr>
     
@@ -1179,42 +1263,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:45</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="routerService"></a>
-                            <span class="name">
-                                <b>
-                                    <span class="modifier">Public</span>
-                                routerService
-                                </b>
-                                <a href="#routerService"><span class="fa fa-link"></span></a>
-                            </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-reset"></span><code>routerService:     <code><a href="../injectables/RouterService.html" target="_self" >RouterService</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="../injectables/RouterService.html" target="_self" >RouterService</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:46</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:52</a></div>
                                 </td>
                             </tr>
     
@@ -1223,16 +1272,45 @@
             </table>
     </section>
 
+    <section>
+        <h3 id="accessors">
+            Accessors
+        </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="project$"></a>
+                            <span class="name"><b>project$</b><a href="#project$"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="accessor"><b>get</b><code>project$()</code></span>
+                        </td>
+                    </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/views/project-dashboard/project-dashboard.component.ts:63</a></div>
+                                    </td>
+                                </tr>
+    
+                </tbody>
+            </table>
+    </section>
 </div>
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
-import { Router } from &#x27;@angular/router&#x27;;
+import { Router, ActivatedRoute, Params } from &#x27;@angular/router&#x27;;
+
+import { Observable } from &#x27;rxjs/Observable&#x27;;
 
 import { ProjectService } from &#x27;@bmc-views/project-dashboard/services/project.service&#x27;;
-import { RouterService } from &#x27;@bmc-shared/services/router/router.service&#x27;;
+import { Project } from &#x27;@bmc-app/shared/model/project&#x27;;
 
 @Component({
 	selector: &#x27;bmc-project&#x27;,
@@ -1240,6 +1318,10 @@ import { RouterService } from &#x27;@bmc-shared/services/router/router.service&#
 	styleUrls: [&#x27;./project-dashboard.component.scss&#x27;]
 })
 export class ProjectDashboardComponent implements OnInit {
+
+	projectID: string;
+
+	project: Project
 
 	// TODO Get from database. Externalize service.
 	public dashboardMenu &#x3D; {
@@ -1271,12 +1353,20 @@ export class ProjectDashboardComponent implements OnInit {
 	}
 
 	constructor(
-		public projectService: ProjectService,
-		public routerService: RouterService,
+		private route: ActivatedRoute,
+		public projectService: ProjectService
 	) { }
 
 	ngOnInit() {
+		this.route.params.subscribe((params: Params) &#x3D;&gt; {
+			this.projectID &#x3D; params[&#x27;projectID&#x27;];
+			this.project$.subscribe(project &#x3D;&gt; this.project &#x3D; project)
+		});
 
+	}
+
+	get project$(): Observable&lt;Project&gt; {
+		return this.projectService.project$(this.projectID)
 	}
 
 	keys(obj: Object): string[] {
@@ -1290,7 +1380,7 @@ export class ProjectDashboardComponent implements OnInit {
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;router-outlet&gt;
 	&lt;ng-container *ngFor&#x3D;&quot;let item of keys(dashboardMenu)&quot;&gt;
-		&lt;nb-card class&#x3D;&quot;dashboard-card {{item}}&quot; *ngIf&#x3D;&quot;(projectService.project$ | async)?.sections &amp;&amp; (projectService.project$ | async)?.sections[item]&quot;&gt;
+		&lt;nb-card class&#x3D;&quot;dashboard-card {{item}}&quot; *ngIf&#x3D;&quot;project?.sections &amp;&amp; project?.sections[item]&quot;&gt;
 			&lt;a [routerLink]&#x3D;&quot;item&quot;&gt;
 				&lt;div class&#x3D;&quot;icon-container&quot;&gt;
 					&lt;div class&#x3D;&quot;btn btn-hero-{{dashboardMenu[item].color ? dashboardMenu[item].color : &#x27;success&#x27;}} btn-lg btn-icon&quot;&gt;
@@ -1330,8 +1420,8 @@ export class ProjectDashboardComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><router-outlet>	<ng-container *ngFor="let item of keys(dashboardMenu)">		<nb-card class="dashboard-card {{item}}" *ngIf="(projectService.project$ | async)?.sections && (projectService.project$ | async)?.sections[item]">			<a [routerLink]="item">				<div class="icon-container">					<div class="btn btn-hero-{{dashboardMenu[item].color ? dashboardMenu[item].color : \'success\'}} btn-lg btn-icon">						<i class="{{dashboardMenu[item].icon ? dashboardMenu[item].icon : \'nb-grid-a\'}}"></i>					</div>				</div>				<div class="details">					<h4 class="title">{{dashboardMenu[item].name}}</h4>				</div>			</a>		</nb-card>	</ng-container></router-outlet></div>'
-    var COMPONENTS = [{'name': 'AccessDeniedComponent', 'selector': 'bmc-access-denied'},{'name': 'ActionsComponent', 'selector': 'bmc-actions'},{'name': 'AdWordsComponent', 'selector': 'bmc-ad-words'},{'name': 'AdminComponent', 'selector': 'bmc-admin'},{'name': 'AdminProjectsComponent', 'selector': 'bmc-admin-projects'},{'name': 'AdminUsersComponent', 'selector': 'bmc-admin-users'},{'name': 'AnalyticsComponent', 'selector': 'bmc-analytics'},{'name': 'AppComponent', 'selector': 'bmc-root'},{'name': 'CalendarComponent', 'selector': 'bmc-calendar'},{'name': 'DayComponent', 'selector': 'bmc-day'},{'name': 'FrameComponent', 'selector': 'bmc-frame'},{'name': 'HomeComponent', 'selector': 'bmc-home'},{'name': 'LayoutComponent', 'selector': 'bmc-layout'},{'name': 'LoginComponent', 'selector': 'bmc-login'},{'name': 'MainComponent', 'selector': 'bmc-main'},{'name': 'PasswordsComponent', 'selector': 'bmc-passwords'},{'name': 'ProfileComponent', 'selector': 'bmc-profile'},{'name': 'ProjectDashboardComponent', 'selector': 'bmc-project'},{'name': 'ProjectDetailComponent', 'selector': 'bmc-project-detail'},{'name': 'ProjectsTableComponent', 'selector': 'bmc-projects-table'},{'name': 'SidebarComponent', 'selector': 'bmc-sidebar'},{'name': 'SidebarProjectComponent', 'selector': 'bmc-sidebar-project'},{'name': 'SupportComponent', 'selector': 'bmc-support'},{'name': 'TopbarComponent', 'selector': 'bmc-topbar'},{'name': 'UserDetailComponent', 'selector': 'bmc-user-detail'},{'name': 'UsersTableComponent', 'selector': 'bmc-users-table'}];
+        var COMPONENT_TEMPLATE = '<div><router-outlet>	<ng-container *ngFor="let item of keys(dashboardMenu)">		<nb-card class="dashboard-card {{item}}" *ngIf="project?.sections && project?.sections[item]">			<a [routerLink]="item">				<div class="icon-container">					<div class="btn btn-hero-{{dashboardMenu[item].color ? dashboardMenu[item].color : \'success\'}} btn-lg btn-icon">						<i class="{{dashboardMenu[item].icon ? dashboardMenu[item].icon : \'nb-grid-a\'}}"></i>					</div>				</div>				<div class="details">					<h4 class="title">{{dashboardMenu[item].name}}</h4>				</div>			</a>		</nb-card>	</ng-container></router-outlet></div>'
+    var COMPONENTS = [{'name': 'AccessDeniedComponent', 'selector': 'bmc-access-denied'},{'name': 'ActionsComponent', 'selector': 'bmc-actions'},{'name': 'AdWordsComponent', 'selector': 'bmc-ad-words'},{'name': 'AdminComponent', 'selector': 'bmc-admin'},{'name': 'AdminProjectsComponent', 'selector': 'bmc-admin-projects'},{'name': 'AdminUsersComponent', 'selector': 'bmc-admin-users'},{'name': 'AnalyticsComponent', 'selector': 'bmc-analytics'},{'name': 'AppComponent', 'selector': 'bmc-root'},{'name': 'FooterComponent', 'selector': 'bmc-footer'},{'name': 'FrameComponent', 'selector': 'bmc-frame'},{'name': 'HomeComponent', 'selector': 'bmc-home'},{'name': 'LayoutComponent', 'selector': 'bmc-layout'},{'name': 'LoginComponent', 'selector': 'bmc-login'},{'name': 'MainComponent', 'selector': 'bmc-main'},{'name': 'PasswordsComponent', 'selector': 'bmc-passwords'},{'name': 'ProfileComponent', 'selector': 'bmc-profile'},{'name': 'ProjectDashboardComponent', 'selector': 'bmc-project'},{'name': 'ProjectDetailComponent', 'selector': 'bmc-project-detail'},{'name': 'ProjectsTableComponent', 'selector': 'bmc-projects-table'},{'name': 'SidebarComponent', 'selector': 'bmc-sidebar'},{'name': 'SidebarProjectComponent', 'selector': 'bmc-sidebar-project'},{'name': 'SupportComponent', 'selector': 'bmc-support'},{'name': 'TopbarComponent', 'selector': 'bmc-topbar'},{'name': 'UserDetailComponent', 'selector': 'bmc-user-detail'},{'name': 'UsersTableComponent', 'selector': 'bmc-users-table'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProjectDashboardComponent'};
 </script>

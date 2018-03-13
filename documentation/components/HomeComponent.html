@@ -191,10 +191,7 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/DayComponent.html" >DayComponent</a>
+                                    <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -311,6 +308,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/RouterService.html" >RouterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TitleService.html" >TitleService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/WindowService.html" >WindowService</a>
@@ -569,10 +569,7 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/DayComponent.html" >DayComponent</a>
+                                           <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -689,6 +686,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/RouterService.html" >RouterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TitleService.html" >TitleService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/WindowService.html" >WindowService</a>
@@ -987,7 +987,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/views/home/home.component.ts:18</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/views/home/home.component.ts:18</a></div>
                                 </td>
                             </tr>
     
@@ -1037,7 +1037,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/views/home/home.component.ts:14</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/views/home/home.component.ts:14</a></div>
                                 </td>
                             </tr>
     
@@ -1072,7 +1072,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/views/home/home.component.ts:15</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/views/home/home.component.ts:15</a></div>
                                 </td>
                             </tr>
     
@@ -1085,10 +1085,10 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
-import { AuthService } from &#x27;@bmc-shared/services/auth/auth.service&#x27;;
-import { ProjectsService } from &#x27;@bmc-shared/services/projects/projects.service&#x27;;
+import { AuthService } from &#x27;@bmc-shared/services/auth.service&#x27;;
+import { ProjectsService } from &#x27;@bmc-shared/services/projects.service&#x27;;
 
 @Component({
 	selector: &#x27;bmc-home&#x27;,
@@ -1181,7 +1181,7 @@ export class HomeComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><nb-card	class="card-container">	<nb-card-header>		<h1			class="title h2 text-center"			i18n		>Customer Area</h1>	</nb-card-header>	<nb-card-body>		<p			class="text-center"			i18n		>Description of the app, the service or whatever we decide to put in here</p>		<p			class="text-center"			i18n		>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, repellat rem aliquam ea autem nihil dolor blanditiis dignissimos consectetur accusantium quasi laudantium. Libero repellendus sapiente pariatur velit quam possimus exercitationem obcaecati delectus blanditiis non necessitatibus, dolor est quae architecto rerum beatae consequuntur dolores asperiores quibusdam reiciendis iusto. Sunt aliquid quasi voluptatibus similique impedit incidunt neque aperiam numquam, nisi excepturi atque.</p>		<ng-container			*ngIf="authService.user$ | async as user; then homeTemplate; else loginTemplate"		></ng-container>		<ng-template #loginTemplate>			<a				[routerLink]="[ \'/login\' ]"				class="btn btn-block btn-hero-success"				i18n			>Log In</a>		</ng-template>		<ng-template #homeTemplate>			<h2				class="h3 text-center"				i18n			>Welcome</h2>			<p				class="text-center h5">{{authService.user.displayName}}</p>		</ng-template>	</nb-card-body></nb-card></div>'
-    var COMPONENTS = [{'name': 'AccessDeniedComponent', 'selector': 'bmc-access-denied'},{'name': 'ActionsComponent', 'selector': 'bmc-actions'},{'name': 'AdWordsComponent', 'selector': 'bmc-ad-words'},{'name': 'AdminComponent', 'selector': 'bmc-admin'},{'name': 'AdminProjectsComponent', 'selector': 'bmc-admin-projects'},{'name': 'AdminUsersComponent', 'selector': 'bmc-admin-users'},{'name': 'AnalyticsComponent', 'selector': 'bmc-analytics'},{'name': 'AppComponent', 'selector': 'bmc-root'},{'name': 'CalendarComponent', 'selector': 'bmc-calendar'},{'name': 'DayComponent', 'selector': 'bmc-day'},{'name': 'FrameComponent', 'selector': 'bmc-frame'},{'name': 'HomeComponent', 'selector': 'bmc-home'},{'name': 'LayoutComponent', 'selector': 'bmc-layout'},{'name': 'LoginComponent', 'selector': 'bmc-login'},{'name': 'MainComponent', 'selector': 'bmc-main'},{'name': 'PasswordsComponent', 'selector': 'bmc-passwords'},{'name': 'ProfileComponent', 'selector': 'bmc-profile'},{'name': 'ProjectDashboardComponent', 'selector': 'bmc-project'},{'name': 'ProjectDetailComponent', 'selector': 'bmc-project-detail'},{'name': 'ProjectsTableComponent', 'selector': 'bmc-projects-table'},{'name': 'SidebarComponent', 'selector': 'bmc-sidebar'},{'name': 'SidebarProjectComponent', 'selector': 'bmc-sidebar-project'},{'name': 'SupportComponent', 'selector': 'bmc-support'},{'name': 'TopbarComponent', 'selector': 'bmc-topbar'},{'name': 'UserDetailComponent', 'selector': 'bmc-user-detail'},{'name': 'UsersTableComponent', 'selector': 'bmc-users-table'}];
+    var COMPONENTS = [{'name': 'AccessDeniedComponent', 'selector': 'bmc-access-denied'},{'name': 'ActionsComponent', 'selector': 'bmc-actions'},{'name': 'AdWordsComponent', 'selector': 'bmc-ad-words'},{'name': 'AdminComponent', 'selector': 'bmc-admin'},{'name': 'AdminProjectsComponent', 'selector': 'bmc-admin-projects'},{'name': 'AdminUsersComponent', 'selector': 'bmc-admin-users'},{'name': 'AnalyticsComponent', 'selector': 'bmc-analytics'},{'name': 'AppComponent', 'selector': 'bmc-root'},{'name': 'FooterComponent', 'selector': 'bmc-footer'},{'name': 'FrameComponent', 'selector': 'bmc-frame'},{'name': 'HomeComponent', 'selector': 'bmc-home'},{'name': 'LayoutComponent', 'selector': 'bmc-layout'},{'name': 'LoginComponent', 'selector': 'bmc-login'},{'name': 'MainComponent', 'selector': 'bmc-main'},{'name': 'PasswordsComponent', 'selector': 'bmc-passwords'},{'name': 'ProfileComponent', 'selector': 'bmc-profile'},{'name': 'ProjectDashboardComponent', 'selector': 'bmc-project'},{'name': 'ProjectDetailComponent', 'selector': 'bmc-project-detail'},{'name': 'ProjectsTableComponent', 'selector': 'bmc-projects-table'},{'name': 'SidebarComponent', 'selector': 'bmc-sidebar'},{'name': 'SidebarProjectComponent', 'selector': 'bmc-sidebar-project'},{'name': 'SupportComponent', 'selector': 'bmc-support'},{'name': 'TopbarComponent', 'selector': 'bmc-topbar'},{'name': 'UserDetailComponent', 'selector': 'bmc-user-detail'},{'name': 'UsersTableComponent', 'selector': 'bmc-users-table'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
 </script>

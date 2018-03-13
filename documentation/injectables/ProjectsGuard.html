@@ -191,10 +191,7 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/DayComponent.html" >DayComponent</a>
+                                    <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -311,6 +308,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/RouterService.html" >RouterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TitleService.html" >TitleService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/WindowService.html" >WindowService</a>
@@ -569,10 +569,7 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/DayComponent.html" >DayComponent</a>
+                                           <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -691,6 +688,9 @@
                                            <a href="../injectables/RouterService.html" >RouterService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/TitleService.html" >TitleService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/WindowService.html" >WindowService</a>
                                        </li>
                                </ul>
@@ -800,7 +800,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/services/projects/projects-guard.service.ts</code>
+            <code>src/app/shared/guards/projects-guard.service.ts</code>
         </p>
 
 
@@ -838,7 +838,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/shared/services/projects/projects-guard.service.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/shared/guards/projects-guard.service.ts:10</a></div>
                                         </td>
                                     </tr>
             
@@ -915,7 +915,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/services/projects/projects-guard.service.ts:30</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/shared/guards/projects-guard.service.ts:30</a></div>
                                         </td>
                                     </tr>
             
@@ -937,13 +937,13 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { CanActivate, Router } from &#x27;@angular/router&#x27;;
 
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 // import { take, map, tap } from &#x27;rxjs/operators&#x27;
 
-import { ProjectsService } from &#x27;@bmc-shared/services/projects/projects.service&#x27;;
+import { ProjectsService } from &#x27;@bmc-shared/services/projects.service&#x27;;
 
 @Injectable()
 export class ProjectsGuard implements CanActivate {

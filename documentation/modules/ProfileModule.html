@@ -191,10 +191,7 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/DayComponent.html" >DayComponent</a>
+                                    <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -311,6 +308,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/RouterService.html" >RouterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TitleService.html" >TitleService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/WindowService.html" >WindowService</a>
@@ -569,10 +569,7 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/DayComponent.html" >DayComponent</a>
+                                           <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -689,6 +686,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/RouterService.html" >RouterService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TitleService.html" >TitleService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/WindowService.html" >WindowService</a>
@@ -923,15 +923,16 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
+
+import { SharedModule } from &#x27;@bmc-shared/shared.module&#x27;;
 
 import { ProfileRoutingModule } from &#x27;./profile.routing&#x27;;
 
 import { ProfileComponent } from &#x27;./profile.component&#x27;;
 
-import { SharedModule } from &#x27;@bmc-shared/shared.module&#x27;;
 
 @NgModule({
 	imports: [

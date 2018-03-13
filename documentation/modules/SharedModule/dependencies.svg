@@ -22,45 +22,73 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_SharedModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="177,-70 177,-268 319,-268 319,-70 177,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="125,-70 125,-268 371,-268 371,-70 125,-70"/>
 </g>
-<g id="clust3" class="cluster">
-<title>cluster_SharedModule_imports</title>
-<polygon fill="none" stroke="#000000" points="187,-78 187,-130 309,-130 309,-78 187,-78"/>
+<g id="clust2" class="cluster">
+<title>cluster_SharedModule_declarations</title>
+<polygon fill="none" stroke="#000000" points="264,-78 264,-130 362,-130 362,-78 264,-78"/>
 </g>
 <g id="clust4" class="cluster">
-<title>cluster_SharedModule_exports</title>
-<polygon fill="none" stroke="#000000" points="185,-208 185,-260 311,-260 311,-208 185,-208"/>
+<title>cluster_SharedModule_imports</title>
+<polygon fill="none" stroke="#000000" points="134,-78 134,-130 256,-130 256,-78 134,-78"/>
 </g>
-<!-- WidgetsModule -->
+<g id="clust5" class="cluster">
+<title>cluster_SharedModule_exports</title>
+<polygon fill="none" stroke="#000000" points="133,-208 133,-260 363,-260 363,-208 133,-208"/>
+</g>
+<!-- SectionPipe -->
 <g id="node1" class="node">
-<title>WidgetsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="301.205,-122 298.205,-126 277.205,-126 274.205,-122 194.795,-122 194.795,-86 301.205,-86 301.205,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">WidgetsModule</text>
+<title>SectionPipe</title>
+<polygon fill="#ffffb3" stroke="#000000" points="354.3809,-122 271.6191,-122 271.6191,-86 354.3809,-86 354.3809,-122"/>
+<text text-anchor="middle" x="313" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">SectionPipe</text>
 </g>
 <!-- SharedModule -->
 <g id="node2" class="node">
 <title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="297.4231,-187 294.4231,-191 273.4231,-191 270.4231,-187 198.5769,-187 198.5769,-151 297.4231,-151 297.4231,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">SharedModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="296.4231,-187 293.4231,-191 272.4231,-191 269.4231,-187 197.5769,-187 197.5769,-151 296.4231,-151 296.4231,-187"/>
+<text text-anchor="middle" x="247" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">SharedModule</text>
 </g>
-<!-- WidgetsModule&#45;&gt;SharedModule -->
+<!-- SectionPipe&#45;&gt;SharedModule -->
 <g id="edge1" class="edge">
-<title>WidgetsModule&#45;&gt;SharedModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<title>SectionPipe&#45;&gt;SharedModule</title>
+<path fill="none" stroke="#000000" d="M283.8854,-122.1061C283.8854,-122.1061 283.8854,-140.991 283.8854,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="280.3854,-140.9909 283.8854,-150.991 287.3854,-140.991 280.3854,-140.9909"/>
 </g>
 <!-- WidgetsModule  -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>WidgetsModule </title>
-<polygon fill="#fb8072" stroke="#000000" points="302.7052,-252 193.2948,-252 193.2948,-216 302.7052,-216 302.7052,-252"/>
-<text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">WidgetsModule </text>
+<polygon fill="#fb8072" stroke="#000000" points="354.7052,-252 245.2948,-252 245.2948,-216 354.7052,-216 354.7052,-252"/>
+<text text-anchor="middle" x="300" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">WidgetsModule </text>
 </g>
 <!-- SharedModule&#45;&gt;WidgetsModule  -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>SharedModule&#45;&gt;WidgetsModule </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248,-187.1061C248,-187.1061 248,-205.991 248,-205.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-205.9909 248,-215.991 251.5001,-205.991 244.5001,-205.9909"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.6794,-187.1061C270.6794,-187.1061 270.6794,-205.991 270.6794,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="267.1794,-205.9909 270.6794,-215.991 274.1794,-205.991 267.1794,-205.9909"/>
+</g>
+<!-- SectionPipe  -->
+<g id="node5" class="node">
+<title>SectionPipe </title>
+<polygon fill="#fb8072" stroke="#000000" points="227.3816,-252 140.6184,-252 140.6184,-216 227.3816,-216 227.3816,-252"/>
+<text text-anchor="middle" x="184" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">SectionPipe </text>
+</g>
+<!-- SharedModule&#45;&gt;SectionPipe  -->
+<g id="edge4" class="edge">
+<title>SharedModule&#45;&gt;SectionPipe </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.4897,-187.1061C212.4897,-187.1061 212.4897,-205.991 212.4897,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="208.9897,-205.9909 212.4897,-215.991 215.9897,-205.991 208.9897,-205.9909"/>
+</g>
+<!-- WidgetsModule -->
+<g id="node3" class="node">
+<title>WidgetsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="248.205,-122 245.205,-126 224.205,-126 221.205,-122 141.795,-122 141.795,-86 248.205,-86 248.205,-122"/>
+<text text-anchor="middle" x="195" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">WidgetsModule</text>
+</g>
+<!-- WidgetsModule&#45;&gt;SharedModule -->
+<g id="edge2" class="edge">
+<title>WidgetsModule&#45;&gt;SharedModule</title>
+<path fill="none" stroke="#000000" d="M222.9457,-122.1061C222.9457,-122.1061 222.9457,-140.991 222.9457,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="219.4457,-140.9909 222.9457,-150.991 226.4457,-140.991 219.4457,-140.9909"/>
 </g>
 </g>
 </svg>

@@ -191,10 +191,7 @@
                                     <a href="../components/AppComponent.html" >AppComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/DayComponent.html" >DayComponent</a>
+                                    <a href="../components/FooterComponent.html" >FooterComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -311,6 +308,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/RouterService.html" >RouterService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TitleService.html" >TitleService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/WindowService.html" >WindowService</a>
@@ -569,10 +569,7 @@
                                            <a href="../components/AppComponent.html" >AppComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/DayComponent.html" >DayComponent</a>
+                                           <a href="../components/FooterComponent.html" >FooterComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FrameComponent.html" >FrameComponent</a>
@@ -691,6 +688,9 @@
                                            <a href="../injectables/RouterService.html" >RouterService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/TitleService.html" >TitleService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/WindowService.html" >WindowService</a>
                                        </li>
                                </ul>
@@ -800,7 +800,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/services/auth/auth-guard.service.ts</code>
+            <code>src/app/shared/guards/auth-guard.service.ts</code>
         </p>
 
 
@@ -838,7 +838,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/shared/services/auth/auth-guard.service.ts:54</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/shared/guards/auth-guard.service.ts:54</a></div>
                                         </td>
                                     </tr>
             
@@ -939,7 +939,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/shared/services/auth/auth-guard.service.ts:62</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/shared/guards/auth-guard.service.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -1006,16 +1006,16 @@
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { NotificationsService } from &#x27;angular2-notifications&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NotificationsService } from &#x27;angular2-notifications&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from &#x27;@angular/router&#x27;;
 
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { take, map, find, tap, switchMap} from &#x27;rxjs/operators&#x27;
 
-import { AuthService } from &#x27;@bmc-shared/services/auth/auth.service&#x27;;
-import { ProjectsService } from &#x27;@bmc-shared/services/projects/projects.service&#x27;;
-import { RouterService } from &#x27;@bmc-shared/services/router/router.service&#x27;;
+import { AuthService } from &#x27;@bmc-shared/services/auth.service&#x27;;
+import { ProjectsService } from &#x27;@bmc-shared/services/projects.service&#x27;;
+import { RouterService } from &#x27;@bmc-shared/services/router.service&#x27;;
 
 import { User } from &#x27;@bmc-shared/model/user&#x27;
 
