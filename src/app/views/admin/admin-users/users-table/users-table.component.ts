@@ -28,7 +28,7 @@ export class UsersTableComponent implements OnInit {
 					type: 'completer',
 					config: {
 						completer: {
-							data: ['admin', 'author', 'reader']
+							data: ['admin', 'author', 'reader', 'master']
 						}
 					}
 				}

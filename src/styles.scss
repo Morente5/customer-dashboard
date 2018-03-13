@@ -86,16 +86,22 @@ body {
 
 .full-card {
 	height: calc(100% - 20px);
+	max-width: 1080px;
+}
+.full-card-calendar {
+	height: calc(100% - 20px);
+	max-width: inherit;
 }
 
 .full-frame {
 	width: 100%;
-	max-width: 1080px;
 	height: 100%;
+	max-width: 1080px;
 }
 .full-frame-calendar {
 	width: 100%;
 	height: 100%;
+	max-width: inherit;
 }
 
 ::-webkit-scrollbar {
