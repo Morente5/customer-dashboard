@@ -1,5 +1,5 @@
 :host {
-	margin: 5px;
+	margin: 2px;
 	display: block;
 	padding: 0;
 
@@ -8,17 +8,17 @@
 		align-items: center;
 		padding: 0;
 		.project-logo {
-			flex: 0 0 calc( var(--sidebar-element-height, 50) * .75px);
-			line-height: calc( var(--sidebar-element-height, 50) * .75px);
-			height: calc( var(--sidebar-element-height, 50) * .75px );
-			width: calc( var(--sidebar-element-height, 50) * .75px );
+			flex: 0 0 calc( var(--sidebar-element-height, 3) * .75rem);
+			line-height: calc( var(--sidebar-element-height, 3) * .75rem);
+			height: calc( var(--sidebar-element-height, 3) * .75rem );
+			width: calc( var(--sidebar-element-height, 3) * .75rem );
 			color: #2a2a2a;
 			border: solid 2px #bcc3cc;
 			background-color: #fff;
 			background-position: center;
 			background-size: cover;
 			border-radius: 50%;
-			margin: calc( var(--sidebar-element-height, 50) * .125px );
+			margin: calc( var(--sidebar-element-height, 3) * .125rem );
 			border: 0px 0px 5px 0 rgba(255, 255, 255, 0.1);
 		}
 		.project-name {

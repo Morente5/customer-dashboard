@@ -8,15 +8,18 @@ $nb-themes: nb-register-theme((
 	//font-main: Roboto,
  	font-secondary: Exo,
 	font-size-lg: 2rem,
-	//layout-bg: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 20%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)')),
+	layout-bg: var(--bg-color, #e5f4f9),
+	// layout-bg: linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 20%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 32%)')),
 	//header-fg:	#ffffff,
 	//header-bg:	linear-gradient(135deg, unquote('hsl( var(--topbar-bg-color, 216) , 70%, 25%)'), unquote('hsl( var(--topbar-bg-color, 216) , 70%, 40%)')),
 	shadow: 0 .5px .5px 0 #dfe3eb,
-	header-height:	calc(var(--topbar-height, 50) * 1px),
+	header-height:	calc(var(--topbar-height, 3) * 1rem),
 	header-padding: 0,
-	sidebar-width: calc(var(--sidebar-width, 50) * 1px),
-	sidebar-width-compact:	calc(var(--sidebar-element-height, 50) * 1px + 14px),
+	sidebar-width: calc(var(--sidebar-width, 3) * 1rem),
+	sidebar-width-compact:	calc(var(--sidebar-element-height, 3) * 1rem + .5rem),
 	sidebar-padding: 0,
+	footer-height:	calc(var(--topbar-height, 3) * 1rem),
+	footer-padding:	calc(var(--footer-padding, 1) * 1rem),
 	//sidebar-bg: unquote('hsl( var(--topbar-bg-color, 216) , 70%, 30%)'),
 ), default, default);
 
@@ -62,6 +65,71 @@ $nb-themes: nb-register-theme((
 // }
 
 simple-notifications .simple-notification-wrapper.top {
-	top: 76px;
+	top: 5rem;
 }
 
+.photo-upload {
+	position: relative;
+	.file-upload-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 4rem;
+		height: 4rem;
+		opacity: 0;
+		transition: .3s opacity;
+		&:hover {
+			opacity: .5;
+		}
+
+
+		.file-upload-btn {
+			position: absolute;
+			width: 3rem;
+			height: 3rem;
+			margin: .5rem;
+			font-size: 2rem;
+			background-color: #000000;
+			border-radius: 50%;
+			.icon-camera {
+				width: 3rem;
+				height: 3rem;
+				text-align: center;
+				i {
+					width: 3rem;
+					height: 3rem;
+					color: #fff;
+					line-height: 3rem;
+					margin: auto
+				}
+			}
+		}
+
+		.file-upload {
+			position: absolute;
+			width: 4rem;
+			height: 4rem;
+			opacity: 0;
+			overflow: hidden;
+			z-index: 1;
+		}
+	}
+
+}
+
+nb-card .header {
+	padding-bottom: .675rem;
+	margin-bottom: .675rem;
+	border-bottom: 1px solid #ebeef2;
+}
+
+.nb-theme-default {
+	nb-checkbox, .custom-control {
+		&.right {
+			.customised-control-indicator {
+				right: 0;
+				left: initial
+			}
+		}
+	}
+}
