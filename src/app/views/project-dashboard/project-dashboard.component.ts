@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { RouterService } from '@bmc-shared/services/router.service';
+import { Observable } from 'rxjs/Observable';
 
 import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
+import { Project } from '@bmc-app/shared/model/project';
 
 @Component({
 	selector: 'bmc-project',
@@ -12,6 +13,10 @@ import { ProjectService } from '@bmc-views/project-dashboard/services/project.se
 	styleUrls: ['./project-dashboard.component.scss']
 })
 export class ProjectDashboardComponent implements OnInit {
+
+	projectID: string;
+
+	project: Project
 
 	// TODO Get from database. Externalize service.
 	public dashboardMenu = {
@@ -43,12 +48,20 @@ export class ProjectDashboardComponent implements OnInit {
 	}
 
 	constructor(
-		public projectService: ProjectService,
-		public routerService: RouterService,
+		private route: ActivatedRoute,
+		public projectService: ProjectService
 	) { }
 
 	ngOnInit() {
+		this.route.params.subscribe((params: Params) => {
+			this.projectID = params['projectID'];
+			this.project$.subscribe(project => this.project = project)
+		});
 
+	}
+
+	get project$(): Observable<Project> {
+		return this.projectService.project$(this.projectID)
 	}
 
 	keys(obj: Object): string[] {

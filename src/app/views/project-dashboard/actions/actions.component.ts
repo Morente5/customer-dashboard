@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AngularFirestore } from 'angularfire2/firestore';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
-import { RouterService } from '@bmc-shared/services/router.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
-import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ProjectService } from './../services/project.service';
 
 @Component({
 	selector: 'bmc-actions',
@@ -15,30 +14,24 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 	styleUrls: ['./actions.component.scss']
 })
 export class ActionsComponent implements OnInit {
-	url$: Observable<SafeResourceUrl>
+
+	url: SafeResourceUrl
+	projectID: string
+
 	constructor(
-		private afs: AngularFirestore,
-		private routerService: RouterService,
-		private sanitizer: DomSanitizer
+		private route: ActivatedRoute,
+		private projectService: ProjectService
 	) { }
 
 	ngOnInit() {
-		this.url$ = this.routerService.routerProjectID$.switchMap(projectID => {
-			const path = `actions/${projectID}`
-			if (projectID) {
-				return this.afs.doc(path).snapshotChanges().map(project => {
-					if (project && project.payload.data().hasOwnProperty('url')) {
-						return this.sanitizer.bypassSecurityTrustResourceUrl(project.payload.data().url)
-					} else {
-						return undefined
-					}
-				})
-			}
-			return undefined
-		})
+		this.route.parent.params.subscribe((params: Params) => {
+			this.projectID = params['projectID'];
+			this.url$.subscribe(url => this.url = url)
+		});
+
 	}
 
-	sanitize(url) {
-		return this.sanitizer.bypassSecurityTrustResourceUrl(url)
+	get url$(): Observable<SafeResourceUrl> {
+		return this.projectService.actionsUrl$(this.projectID)
 	}
 }

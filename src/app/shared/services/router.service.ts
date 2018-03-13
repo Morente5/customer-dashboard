@@ -1,55 +1,46 @@
 import { Injectable } from '@angular/core';
 
-import { Router, RoutesRecognized, ActivationEnd, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { filter, map, tap, mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class RouterService {
 
-	public router$
-	public routerProjectID$: BehaviorSubject<string> = new BehaviorSubject('')
-	public routerSection$: BehaviorSubject<string> = new BehaviorSubject('')
-	public routerProjectID
-	public routerSection
-	public destinationRouterProjectID
-	public destinationRouterSection
 	public routerTitle$: BehaviorSubject<string> = new BehaviorSubject('');
 	constructor(
 		private router: Router,
-		private slimLoadingBarService: SlimLoadingBarService
+		private activatedRoute: ActivatedRoute,
+		private slimLoadingBarService: SlimLoadingBarService,
 	) {
+		this.router.events.pipe(
+			filter(event => event instanceof NavigationStart),
+			tap(() => this.startLoading()),
+			map(() => this.router.routerState.root),
+		).subscribe(event => {
+			console.log('start', event)
+		})
 
-		this.router$ = this.router.events
-		this.router$
-			.subscribe(val => {
-				if (val instanceof RoutesRecognized) {
-
-					this.destinationRouterProjectID = val.state.root.firstChild.params['projectID']
-					if (val.state.root.firstChild.children.length && val.state.root.firstChild.children[0].url.length) {
-						this.destinationRouterSection = val.state.root.firstChild.children[0].url[0].path
-					} else {
-						this.destinationRouterSection = undefined
-					}
+		this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			tap(() => this.completeLoading()),
+			map(() => this.activatedRoute),
+			map((route) => {
+				while (route.firstChild) {
+					route = route.firstChild
 				}
-				if (val instanceof ActivationEnd) {
-					// console.log(val)
-					this.routerTitle$.next(val.snapshot.data.title)
-					this.routerProjectID = this.destinationRouterProjectID
-					this.routerProjectID$.next(this.destinationRouterProjectID)
-					this.routerSection = this.destinationRouterSection
-					this.routerSection$.next(this.destinationRouterSection)
-				}
-				if (val instanceof NavigationStart) {
-					this.startLoading()
-				}
-				if (val instanceof NavigationEnd) {
-					this.completeLoading()
-				}
-			});
-
+				console.log('route', route)
+				return route
+			}),
+			filter((route) => route.outlet === 'primary'),
+			mergeMap((route) => route.data),
+		).subscribe(event => {
+			console.log('end', event)
+			this.routerTitle$.next(event.title)
+		})
 
 	}
 

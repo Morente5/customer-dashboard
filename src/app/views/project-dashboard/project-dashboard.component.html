@@ -1,6 +1,6 @@
 <router-outlet>
 	<ng-container *ngFor="let item of keys(dashboardMenu)">
-		<nb-card class="dashboard-card {{item}}" *ngIf="(projectService.project$ | async)?.sections && (projectService.project$ | async)?.sections[item]">
+		<nb-card class="dashboard-card {{item}}" *ngIf="project?.sections && project?.sections[item]">
 			<a [routerLink]="item">
 				<div class="icon-container">
 					<div class="btn btn-hero-{{dashboardMenu[item].color ? dashboardMenu[item].color : 'success'}} btn-lg btn-icon">
