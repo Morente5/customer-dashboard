@@ -1,4 +1,3 @@
-
 export interface PasswordGroup {
 	groupName: string
 	groupFields?: PasswordField[]
