@@ -43,4 +43,8 @@ export class PasswordsComponent implements OnInit {
 		return this.projectService.passwords$(this.projectID)
 	}
 
+	public hasCopied(fieldName): void {
+		this.notificationsService.success(`Campo: ${fieldName}`, 'Copiado al portapapeles')
+	}
+
 }
