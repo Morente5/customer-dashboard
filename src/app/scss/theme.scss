@@ -126,10 +126,14 @@ nb-card .header {
 .nb-theme-default {
 	nb-checkbox, .custom-control {
 		&.right {
-			.customised-control-indicator {
+			.customised-control-indicator, .custom-control-indicator {
 				right: 0;
 				left: initial
 			}
 		}
 	}
+}
+
+.completer-input {
+	@extend .form-control
 }
