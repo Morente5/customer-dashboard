@@ -7,7 +7,6 @@ import { Router } from '@angular/router'
 import { SimpleNotificationsComponent, NotificationsService } from 'angular2-notifications';
 
 import { AuthService } from '@bmc-shared/services/auth.service'
-import { ProjectsService } from '@bmc-shared/services/projects.service'
 
 @Component({
 	selector: 'bmc-root',
@@ -28,7 +27,6 @@ export class AppComponent implements OnInit {
 	constructor(
 		private router: Router,
 		public authService: AuthService,
-		public projectsService: ProjectsService,
 	) {
 		console.log(
 			'%c  %c ¡ATENCIÓN! %c  %c ESTA CONSOLA ES PARA DESARROLLADORES, ' +

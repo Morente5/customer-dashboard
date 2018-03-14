@@ -1,14 +1,11 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 import { AuthService } from '@bmc-shared/services/auth.service';
-import { ProjectsService } from '@bmc-shared/services/projects.service';
 import { RouterService } from '@bmc-shared/services/router.service';
 
 import { NbSidebarService, NbMenuItem, NbContextMenuDirective } from '@nebular/theme';
 
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-// import { withLatestFrom } from 'rxjs/operators';
 
 @Component({
 	selector: 'bmc-topbar',
@@ -26,10 +23,9 @@ export class TopbarComponent implements OnInit {
 	constructor(
 		private sidebarService: NbSidebarService,
 		public authService: AuthService,
-		public projectsService: ProjectsService,
 		public routerService: RouterService,
 		private router: Router
-	) {	}
+	) { }
 
 	ngOnInit() {
 		// this.routerService. .subscribe(pepe => this.title = pepe);

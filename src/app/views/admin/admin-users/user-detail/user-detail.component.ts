@@ -9,7 +9,6 @@ import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.s
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 // import { RolesPipe } from '@bmc-shared/pipes/user-role.pipe';
 import { User } from '@bmc-shared/model/user';
-import { ProjectsService } from '@bmc-shared/services/projects.service';
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';
@@ -33,7 +32,6 @@ export class UserDetailComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private adminUsersService: AdminUsersService,
-		public projectsService: ProjectsService,
 		private modalService: NgbModal,
 		private notificationsService: NotificationsService
 	) { }
@@ -48,7 +46,7 @@ export class UserDetailComponent implements OnInit {
 			map(user => {
 				const data = user.payload.data() as User
 				const id = user.payload.id
-				return new User({id, ...data})
+				return new User({ id, ...data })
 			})
 		)
 
@@ -89,7 +87,7 @@ export class UserDetailComponent implements OnInit {
 		return this.modalService.open(content).result
 			.then(
 				result => this.deleteUser(),
-				reason => {}
+				reason => { }
 			);
 	}
 

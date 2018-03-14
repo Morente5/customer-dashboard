@@ -9,7 +9,6 @@ import { WidgetsModule } from './widgets/widgets.module';
 import { slugify } from './tools/tools.module';
 
 import { AuthService } from './services/auth.service';
-import { ProjectsService } from './services/projects.service';
 import { RouterService } from './services/router.service';
 import { WindowService } from './services/window.service';
 import { TitleService } from './services/title.service';
@@ -43,7 +42,6 @@ export class SharedModule {
 			ngModule: SharedModule,
 			providers: [
 				AuthService,
-				ProjectsService,
 				WindowService,
 				RouterService,
 				TitleService,

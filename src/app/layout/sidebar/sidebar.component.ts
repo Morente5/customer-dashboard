@@ -4,7 +4,6 @@ import { RouterService } from '@bmc-shared/services/router.service';
 import { WindowService } from '@bmc-shared/services/window.service';
 
 import { AuthService } from '@bmc-shared/services/auth.service';
-import { ProjectsService } from '@bmc-shared/services/projects.service';
 
 import { NbMenuItem } from '@nebular/theme';
 
@@ -21,7 +20,6 @@ export class SidebarComponent implements OnInit {
 	constructor(
 		public routerService: RouterService,
 		private windowService: WindowService,
-		public projectsService: ProjectsService
 	) { }
 
 	ngOnInit() {
@@ -34,9 +32,5 @@ export class SidebarComponent implements OnInit {
 	public keys(obj: Object): string[] {
 		return Object.keys(obj)
 	}
-
-	// public getProject(key) {
-	// 	return this.projectsService.getProject(key)
-	// }
 
 }

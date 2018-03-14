@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '@bmc-shared/services/auth.service';
-import { ProjectsService } from '@bmc-shared/services/projects.service';
 
 // import { RolesPipe } from '@bmc-shared/pipes/user-role.pipe';
 
@@ -15,8 +14,7 @@ export class ProfileComponent implements OnInit {
 	displayName: string
 
 	constructor(
-		public authService: AuthService,
-		public projectsService: ProjectsService
+		public authService: AuthService
 	) { }
 
 	ngOnInit() {
