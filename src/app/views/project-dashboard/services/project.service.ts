@@ -24,10 +24,7 @@ export class ProjectService {
 			return this.afs.doc(path).snapshotChanges().map(project => {
 				const data = project.payload.data() as Project
 				const id = project.payload.id
-				return {
-					id,
-					...data
-				}
+				return new Project({id, ...data})
 			})
 		}
 		return Observable.of(null)

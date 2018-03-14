@@ -37,7 +37,7 @@
 			</div>
 			<div class="h6 ml-auto text-right user-role">
 				<form #roleForm="ngForm">
-					<div *ngIf="user.access === 'master'">
+					<div *ngIf="user.isMaster">
 						<label class="custom-control custom-radio right">
 							<input class="custom-control-input"
 								type="radio"
@@ -50,7 +50,7 @@
 							<span class="custom-control-description" i18n>Master</span>
 						</label>
 					</div>
-					<div *ngIf="!(user.access === 'master')">
+					<div *ngIf="!user.isMaster">
 						<label class="custom-control custom-radio right">
 							<input class="custom-control-input"
 								type="radio"
@@ -62,7 +62,7 @@
 							<span class="custom-control-description" i18n>Admin</span>
 						</label>
 					</div>
-					<div *ngIf="!(user.access === 'master')">
+					<div *ngIf="!user.isMaster">
 						<label class="custom-control custom-radio right">
 							<input class="custom-control-input"
 								type="radio"
@@ -74,7 +74,7 @@
 							<span class="custom-control-description" i18n>Author</span>
 						</label>
 					</div>
-					<div *ngIf="!(user.access === 'master')">
+					<div *ngIf="!user.isMaster">
 						<label class="custom-control custom-radio right">
 							<input class="custom-control-input"
 								type="radio"
@@ -87,7 +87,7 @@
 						</label>
 					</div>
 					<button
-						*ngIf="!(user.access === 'master')"
+						*ngIf="!user.isMaster"
 						[disabled]="userData.access === user.access"
 						class="btn btn-primary btn-tn ml-auto"
 						type="submit"
@@ -178,7 +178,7 @@
 
 	<nb-card>
 		<div class="d-flex align-items-center flex-row m-2">
-			<button [disabled]="user.access === 'master'" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)">
+			<button [disabled]="!user.isMaster" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)">
 				<i class="nb-trash"></i>
 			</button>
 			<div class="p-2" i18n>Delete User</div>

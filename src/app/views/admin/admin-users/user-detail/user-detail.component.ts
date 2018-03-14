@@ -48,10 +48,7 @@ export class UserDetailComponent implements OnInit {
 			map(user => {
 				const data = user.payload.data() as User
 				const id = user.payload.id
-				return {
-					id,
-					...data
-				}
+				return new User({id, ...data})
 			})
 		)
 

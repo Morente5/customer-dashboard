@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
 		// console.log('AuthGuard');
 		return this.authService.user$.pipe(
 			take(1),
-			switchMap(user => Observable.of(user.emailVerified)),
+			switchMap(user => Observable.of(user.verified)),
 		)
 	}
 }
@@ -39,7 +39,7 @@ export class AdminGuard implements CanActivate {
 		// console.log('AdminGuard');
 		return this.authService.user$.pipe(
 			take(1),
-			switchMap(user => Observable.of(user.access === 'admin' || user.access === 'master')),
+			switchMap(user => Observable.of(user.isAdmin)),
 			tap(isAdmin => {
 				if (!isAdmin) {
 					this.notificationsService.alert(null, 'This is only for Admin users')
@@ -66,12 +66,12 @@ export class DashboardGuard implements CanActivate {
 			take(1),
 			switchMap(user => {
 				// console.log(user)
-				if (this.authService.user.access === 'admin' || this.authService.user.access === 'master') {
+				if (this.authService.user.isAdmin) {
 					return this.projectsService.projects$.switchMap(projects => {
 						return Observable.of(projects.findIndex(project => project.id === next.params.projectID) !== -1)
 					})
 				}
-				if (this.authService.user.emailVerified) {
+				if (this.authService.user.verified) {
 					return Observable.of(
 						this.authService.user.projects.hasOwnProperty(next.params.projectID) &&
 						this.authService.user.projects[next.params.projectID] === true

@@ -30,10 +30,7 @@ export class AdminUsersService {
 			return user.map(u => {
 				const data = u.payload.doc.data() as User
 				const id = u.payload.doc.id
-				return {
-					id,
-					...data
-				}
+				return new User({id, ...data})
 			})
 		})
 

@@ -48,10 +48,7 @@ export class AuthService {
 					return this.afs.doc(path).snapshotChanges().map(userData => {
 						const data = userData.payload.data() as User
 						const id = userData.payload.id
-						return {
-							id,
-							...data
-						}
+						return new User({id, ...data})
 					})
 				} else {
 					return Observable.of(null)

@@ -22,17 +22,14 @@ export class ProjectsService {
 			distinctUntilChanged(),
 			switchMap(userId => {
 				if (userId) {
-					const projectsCollection = (this.authService.user.access === 'admin' || this.authService.user.access === 'master') ?
+					const projectsCollection = (this.authService.user.isAdmin) ?
 						this.afs.collection('projects') :
 						this.afs.collection('projects', ref => ref.where(`users.${userId}`, '==', true))
 					return projectsCollection.snapshotChanges().map(project => {
 						return project.map(p => {
 							const data = p.payload.doc.data() as Project
 							const id = p.payload.doc.id
-							return {
-								id,
-								...data
-							}
+							return new Project({id, ...data})
 						})
 					})
 				} else {

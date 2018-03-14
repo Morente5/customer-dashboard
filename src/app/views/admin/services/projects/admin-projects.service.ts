@@ -27,10 +27,7 @@ export class AdminProjectsService {
 			return projects.map(u => {
 				const data = u.payload.doc.data() as Project
 				const id = u.payload.doc.id
-				return {
-					id,
-					...data
-				}
+				return new Project({id, ...data})
 			})
 		})
 
@@ -39,10 +36,6 @@ export class AdminProjectsService {
 
 	getProjectDocument$(id) {
 		return this.afs.doc<Project>(`projects/${id}`)
-	}
-
-	getProjectSectionDocument$(id, section) {
-		return this.afs.doc(`${section}/${id}`)
 	}
 
 	createProject(name: string): Promise<any> {
