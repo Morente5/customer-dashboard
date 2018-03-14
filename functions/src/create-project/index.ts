@@ -6,13 +6,12 @@ export const newProject = functions.firestore.document('projects/{projectID}').o
 	const projectID = event.data.id;
 	const project = event.data.data();
 
-	// Maybe check Firestore?
-	const sections = ['actions', 'ad-words', 'analytics', 'passwords', 'support']
-
-	const arrayPromises = sections.map(sectionName => {
-		const sectionProjectDoc = admin.firestore().collection(sectionName).doc(projectID)
-		return sectionProjectDoc.set({})
-	})
+	const arrayPromises = [
+		admin.firestore().collection(`projects/${projectID}/actions`).doc('data').set({url: null}),
+		admin.firestore().collection(`projects/${projectID}/adwords`).doc('data').set({mobileUrl: null, desktopUrl: null}),
+		admin.firestore().collection(`projects/${projectID}/analytics`).doc('data').set({mobileUrl: null, desktopUrl: null}),
+		admin.firestore().collection(`projects/${projectID}/support`).doc('data').set({user: null}),
+	]
 
 	// Return a promise from an array of promises
 	return Promise.all(arrayPromises)
