@@ -10,6 +10,7 @@ import { map, distinctUntilChanged, switchMap } from 'rxjs/operators'
 
 import { WindowService } from '@bmc-shared/services/window.service';
 import { Project } from '@bmc-shared/model/project';
+import { PasswordGroup } from '@bmc-shared/model/passwords';
 
 @Injectable()
 export class ProjectService {
@@ -97,6 +98,12 @@ export class ProjectService {
 			return this.urlResponsive$(urlObj$)
 		}
 		return Observable.of(undefined)
+	}
+
+	public passwords$(projectID: string): Observable<PasswordGroup[]> {
+		const path = `projects/${projectID}/passwords`
+		return this.afs.collection(path).valueChanges()
+			.map(value => value as PasswordGroup[])
 	}
 
 	sanitize(url) {
