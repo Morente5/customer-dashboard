@@ -29,6 +29,8 @@ export class AuthService {
 
 	public loggedInUser$: ReplaySubject<string> = new ReplaySubject()  // Hot Observable
 
+	ready = false
+
 	constructor(
 		private router: Router,
 		private afAuth: AngularFireAuth,
@@ -78,7 +80,8 @@ export class AuthService {
 				} else {
 					return Observable.of([])
 				}
-			})
+			}),
+			tap(() => this.ready = true)
 		)
 
 		this.currentUser$.subscribe(user => {

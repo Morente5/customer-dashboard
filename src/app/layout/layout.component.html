@@ -1,4 +1,4 @@
-<nb-layout class="window-mode with-scroll">
+<nb-layout *ngIf="authService.ready" class="window-mode with-scroll">
 
 	<nb-layout-header
 		fixed
@@ -32,3 +32,5 @@
 	</nb-layout-footer>
 
 </nb-layout>
+
+<bmc-loader *ngIf="!authService.ready"></bmc-loader>
