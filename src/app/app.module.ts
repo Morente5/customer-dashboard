@@ -11,9 +11,11 @@ registerLocaleData(localeEs, 'es', localeEsExtra);
 
 // Root Component
 import { AppComponent } from './app.component';
+import { HomeComponent } from '@bmc-views/home/home.component';
 
 // All components exported by this module
 import { LayoutModule } from '@bmc-layout/layout.module';
+import { SharedModule } from '@bmc-shared/shared.module';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
@@ -28,12 +30,14 @@ import { CoreModule } from '@bmc-core/core.module';
 @NgModule({
 	declarations: [
 		AppComponent,
+		HomeComponent
 	],
 	imports: [
 		BrowserModule,
 
 		AppRoutingModule,
 		LayoutModule,
+		SharedModule,
 
 		CoreModule.withProviders(),
 	],
