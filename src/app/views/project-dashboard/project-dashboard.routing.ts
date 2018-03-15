@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectDashboardComponent } from './project-dashboard.component';
+import { ActionsComponent } from './actions/actions.component';
+import { AdWordsComponent } from './ad-words/ad-words.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { PasswordsComponent } from './passwords/passwords.component';
+import { SupportComponent } from './support/support.component';
 
-const routeBase = './';
 const routes: Routes = [
 	{
 		path: '',
@@ -17,35 +21,35 @@ const routes: Routes = [
 		data: {
 			title: 'Analytics'
 		},
-		loadChildren: routeBase + 'analytics/analytics.module#AnalyticsModule'
+		component: AnalyticsComponent,
 	},
 	{
 		path: 'ad-words',
 		data: {
 			title: 'Adwords'
 		},
-		loadChildren: routeBase + 'ad-words/ad-words.module#AdWordsModule'
+		component: AdWordsComponent,
 	},
 	{
 		path: 'actions',
 		data: {
 			title: 'Actions'
 		},
-		loadChildren: routeBase + 'actions/actions.module#ActionsModule'
+		component: ActionsComponent,
 	},
 	{
 		path: 'passwords',
 		data: {
 			title: 'Passwords'
 		},
-		loadChildren: routeBase + 'passwords/passwords.module#PasswordsModule'
+		component: PasswordsComponent,
 	},
 	{
 		path: 'support',
 		data: {
 			title: 'Support'
 		},
-		loadChildren: routeBase + 'support/support.module#SupportModule'
+		component: SupportComponent,
 	},
 	{
 		path: '**',

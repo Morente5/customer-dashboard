@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { HomeComponent } from '@bmc-views/home/home.component';
+
 // Lazy Loading routes
 import { Routes, RouterModule } from '@angular/router';
 
@@ -16,7 +18,7 @@ const routes: Routes = [
 		data: {
 			title: 'Home'
 		},
-		loadChildren: routeBase + 'home/home.module#HomeModule'
+		component: HomeComponent
 	},
 	{
 		path: 'login',
