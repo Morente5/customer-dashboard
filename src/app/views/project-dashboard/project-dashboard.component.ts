@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
 import { Project } from '@bmc-core/model/project';
 
+import { keys } from '@bmc-shared/tools/tools.module';
+
 @Component({
 	selector: 'bmc-project',
 	templateUrl: './project-dashboard.component.html',
@@ -47,25 +49,29 @@ export class ProjectDashboardComponent implements OnInit {
 		}
 	}
 
+	public dashboardNames = keys(this.dashboardMenu)
+
 	constructor(
 		private route: ActivatedRoute,
 		public projectService: ProjectService
 	) { }
 
 	ngOnInit() {
-		this.route.params.subscribe((params: Params) => {
-			this.projectID = params['projectID'];
-			this.project$.subscribe(project => this.project = project)
-		});
+
+		const projectID$: Observable<string> = this.route.params
+			.map((params: Params) => params['projectID'])
+
+		projectID$.subscribe(projectID => this.projectID = projectID)
+
+		const project$: Observable<Project> = projectID$
+			.switchMap(projectID => this.project$(projectID))
+
+		project$.subscribe(project => this.project = project)
 
 	}
 
-	get project$(): Observable<Project> {
-		return this.projectService.project$(this.projectID)
-	}
-
-	keys(obj: Object): string[] {
-		return Object.keys(obj)
+	public project$(projectID): Observable<Project> {
+		return this.projectService.project$(projectID)
 	}
 
 }

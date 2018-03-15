@@ -30,7 +30,9 @@ export class AdminProjectsComponent implements OnInit {
 			.then(() => {
 				this.notificationsService.success('Se ha creado el proyecto', name)
 			})
-			.catch(error => this.notificationsService.error('Se ha producido un error al crear el proyecto', error.message))
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al crear el proyecto', error.message)
+			})
 	}
 
 	open(content): Promise<any> {

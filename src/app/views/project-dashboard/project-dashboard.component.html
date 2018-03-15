@@ -1,5 +1,5 @@
 <router-outlet>
-	<ng-container *ngFor="let item of keys(dashboardMenu)">
+	<ng-container *ngFor="let item of dashboardNames">
 		<nb-card class="dashboard-card {{item}}" *ngIf="project?.sections && project?.sections[item]">
 			<a [routerLink]="item">
 				<div class="icon-container">

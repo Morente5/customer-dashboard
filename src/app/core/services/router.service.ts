@@ -57,13 +57,7 @@ export class RouterService {
 	public get routerProject$(): Observable<Project> {
 		return this.router.events.pipe(
 			filter(event => event instanceof NavigationEnd),
-			map(() => this.activatedRoute),
-			// map(route => {
-			// 	while (route.firstChild) {
-			// 		route = route.firstChild
-			// 	}
-			// 	return route
-			// }),
+			map(() => this.activatedRoute.firstChild),
 			filter(route => route.outlet === 'primary'),
 			switchMap(route => route.params),
 			map(params => params['projectID']),
@@ -85,7 +79,6 @@ export class RouterService {
 		return this.router.events.pipe(
 			filter(event => event instanceof NavigationEnd),
 			map(() => this.activatedRoute.root),
-			tap(p => console.log(p)),
 			map(route => {
 				while (route.firstChild) {
 					route = route.firstChild

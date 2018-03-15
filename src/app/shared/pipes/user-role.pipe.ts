@@ -1,5 +1,5 @@
 // import { Pipe, PipeTransform } from '@angular/core';
-// import { Roles } from '@bmc-shared/model/user';
+// import { Roles } from '@bmc-core/model/user';
 
 // @Pipe({ name: 'userRoles' })
 // export class RolesPipe implements PipeTransform {
