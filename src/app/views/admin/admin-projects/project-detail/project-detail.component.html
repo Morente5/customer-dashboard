@@ -78,10 +78,27 @@
 						>{{sectionName | sectionNameP}}</nb-checkbox>
 					</div>
 					<button
-						[disabled]="sectionsForm.pristine"
+						[disabled]="sectionsForm.pristine || sectionsAreEquivalent(project.sections)"
 						class="btn btn-primary btn-tn"
 						type="submit"
 						(click)="setSections()"
+						i18n
+					>Set</button>
+				</form>
+			</div>
+
+			<div class="header d-flex flex-wrap align-items-center">
+				<h5 i18n>User assigned</h5>
+				<form #userAssignedForm="ngForm" class="detail input-group input-group-sm ml-auto text-right">
+					<select name="userAssigned" class="form-control" [(ngModel)]="projectData.userAssigned" #userAssigned="ngModel">
+						<option *ngFor="let user of adminUsersService.users" [value]="user.id">{{user.displayName}}</option>
+					</select>
+
+					<button
+						[disabled]="userAssigned.pristine || projectData.userAssigned === project.userAssigned"
+						class="btn btn-primary btn-tn"
+						type="submit"
+						(click)="setUserAssigned()"
 						i18n
 					>Set</button>
 				</form>

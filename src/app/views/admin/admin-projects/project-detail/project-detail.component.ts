@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AdminProjectsService } from '@bmc-views/admin/services/projects/admin-projects.service';
+import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.service';
 
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 // import { RolesPipe } from '@bmc-shared/pipes/project-role.pipe';
@@ -36,6 +37,7 @@ export class ProjectDetailComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private adminProjectsService: AdminProjectsService,
+		public adminUsersService: AdminUsersService,
 		private modalService: NgbModal,
 		private notificationsService: NotificationsService
 	) { }
@@ -50,7 +52,7 @@ export class ProjectDetailComponent implements OnInit {
 			map(project => {
 				const data = project.payload.data() as Project
 				const id = project.payload.id
-				return new Project({ id, ...data })
+				return new Project({id, ...data})
 			})
 		)
 
@@ -67,14 +69,55 @@ export class ProjectDetailComponent implements OnInit {
 
 	setName(): Promise<any> {
 		return this.adminProjectsService.setName(this.projectData.id, this.projectData.name)
-			.then(() => this.notificationsService.success('Se ha modificado el nombre correctamente', this.projectData.name))
-			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el nombre', error))
+			.then(() => {
+				this.notificationsService.success('Se ha modificado el nombre correctamente', this.projectData.name)
+			})
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al modificar el nombre', error)
+			})
+	}
+
+	sectionsAreEquivalent(sections) {
+
+		const a = this.projectData.sections
+		const b = sections
+
+		const aProps = Object.getOwnPropertyNames(a);
+		const bProps = Object.getOwnPropertyNames(b);
+
+		if (aProps.length !== bProps.length) {
+			return false;
+		}
+
+		for (let i = 0; i < aProps.length; i++) {
+			const propName = aProps[i];
+
+			if (a[propName] !== b[propName]) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	setSections(): Promise<any> {
 		return this.adminProjectsService.setSections(this.projectData.id, this.projectData.sections)
-			.then(() => this.notificationsService.success('Se han modificado las secciones del proyecto'))
-			.catch(error => this.notificationsService.error('Se ha producido un error al modificar las secciones', error))
+			.then(() => {
+				this.notificationsService.success('Se han modificado las secciones del proyecto')
+			})
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al modificar las secciones', error)
+			})
+	}
+
+	setUserAssigned(): Promise<any> {
+		return this.adminProjectsService.setUserAssigned(this.projectData.id, this.projectData.userAssigned)
+			.then(() => {
+				this.notificationsService.success('Se ha modificado el usuario asignado al proyecto')
+			})
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al modificar el usuario asignado al proyecto', error)
+			})
 	}
 
 	deleteProject(): Promise<any> {
@@ -84,7 +127,9 @@ export class ProjectDetailComponent implements OnInit {
 				this.notificationsService.success('Se ha borrado el proyecto', name)
 				this.router.navigate(['admin', 'projects'])
 			})
-			.catch(error => this.notificationsService.error('Se ha producido un error al borrar el proyect', name))
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al borrar el proyect', name)
+			})
 	}
 
 	open(content): Promise<any> {
