@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs/Observable';
 
 import { slugify } from '@bmc-shared/tools/tools.module';
-import { Project } from '@bmc-shared/model/project';
+import { Project } from '@bmc-core/model/project';
 
 @Injectable()
 export class AdminProjectsService {
 
-	private projectsCollection: AngularFirestoreCollection<Project>;
-	private projectsCollection$: Observable<DocumentChangeAction[]>;
 	public projects$: Observable<Project[]>;
 	public projects: Project[]
 
@@ -21,13 +18,13 @@ export class AdminProjectsService {
 		private afs: AngularFirestore,
 		private router: Router
 	) {
-		this.projectsCollection = afs.collection<Project>('projects');
-		this.projectsCollection$ = this.projectsCollection.snapshotChanges()
-		this.projects$ = this.projectsCollection$.map(projects => {
+
+		const projectsCollection$ = afs.collection<Project>('projects').snapshotChanges()
+		this.projects$ = projectsCollection$.map(projects => {
 			return projects.map(u => {
 				const data = u.payload.doc.data() as Project
 				const id = u.payload.doc.id
-				return new Project({id, ...data})
+				return new Project({ id, ...data })
 			})
 		})
 
@@ -73,6 +70,14 @@ export class AdminProjectsService {
 		// Save sections on Firestore (DB)
 		return this.afs.doc(`projects/${projectID}`).set(
 			{ sections: sections },
+			{ merge: true }
+		)
+	}
+
+	public setUserAssigned(projectID: string, userID: string): Promise<any> {
+		// Save user assigned on Firestore (DB)
+		return this.afs.doc(`projects/${projectID}`).set(
+			{ userAssigned: userID },
 			{ merge: true }
 		)
 	}

@@ -20,6 +20,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { PushNotificationsModule } from 'ng-push';
 
+
+import { AuthService } from '@bmc-core/services/auth.service';
+import { RouterService } from '@bmc-core/services/router.service';
+import { WindowService } from '@bmc-core/services/window.service';
+import { TitleService } from '@bmc-core/services/title.service';
+
 import {
 	NbSidebarService,
 	NbMenuService,
@@ -71,6 +77,11 @@ export class CoreModule {
 		return {
 			ngModule: CoreModule,
 			providers: [
+				AuthService,
+				WindowService,
+				RouterService,
+				TitleService,
+
 				NbSidebarService,
 				NbMenuService,
 				NbMediaBreakpointsService,

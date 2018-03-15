@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Project } from '@bmc-shared/model/project';
-import { RouterService } from '@bmc-shared/services/router.service';
+import { Project } from '@bmc-core/model/project';
+import { RouterService } from '@bmc-core/services/router.service';
 
 @Component({
 	selector: 'bmc-sidebar-project',

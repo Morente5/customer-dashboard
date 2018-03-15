@@ -6,7 +6,7 @@ import { Router } from '@angular/router'
 
 import { SimpleNotificationsComponent, NotificationsService } from 'angular2-notifications';
 
-import { AuthService } from '@bmc-shared/services/auth.service'
+import { AuthService } from '@bmc-core/services/auth.service'
 
 @Component({
 	selector: 'bmc-root',

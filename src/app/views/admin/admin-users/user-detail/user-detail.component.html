@@ -156,7 +156,7 @@
 			>
 				<h5 i18n>Projects</h5>
 				<form #projectsForm="ngForm" class="detail font-w-light ml-auto text-right">
-					<div *ngFor="let project of (projectsService.projects$ | async)">
+					<div *ngFor="let project of (authService.currentUserProjects$ | async)">
 
 						<nb-checkbox
 							class="right"
@@ -178,7 +178,7 @@
 
 	<nb-card>
 		<div class="d-flex align-items-center flex-row m-2">
-			<button [disabled]="!user.isMaster" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)">
+			<button [disabled]="!userData.isMaster" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)">
 				<i class="nb-trash"></i>
 			</button>
 			<div class="p-2" i18n>Delete User</div>

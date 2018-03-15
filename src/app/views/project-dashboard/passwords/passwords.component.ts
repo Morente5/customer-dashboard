@@ -5,7 +5,7 @@ import { ProjectService } from '@bmc-views/project-dashboard/services/project.se
 
 import { Observable } from 'rxjs/Observable';
 
-import { PasswordGroup, PasswordField } from '@bmc-shared/model/passwords';
+import { PasswordGroup, PasswordField } from '@bmc-core/model/passwords';
 import { NotificationsService } from 'angular2-notifications';
 
 @Component({

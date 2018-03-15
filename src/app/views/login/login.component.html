@@ -1,7 +1,7 @@
 <form
 	class="login-form"
 	#loginForm="ngForm"
-	(ngSubmit)="onSubmit()"
+	(ngSubmit)="signIn()"
 >
 <nb-card class="form-container">
 
@@ -52,7 +52,6 @@
 				[disabled]="loginForm.invalid"
 			/>
 
-			<!-- <button class="btn btn-block btn-hero-success" type="button" (click)="loginWithGoogle()">LOGIN CON GOOGLE</button> -->
 		</nb-card-body>
 	</nb-card>
 </form>

@@ -4,7 +4,7 @@ import { Router } from '@angular/router'
 
 import { LocalDataSource } from 'ng2-smart-table';
 
-import { User } from '@bmc-shared/model/user';
+import { User } from '@bmc-core/model/user';
 import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.service';
 
 

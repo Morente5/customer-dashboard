@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { AuthService } from '@bmc-shared/services/auth.service';
 import { NgForm } from '@angular/forms';
+
+import { NotificationsService } from 'angular2-notifications';
+
+import { AuthService } from '@bmc-core/services/auth.service';
 
 @Component({
 	selector: 'bmc-login',
@@ -11,12 +13,13 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-	loginFormData = { email: undefined, password: undefined, rememberMe: false}
+	loginFormData = { email: undefined, password: undefined, rememberMe: false }
 	loginForm: NgForm
 
 	constructor(
 		public authService: AuthService,
-		private router: Router
+		private router: Router,
+		private notificationsService: NotificationsService,
 	) {
 
 	}
@@ -24,13 +27,11 @@ export class LoginComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	public loginWithGoogle(): void {
-		this.authService.loginWithGoogle()
-	}
-
-	public onSubmit() {
-		console.log(this.loginFormData)
-		this.authService.login(this.loginFormData.email, this.loginFormData.password, this.loginFormData.rememberMe)
+	public signIn(): Promise<any> {
+		return this.authService.signIn(this.loginFormData.email, this.loginFormData.password, this.loginFormData.rememberMe)
+			.catch(error => {
+				this.notificationsService.error('Sorry, We Couldn\'t Log You In', error.message)
+			})
 	}
 
 }

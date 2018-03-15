@@ -8,13 +8,14 @@ import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.s
 
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 // import { RolesPipe } from '@bmc-shared/pipes/user-role.pipe';
-import { User } from '@bmc-shared/model/user';
+import { User } from '@bmc-core/model/user';
 
 import { Observable } from 'rxjs/Observable';
 import { switchMap, map } from 'rxjs/operators';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsService } from 'angular2-notifications';
+import { AuthService } from '@bmc-core/services/auth.service';
 
 @Component({
 	selector: 'bmc-user-detail',
@@ -31,6 +32,7 @@ export class UserDetailComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
+		private authService: AuthService,
 		private adminUsersService: AdminUsersService,
 		private modalService: NgbModal,
 		private notificationsService: NotificationsService
@@ -56,21 +58,33 @@ export class UserDetailComponent implements OnInit {
 
 	setName(): Promise<any> {
 		return this.adminUsersService.setName(this.userData.id, this.userData.displayName)
-			.then(() => this.notificationsService.success('Se ha modificado el nombre correctamente', this.userData.displayName))
-			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el nombre', error))
+			.then(() => {
+				this.notificationsService.success('Se ha modificado el nombre correctamente', this.userData.displayName)
+			})
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al modificar el nombre', error)
+			})
 	}
 	setEmail() {
 		return
 	}
 	setAccess(): Promise<any> {
 		return this.adminUsersService.setAccess(this.userData.id, this.userData.access)
-			.then(() => this.notificationsService.success('Se ha modificado el acceso del usuario', this.userData.displayName))
-			.catch(error => this.notificationsService.error('Se ha producido un error al modificar el acceso', error))
+			.then(() => {
+				this.notificationsService.success('Se ha modificado el acceso del usuario', this.userData.displayName)
+			})
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al modificar el acceso', error)
+			})
 	}
 	setProjects(): Promise<any> {
 		return this.adminUsersService.setProjects(this.userData.id, this.userData.projects)
-			.then(() => this.notificationsService.success('Se han modificado los proyectos del usuario'))
-			.catch(error => this.notificationsService.error('Se ha producido un error al modificar los proyectos', error))
+			.then(() => {
+				this.notificationsService.success('Se han modificado los proyectos del usuario')}
+			)
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al modificar los proyectos', error)}
+			)
 	}
 
 	deleteUser(): Promise<any> {
@@ -80,7 +94,9 @@ export class UserDetailComponent implements OnInit {
 				this.notificationsService.success('Se ha borrado el usuario', email)
 				this.router.navigate(['admin', 'users'])
 			})
-			.catch(error => this.notificationsService.error('Se ha producido un error al borrar el usuario', email))
+			.catch(error => {
+				this.notificationsService.error('Se ha producido un error al borrar el usuario', email)
+			})
 	}
 
 	open(content): Promise<any> {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '@bmc-shared/services/auth.service';
+import { AuthService } from '@bmc-core/services/auth.service';
 
 // import { RolesPipe } from '@bmc-shared/pipes/user-role.pipe';
 
@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.displayName = this.authService.user.displayName.slice()
+		this.displayName = this.authService.currentUser.displayName.slice()
 	}
 
 	setName() {

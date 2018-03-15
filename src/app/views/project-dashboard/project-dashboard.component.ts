@@ -5,7 +5,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
-import { Project } from '@bmc-app/shared/model/project';
+import { Project } from '@bmc-core/model/project';
 
 @Component({
 	selector: 'bmc-project',

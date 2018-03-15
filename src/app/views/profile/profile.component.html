@@ -5,8 +5,8 @@
 		<div class="photo-upload">
 			<nb-user
 				class="profile-user"
-				[picture]="authService.user?.photoURL"
-				[name]="authService.user?.displayName"
+				[picture]="authService.currentUser?.photoURL"
+				[name]="authService.currentUser?.displayName"
 				[size]="'xlarge'"
 				onlyPicture
 			></nb-user>
@@ -21,7 +21,7 @@
 
 		</div>
 		<div class="h6 ml-auto center user-role">
-				{{authService.user?.access}}
+				{{authService.currentUser?.access}}
 		</div>
 	</nb-card-header>
 
@@ -34,7 +34,7 @@
 				<button [disabled]="name.invalid || name.pristine" class="btn btn-primary btn-tn" type="submit" (click)="setName()" i18n>Set</button>
 			</form>
 			<div class="detail font-w-light ml-auto">
-				{{authService.user?.displayName}}
+				{{authService.currentUser?.displayName}}
 			</div>
 
 
@@ -42,14 +42,14 @@
 		<div class="header d-flex flex-wrap align-items-center">
 			<h5 i18n>Email</h5>
 			<div class="detail font-w-light ml-auto">
-				{{authService.user?.email}}
+				{{authService.currentUser?.email}}
 			</div>
 		</div>
 		<div class="header d-flex flex-wrap">
 			<h5 i18n>Projects</h5>
 			<div class="detail font-w-light ml-auto text-right">
 				<!-- <div *ngFor="let project of authService.user?.projects"> -->
-				<div *ngFor="let project of projectsService.projects$ | async">
+				<div *ngFor="let project of authService.currentUserProjects">
 					{{project.name}}
 				</div>
 			</div>

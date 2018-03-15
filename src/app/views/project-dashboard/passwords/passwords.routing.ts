@@ -4,7 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { PasswordsComponent } from './passwords.component';
 
 const routes: Routes = [
-	{ path: '', component: PasswordsComponent }
+	{
+		path: '',
+		component: PasswordsComponent
+	}
 ];
 
 @NgModule({

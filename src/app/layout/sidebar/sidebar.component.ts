@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { RouterService } from '@bmc-shared/services/router.service';
-import { WindowService } from '@bmc-shared/services/window.service';
+import { RouterService } from '@bmc-core/services/router.service';
+import { WindowService } from '@bmc-core/services/window.service';
 
-import { AuthService } from '@bmc-shared/services/auth.service';
+import { AuthService } from '@bmc-core/services/auth.service';
 
 import { NbMenuItem } from '@nebular/theme';
 

@@ -7,16 +7,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import * as firebase from 'firebase/app';
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
-import { User } from '@bmc-shared/model/user'
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import { User } from '@bmc-core/model/user'
 
 @Injectable()
 export class AdminUsersService {
-	private usersCollection: AngularFirestoreCollection<User>;
-	private usersCollection$: Observable<DocumentChangeAction[]>;
+
 	public users$: Observable<User[]>;
 	public users: User[]
 	constructor(
@@ -24,13 +22,13 @@ export class AdminUsersService {
 		private afs: AngularFirestore,
 		private router: Router
 	) {
-		this.usersCollection = afs.collection<User>('users');
-		this.usersCollection$ = this.usersCollection.snapshotChanges()
-		this.users$ = this.usersCollection$.map(user => {
+
+		const usersCollection$ = this.afs.collection<User>('users').snapshotChanges()
+		this.users$ = usersCollection$.map(user => {
 			return user.map(u => {
 				const data = u.payload.doc.data() as User
 				const id = u.payload.doc.id
-				return new User({id, ...data})
+				return new User({ id, ...data })
 			})
 		})
 
@@ -48,9 +46,14 @@ export class AdminUsersService {
 			.then(firebaseUser => {
 				const uid = firebaseUser.uid
 				createUserFirebaseApp.auth().currentUser.sendEmailVerification()
+				this.router.navigate(['admin', 'users', uid])
 				createUserFirebaseApp.auth().signOut()
 				createUserFirebaseApp.delete()
-				this.router.navigate(['admin', 'users', uid])
+			})
+			.catch(error => {
+				createUserFirebaseApp.auth().signOut()
+				createUserFirebaseApp.delete()
+				throw new Error(error)
 			})
 	}
 

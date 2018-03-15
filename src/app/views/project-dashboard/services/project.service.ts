@@ -8,12 +8,13 @@ import { DocumentSnapshot, DocumentData } from '@firebase/firestore-types';
 import { Observable } from 'rxjs/Observable';
 import { map, distinctUntilChanged, switchMap } from 'rxjs/operators'
 
-import { WindowService } from '@bmc-shared/services/window.service';
-import { Project } from '@bmc-shared/model/project';
-import { PasswordGroup } from '@bmc-shared/model/passwords';
+import { WindowService } from '@bmc-core/services/window.service';
+import { Project } from '@bmc-core/model/project';
+import { PasswordGroup } from '@bmc-core/model/passwords';
 
 @Injectable()
 export class ProjectService {
+
 	constructor(
 		private afs: AngularFirestore,
 		private sanitizer: DomSanitizer,
@@ -43,7 +44,7 @@ export class ProjectService {
 				}
 			})
 		}
-		return Observable.of(undefined)
+		return Observable.of(null)
 	}
 
 	private urlResponsive$(urlObj$: Observable<DocumentData>): Observable<SafeResourceUrl> {
@@ -86,7 +87,7 @@ export class ProjectService {
 			})
 			return this.urlResponsive$(urlObj$)
 		}
-		return Observable.of(undefined)
+		return Observable.of(null)
 	}
 
 	public analyticsUrl$(projectID: string): Observable<SafeResourceUrl> {
@@ -97,7 +98,7 @@ export class ProjectService {
 			})
 			return this.urlResponsive$(urlObj$)
 		}
-		return Observable.of(undefined)
+		return Observable.of(null)
 	}
 
 	public passwords$(projectID: string): Observable<PasswordGroup[]> {

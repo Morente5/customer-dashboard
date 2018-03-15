@@ -20,7 +20,7 @@
 		>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, repellat rem aliquam ea autem nihil dolor blanditiis dignissimos consectetur accusantium quasi laudantium. Libero repellendus sapiente pariatur velit quam possimus exercitationem obcaecati delectus blanditiis non necessitatibus, dolor est quae architecto rerum beatae consequuntur dolores asperiores quibusdam reiciendis iusto. Sunt aliquid quasi voluptatibus similique impedit incidunt neque aperiam numquam, nisi excepturi atque.</p>
 
 		<ng-container
-			*ngIf="authService.user$ | async as user; then homeTemplate; else loginTemplate"
+			*ngIf="authService.currentUser$ | async as user; then homeTemplate; else loginTemplate"
 		></ng-container>
 
 		<ng-template #loginTemplate>
@@ -37,7 +37,7 @@
 				i18n
 			>Welcome</h2>
 			<p
-				class="text-center h5">{{authService.user.displayName}}</p>
+				class="text-center h5">{{authService.currentUser.displayName}}</p>
 		</ng-template>
 
 	</nb-card-body>
