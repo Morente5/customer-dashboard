@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 // Lazy Loading routes
 import { Routes, RouterModule } from '@angular/router';
 
-// Router Auth Guard
-import { AuthGuard, LoginGuard, AdminGuard, DashboardGuard } from '@bmc-shared/guards/auth-guard.service';
+// Router Guards
+import { AuthGuard } from '@bmc-core/guards/auth-guard.service';
+import { AdminGuard } from '@bmc-core/guards/admin-guard.service';
+import { ProjectGuard } from '@bmc-core/guards/project-guard.service';
+import { LoginGuard } from '@bmc-core/guards/login-guard.service';
 
 const routeBase = './views/';
 const routes: Routes = [
@@ -33,7 +36,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'admin',
-		canActivate: [AdminGuard],
+		canActivate: [AuthGuard, AdminGuard],
 		data: {
 			title: 'Admin Panel'
 		},
@@ -41,7 +44,7 @@ const routes: Routes = [
 	},
 	{
 		path: ':projectID',
-		canActivate: [DashboardGuard],
+		canActivate: [AuthGuard, ProjectGuard],
 		data: {
 			title: 'Project Dashboard'
 		},
