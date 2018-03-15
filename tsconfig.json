@@ -17,7 +17,7 @@
 		],
 		"baseUrl": "src",
 		"paths": {
-			"@bmc-app/*": ["app/*"],
+			"@bmc-core/*": ["app/core/*"],
 			"@bmc-layout/*": ["app/layout/*"],
 			"@bmc-shared/*": ["app/shared/*"],
 			"@bmc-views/*": ["app/views/*"],
