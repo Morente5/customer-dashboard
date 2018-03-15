@@ -26,10 +26,10 @@ import { RouterService } from '@bmc-core/services/router.service';
 import { WindowService } from '@bmc-core/services/window.service';
 import { TitleService } from '@bmc-core/services/title.service';
 
-import { AuthGuard } from '@bmc-core/guards/auth-guard.service';
-import { AdminGuard } from '@bmc-core/guards/admin-guard.service';
-import { ProjectGuard } from '@bmc-core/guards/project-guard.service';
-import { LoginGuard } from '@bmc-core/guards/login-guard.service';
+import { AuthGuard } from '@bmc-core/guards/auth.guard';
+import { AdminGuard } from '@bmc-core/guards/admin.guard';
+import { ProjectGuard } from '@bmc-core/guards/project.guard';
+import { LoginGuard } from '@bmc-core/guards/login.guard';
 
 import {
 	NbSidebarService,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
-import { take, map, tap } from 'rxjs/operators'
+import { take, map, tap, switchMap } from 'rxjs/operators'
 
 import { NotificationsService } from 'angular2-notifications';
 
@@ -19,14 +19,15 @@ export class ProjectGuard implements CanActivate {
 	canActivate(next: ActivatedRouteSnapshot): Observable<boolean> {
 		return this.authService.currentUser$.pipe(
 			take(1),
-			map(user => {
+			switchMap(user => {
 				if (user.isAdmin) {
-					return this.authService.currentUserProjects.findIndex(project => project.id === next.params.projectID) !== -1
+					return this.authService.currentUserProjects$
+						.map(projects => projects.findIndex(project => project.id === next.params.projectID) !== -1)
 				}
 				if (user.verified) {
-					return (user.projects.hasOwnProperty(next.params.projectID) && user.projects[next.params.projectID])
+					return Observable.of(user.projects.hasOwnProperty(next.params.projectID) && user.projects[next.params.projectID])
 				}
-				return false
+				return Observable.of(false)
 			}),
 			tap(allowed => {
 				if (!allowed) {
