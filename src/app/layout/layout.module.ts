@@ -1,3 +1,5 @@
+import { NgModule } from '@angular/core';
+
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +16,6 @@ import { LayoutComponent } from './layout.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidebarProjectComponent } from './sidebar/sidebar-project/sidebar-project.component';
-import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 
 // import { SimpleNotificationsComponent, SimpleNotificationsModule } from 'angular2-notifications';
@@ -37,7 +38,6 @@ import { FooterComponent } from './footer/footer.component';
 		LayoutComponent,
 
 		TopbarComponent,
-		MainComponent,
 		SidebarComponent,
 		SidebarProjectComponent,
 		FooterComponent,

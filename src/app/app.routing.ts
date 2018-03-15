@@ -40,13 +40,6 @@ const routes: Routes = [
 		loadChildren: routeBase + 'admin/admin.module#AdminModule'
 	},
 	{
-		path: 'access-denied',
-		data: {
-			title: 'Access Denied'
-		},
-		loadChildren: routeBase + 'access-denied/access-denied.module#AccessDeniedModule'
-	},
-	{
 		path: ':projectID',
 		canActivate: [DashboardGuard],
 		data: {
