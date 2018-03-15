@@ -45,7 +45,7 @@ const routes: Routes = [
 		loadChildren: routeBase + 'admin/admin.module#AdminModule'
 	},
 	{
-		path: ':projectID',
+		path: 'project/:projectID',
 		canActivate: [AuthGuard, ProjectGuard],
 		data: {
 			title: 'Project Dashboard'

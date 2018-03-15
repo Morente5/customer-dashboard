@@ -1,6 +1,6 @@
 <ng-template [ngIf]="project">
 <a
-	[routerLink]="project.id"
+	[routerLink]="['project', project.id]"
 	class="btn btn-outline-success btn-block"
 	[class.active]="project.id === routerService.activeProject?.id"
 >
