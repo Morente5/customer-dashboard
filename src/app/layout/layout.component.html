@@ -1,28 +1,26 @@
 <nb-layout class="window-mode with-scroll">
+
 	<nb-layout-header
-		*ngIf="authService.user$ | async as user"
 		fixed
 		class="fixed"
-		>
+		*ngIf="authService.currentUser as user"
+	>
 		<bmc-topbar
 			[sidebarState]="sidebarState"
 		></bmc-topbar>
 	</nb-layout-header>
 
 	<nb-sidebar
-		*ngIf="(authService.user$ | async) && (projectsService.projects$ | async)?.length && projectsService.projects$ | async as projects"
+	 	*ngIf="(authService.currentUserProjects$ | async) && authService.currentUserProjects.length"
 		left
 		responsive
 		class="menu-sidebar"
 	>
-
 		<bmc-sidebar-project
-			*ngFor="let project of projects"
+			*ngFor="let project of authService.currentUserProjects"
 			[project]="project"
 			[opened]="openedSidebar"
-			>
-		</bmc-sidebar-project>
-
+		></bmc-sidebar-project>
 	</nb-sidebar>
 
 	<nb-layout-column>
@@ -32,4 +30,5 @@
 	<nb-layout-footer>
 		<bmc-footer></bmc-footer>
 	</nb-layout-footer>
+
 </nb-layout>

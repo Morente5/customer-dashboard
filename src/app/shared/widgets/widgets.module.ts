@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import {
+	NbMenuModule,
+	NbLayoutModule,
+	NbSidebarModule,
 	NbRouteTabsetModule,
 	NbTabsetModule,
 	NbCardModule,
@@ -12,12 +16,17 @@ import {
 } from '@nebular/theme';
 
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { FrameComponent } from './frame/frame.component';
+
+import { FrameComponent } from '@bmc-shared/widgets/frame/frame.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
+		RouterModule,
 
+		NbMenuModule,
+		NbLayoutModule,
+		NbSidebarModule,
 		NbRouteTabsetModule,
 		NbTabsetModule,
 		NbCardModule,
@@ -32,6 +41,9 @@ import { FrameComponent } from './frame/frame.component';
 		FrameComponent
 	],
 	exports: [
+		NbMenuModule,
+		NbLayoutModule,
+		NbSidebarModule,
 		NbRouteTabsetModule,
 		NbTabsetModule,
 		NbCardModule,

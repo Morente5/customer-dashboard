@@ -2,7 +2,7 @@
 <a
 	[routerLink]="project.id"
 	class="btn btn-outline-success btn-block"
-	[class.active]="project.id === routerService.routerProjectID"
+	[class.active]="project.id === routerService.activeProject?.id"
 >
 	<div
 		*ngIf="project.imgURL"

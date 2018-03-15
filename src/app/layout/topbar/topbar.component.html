@@ -1,6 +1,6 @@
 <nb-actions class="header-container left" size="medium">
 	<nb-action
-		*ngIf="projectsService.projects$ | async"
+		*ngIf="(authService.currentUserProjects$ | async)?.length"
 		class="control-item"
 		(click)="toggleSidebar()"
 		icon="nb-menu"
@@ -13,7 +13,7 @@
 	<nb-action
 		class="control-item"
 	>
-	<strong>{{title}}</strong>
+	<strong>{{renderTitle}}</strong>
 	</nb-action>
 
 </nb-actions>
@@ -23,11 +23,10 @@
 	<nb-action class="control-item" icon="nb-email"></nb-action>
 	<nb-action>
 		<nb-user
-			*ngIf="authService.user$ | async as user"
+			*ngIf="authService.currentUser as user"
 			[picture]="user.photoURL"
 			[name]="user.displayName"
 			[nbContextMenu]="user.isAdmin ? adminMenu : userMenu"
-			(menuClick)="logoutClick()"
 		>
 		</nb-user>
 	</nb-action>
