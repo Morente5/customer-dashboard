@@ -18,6 +18,8 @@ import {
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { FrameComponent } from '@bmc-shared/widgets/frame/frame.component';
+import { BackButtonComponent } from '@bmc-shared/widgets/back-button/back-button.component';
+import { LoaderComponent } from '@bmc-shared/widgets/loader/loader.component';
 
 @NgModule({
 	imports: [
@@ -38,7 +40,9 @@ import { FrameComponent } from '@bmc-shared/widgets/frame/frame.component';
 		Ng2SmartTableModule
 	],
 	declarations: [
-		FrameComponent
+		FrameComponent,
+		BackButtonComponent,
+		LoaderComponent
 	],
 	exports: [
 		NbMenuModule,
@@ -52,7 +56,11 @@ import { FrameComponent } from '@bmc-shared/widgets/frame/frame.component';
 		NbCheckboxModule,
 		NbContextMenuModule,
 
-		Ng2SmartTableModule
+		Ng2SmartTableModule,
+
+		FrameComponent,
+		BackButtonComponent,
+		LoaderComponent
 	]
 })
 export class WidgetsModule { }
