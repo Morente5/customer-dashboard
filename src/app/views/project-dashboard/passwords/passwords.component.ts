@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { PasswordGroup, PasswordField } from '@bmc-core/model/passwords';
 import { NotificationsService } from 'angular2-notifications';
+import { Project } from '@bmc-core/model/project';
 
 @Component({
 	selector: 'bmc-passwords',
@@ -15,32 +16,17 @@ import { NotificationsService } from 'angular2-notifications';
 })
 export class PasswordsComponent implements OnInit {
 
-	private projectID: string
+	public project: Project
 	public passwords: PasswordGroup[]
 
 	constructor(
 		private route: ActivatedRoute,
-		private projectService: ProjectService,
 		private notificationsService: NotificationsService
 	) { }
 
 	ngOnInit() {
-		this.route.parent.params.subscribe((params: Params) => {
-			this.projectID = params['projectID'];
-			this.passwords$.subscribe(passwords => {
-				this.passwords = passwords.map(group => {
-					if (group.groupFields) {
-						group.groupFields = group.groupFields.map(field => new PasswordField(field))
-					}
-					return group
-				})
-			})
-		});
-
-	}
-
-	private get passwords$(): Observable<PasswordGroup[]> {
-		return this.projectService.passwords$(this.projectID)
+		this.project = this.route.snapshot.data.project
+		this.passwords = this.route.snapshot.data.passwords
 	}
 
 	public hasCopied(fieldName): void {

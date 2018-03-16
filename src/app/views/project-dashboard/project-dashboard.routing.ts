@@ -10,6 +10,7 @@ import { SupportComponent } from './support/support.component';
 
 import { ProjectResolver } from '@bmc-views/project-dashboard/resolvers/project.resolver';
 import { UserAssignedResolver } from '@bmc-views/project-dashboard/resolvers/user-asigned.resolver';
+import { PasswordsResolver } from '@bmc-views/project-dashboard/resolvers/passwords.resolver';
 
 const routes: Routes = [
 	{
@@ -46,6 +47,10 @@ const routes: Routes = [
 			title: 'Passwords'
 		},
 		component: PasswordsComponent,
+		resolve: {
+			project: ProjectResolver,
+			passwords: PasswordsResolver
+		}
 	},
 	{
 		path: 'support',
@@ -70,7 +75,8 @@ const routes: Routes = [
 	exports: [RouterModule],
 	providers: [
 		ProjectResolver,
-		UserAssignedResolver
+		UserAssignedResolver,
+		PasswordsResolver
 	]
 })
 export class ProjectDashboardRoutingModule { }
