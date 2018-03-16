@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
+import { map, switchMap } from 'rxjs/operators';
 
 import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
 import { Project } from '@bmc-core/model/project';
@@ -58,19 +59,14 @@ export class ProjectDashboardComponent implements OnInit {
 
 	ngOnInit() {
 
-		const projectID$: Observable<string> = this.route.params
-			.map((params: Params) => params['projectID'])
-
-		projectID$.subscribe(projectID => this.projectID = projectID)
-
-		const project$: Observable<Project> = projectID$
-			.switchMap(projectID => this.project$(projectID))
-
-		project$.subscribe(project => this.project = project)
+		this.route.params.pipe(
+			map((params: Params) => params['projectID']),
+			switchMap(projectID => this.project$(projectID))
+		).subscribe(project => this.project = project)
 
 	}
 
-	public project$(projectID): Observable<Project> {
+	private project$(projectID): Observable<Project> {
 		return this.projectService.project$(projectID)
 	}
 
