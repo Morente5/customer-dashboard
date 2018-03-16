@@ -1,3 +1,5 @@
+<bmc-back-button [route]="['project', project.id]" [title]="project.name"></bmc-back-button>
+
 <nb-card class="full-card-calendar">
 	<ng-container *ngIf="url">
 		<iframe class="full-frame-calendar" frameborder="0" style="border:0" [src]="url"></iframe>
