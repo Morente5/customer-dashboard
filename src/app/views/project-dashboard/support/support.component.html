@@ -1,3 +1,29 @@
-<p>
-	support works!
-</p>
+<bmc-back-button [route]="['project', project.id]" [title]="project.name"></bmc-back-button>
+
+<nb-card>
+	<nb-card-header>
+		<h4 i18n>Person in charge of this project</h4>
+	</nb-card-header>
+	<nb-card-body>
+		<ng-container *ngIf="userAssigned">
+			<nb-actions class="header-container medium right" size="large">
+				<nb-action>
+					<nb-user [picture]="userAssigned.photoURL" [name]="userAssigned.displayName" size="large">
+					</nb-user>
+				</nb-action>
+			</nb-actions>
+			<div class="d-flex align-items-center p-3">
+				<a class="btn btn-primary btn-icon btn-xl" *ngIf="userAssigned?.email" [href]='sendEmail(userAssigned.email)'>
+					<i class="nb-email"></i>
+				</a>
+				<div class="p-2" i18n>Send email: </div>
+				<div class="p-2">{{userAssigned.email}}</div>
+			</div>
+		</ng-container>
+
+		<ng-container *ngIf="!userAssigned">
+			<h5 class="m-auto" i18n>There's no person assigned</h5>
+		</ng-container>
+
+	</nb-card-body>
+</nb-card>

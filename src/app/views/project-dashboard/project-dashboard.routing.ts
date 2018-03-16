@@ -8,6 +8,9 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { PasswordsComponent } from './passwords/passwords.component';
 import { SupportComponent } from './support/support.component';
 
+import { ProjectResolver } from '@bmc-views/project-dashboard/resolvers/project.resolver';
+import { UserAssignedResolver } from '@bmc-views/project-dashboard/resolvers/user-asigned.resolver';
+
 const routes: Routes = [
 	{
 		path: '',
@@ -50,6 +53,10 @@ const routes: Routes = [
 			title: 'Support'
 		},
 		component: SupportComponent,
+		resolve: {
+			project: ProjectResolver,
+			userAssigned: UserAssignedResolver
+		}
 	},
 	{
 		path: '**',
@@ -60,6 +67,10 @@ const routes: Routes = [
 
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
+	providers: [
+		ProjectResolver,
+		UserAssignedResolver
+	]
 })
 export class ProjectDashboardRoutingModule { }
