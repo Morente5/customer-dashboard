@@ -9,6 +9,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 
 import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
 import { UserService } from '@bmc-views/project-dashboard/services/user.service';
+
 import { User } from '@bmc-core/model/user';
 import { PasswordField, PasswordGroup } from '@bmc-core/model/passwords';
 
@@ -22,14 +23,12 @@ export class PasswordsResolver implements Resolve<Observable<PasswordGroup[]>> {
 	resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PasswordGroup[]> {
 
 		return this.passwords$(route.params.projectID).pipe(
-			tap(console.log),
 			map(passwords => passwords.map(group => {
 				if (group.groupFields) {
 					group.groupFields = group.groupFields.map(field => new PasswordField(field))
 				}
 				return group
 			})),
-			tap(console.log),
 			take(1)
 		)
 	}
