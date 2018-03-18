@@ -5,8 +5,10 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
+import { switchMap } from 'rxjs/operators';
 
 import { ProjectService } from './../services/project.service';
+import { Project } from '@bmc-core/model/project';
 
 @Component({
 	selector: 'bmc-analytics',
@@ -16,7 +18,7 @@ import { ProjectService } from './../services/project.service';
 export class AnalyticsComponent implements OnInit {
 
 	url: SafeResourceUrl
-	projectID: string
+	project: Project
 
 	constructor(
 		private route: ActivatedRoute,
@@ -24,14 +26,11 @@ export class AnalyticsComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.route.parent.params.subscribe((params: Params) => {
-			this.projectID = params['projectID'];
-			this.url$.subscribe(url => this.url = url)
-		});
+		this.project = this.route.snapshot.data.project
+
+		this.projectService.analyticsUrl$(this.project.id)
+			.subscribe(url => this.url = url)
 
 	}
 
-	get url$(): Observable<SafeResourceUrl> {
-		return this.projectService.analyticsUrl$(this.projectID)
-	}
 }

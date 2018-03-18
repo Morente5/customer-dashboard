@@ -26,6 +26,9 @@ const routes: Routes = [
 			title: 'Analytics'
 		},
 		component: AnalyticsComponent,
+		resolve: {
+			project: ProjectResolver
+		}
 	},
 	{
 		path: 'ad-words',
@@ -33,6 +36,9 @@ const routes: Routes = [
 			title: 'Adwords'
 		},
 		component: AdWordsComponent,
+		resolve: {
+			project: ProjectResolver
+		}
 	},
 	{
 		path: 'actions',
@@ -40,6 +46,9 @@ const routes: Routes = [
 			title: 'Actions'
 		},
 		component: ActionsComponent,
+		resolve: {
+			project: ProjectResolver
+		}
 	},
 	{
 		path: 'passwords',
