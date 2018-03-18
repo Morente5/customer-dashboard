@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.service';
+import { AdminUsersService } from '@bmc-views/admin/services/admin-users.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsService } from 'angular2-notifications';

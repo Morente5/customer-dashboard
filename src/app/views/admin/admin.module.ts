@@ -10,8 +10,8 @@ import { SharedModule } from '@bmc-shared/shared.module';
 
 import { AdminRoutingModule } from './admin.routing';
 
-import { AdminUsersService } from './services/users/admin-users.service';
-import { AdminProjectsService } from './services/projects/admin-projects.service';
+import { AdminUsersService } from './services/admin-users.service';
+import { AdminProjectsService } from './services/admin-projects.service';
 
 
 import { AdminComponent } from './admin.component';

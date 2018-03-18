@@ -5,8 +5,8 @@ import { NgForm } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AdminProjectsService } from '@bmc-views/admin/services/projects/admin-projects.service';
-import { AdminUsersService } from '@bmc-views/admin/services/users/admin-users.service';
+import { AdminProjectsService } from '@bmc-views/admin/services/admin-projects.service';
+import { AdminUsersService } from '@bmc-views/admin/services/admin-users.service';
 
 import { AngularFirestoreDocument } from 'angularfire2/firestore';
 // import { RolesPipe } from '@bmc-shared/pipes/project-role.pipe';
