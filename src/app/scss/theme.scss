@@ -137,3 +137,7 @@ nb-card .header {
 .completer-input {
 	@extend .form-control
 }
+
+.nb-theme-default nb-layout-header nb-actions nb-action {
+	padding: 0 .5rem
+}
