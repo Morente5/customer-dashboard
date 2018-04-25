@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AngularFirestore } from 'angularfire2/firestore';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { slugify } from '@bmc-shared/tools/tools.module';
 import { Project } from '@bmc-core/model/project';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { take, map, tap, switchMap } from 'rxjs/operators'
 
 import { NotificationsService } from 'angular2-notifications';
@@ -25,7 +25,7 @@ export class ProjectGuard implements CanActivate {
 						.map(projects => projects.findIndex(project => project.id === next.params.projectID) !== -1)
 				}
 				if (user.verified) {
-					return Observable.of(user.projects.hasOwnProperty(next.params.projectID) && user.projects[next.params.projectID])
+					return Observable.of(next.params.projectID in user.projects && user.projects[next.params.projectID])
 				}
 				return Observable.of(false)
 			}),

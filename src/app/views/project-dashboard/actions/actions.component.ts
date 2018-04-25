@@ -4,7 +4,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { ProjectService } from './../services/project.service';

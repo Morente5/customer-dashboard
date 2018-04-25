@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Router, NavigationStart, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { filter, map, tap, mergeMap, switchMap } from 'rxjs/operators';
 
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';

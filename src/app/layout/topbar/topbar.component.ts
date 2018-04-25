@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 
 import { NbSidebarService, NbMenuItem, NbMenuService } from '@nebular/theme';

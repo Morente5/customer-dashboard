@@ -5,7 +5,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { DocumentSnapshot, DocumentData } from '@firebase/firestore-types';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { map, distinctUntilChanged, switchMap } from 'rxjs/operators'
 
 import { WindowService } from '@bmc-core/services/window.service';
@@ -37,7 +37,7 @@ export class ProjectService {
 		if (projectID) {
 			const path = `projects/${projectID}/actions/data`
 			return this.afs.doc(path).snapshotChanges().map(actionsDocument => {
-				if (actionsDocument.payload.exists && actionsDocument.payload.data().hasOwnProperty('url')) {
+				if (actionsDocument.payload.exists && 'url' in actionsDocument.payload.data()) {
 					return this.sanitize(actionsDocument.payload.data().url)
 				} else {
 					return undefined
@@ -56,9 +56,9 @@ export class ProjectService {
 			switchMap(res => {
 				if (res === 'mobile') {
 					return urlObj$.map(frame => {
-						if (frame && frame.hasOwnProperty('mobileUrl')) {
+						if (frame && 'mobileUrl' in frame) {
 							return this.sanitize(frame.mobileUrl)
-						} else if (frame && frame.hasOwnProperty('desktopUrl')) {
+						} else if (frame && 'desktopUrl' in frame) {
 							return this.sanitize(frame.desktopUrl)
 						} else {
 							return undefined
@@ -66,9 +66,9 @@ export class ProjectService {
 					})
 				} else if (res === 'desktop') {
 					return urlObj$.map(frame => {
-						if (frame && frame.hasOwnProperty('desktopUrl')) {
+						if (frame && 'desktopUrl' in frame) {
 							return this.sanitize(frame.desktopUrl)
-						} else if (frame && frame.hasOwnProperty('mobileUrl')) {
+						} else if (frame && 'mobileUrl' in frame) {
 							return this.sanitize(frame.mobileUrl)
 						} else {
 							return undefined

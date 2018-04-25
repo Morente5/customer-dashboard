@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { take, map, tap } from 'rxjs/operators'
 
 import { NotificationsService } from 'angular2-notifications';

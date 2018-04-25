@@ -12,7 +12,7 @@ import { AngularFirestoreDocument } from 'angularfire2/firestore';
 // import { RolesPipe } from '@bmc-shared/pipes/project-role.pipe';
 import { Project } from '@bmc-core/model/project';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 
 import { SectionPipe } from '@bmc-shared/pipes/section.pipe';

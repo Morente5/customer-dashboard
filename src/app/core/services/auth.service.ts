@@ -2,8 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Observable, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, switchMap, map, tap } from 'rxjs/operators';
 
 import { AngularFireAuth } from 'angularfire2/auth';
