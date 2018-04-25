@@ -21,30 +21,24 @@ export class ProjectDashboardComponent implements OnInit {
 
 	project: Project
 
-	// TODO Get from database. Externalize service.
 	public dashboardMenu = {
 		'analytics': {
-			name: 'Analítica Web',
 			icon: 'nb-bar-chart',
 			color: 'success'
 		},
 		'ad-words': {
-			name: 'Adwords',
 			icon: 'nb-list',
 			color: 'primary'
 		},
 		'actions': {
-			name: 'Acciones',
 			icon: 'nb-compose',
 			color: 'info'
 		},
 		'passwords': {
-			name: 'Contraseñas',
 			icon: 'nb-tables',
 			color: 'danger'
 		},
 		'support': {
-			name: 'Soporte',
 			icon: 'nb-gear',
 			color: 'warning'
 		}

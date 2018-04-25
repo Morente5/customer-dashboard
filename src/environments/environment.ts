@@ -5,6 +5,7 @@
 
 export const environment = {
 	production: false,
+	language: 'en',
 
 	firebaseConfig: {
 		apiKey: 'AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM',
