@@ -3,7 +3,7 @@ import * as admin from 'firebase-admin'
 
 export const removeProject = functions.firestore.document('projects/{projectID}').onDelete(event => {
 
-	const projectID = event.data.id;
+	const projectID = event.data().id;
 
 	// Maybe check Firestore?
 	const sections = ['actions', 'ad-words', 'analytics', 'passwords', 'support']

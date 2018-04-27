@@ -3,8 +3,8 @@ import * as admin from 'firebase-admin'
 
 export const newProject = functions.firestore.document('projects/{projectID}').onCreate(event => {
 
-	const projectID = event.data.id;
-	const project = event.data.data();
+	const projectID = event.get('id');
+	const project = event.data();
 
 	const arrayPromises = [
 		admin.firestore().collection(`projects/${projectID}/actions`).doc('data').set({url: null}),

@@ -1,8 +1,7 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 
-export const newUser = functions.auth.user().onCreate(event => {
-	const user = event.data; // The Firebase user.
+export const newUser = functions.auth.user().onCreate(user => {
 
 	const uid = user.uid;
 	const email = user.email;

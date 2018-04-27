@@ -2,7 +2,7 @@ import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 
 export const addProjectToUser = functions.firestore.document('users/{userID}').onUpdate(event => {
-	const user = event.data;
+	const user = event.before.data();
 
 	const userID = user.id
 	const userProjects = user.data()['projects']
