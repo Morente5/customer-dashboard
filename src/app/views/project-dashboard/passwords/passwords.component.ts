@@ -21,12 +21,25 @@ export class PasswordsComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
-		private notificationsService: NotificationsService
+		private notificationsService: NotificationsService,
+		private projectService: ProjectService
 	) { }
 
 	ngOnInit() {
 		this.project = this.route.snapshot.data.project
-		this.passwords = this.route.snapshot.data.passwords
+		this.passwords$(this.project.id).subscribe(passwords => {
+			this.passwords = passwords.map(group => {
+				if (group.groupFields) {
+					group.groupFields = group.groupFields.map(field => new PasswordField(field))
+				}
+				return group
+			})
+		})
+
+	}
+
+	private passwords$(projectID): Observable<PasswordGroup[]> {
+		return this.projectService.passwords$(projectID)
 	}
 
 	public hasCopied(fieldName): void {
