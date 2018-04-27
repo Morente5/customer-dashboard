@@ -28,8 +28,9 @@ export class AdminUsersComponent implements OnInit {
 
 	createUser(email: string, password: string): Promise<any> {
 		return this.adminUsersService.createUser(email, password)
-			.then(() => {
+			.then(uid => {
 				this.notificationsService.success('Se ha creado el usuario')
+				this.router.navigate(['admin', 'users', uid])
 			})
 			.catch(error => {
 				this.notificationsService.error('Se ha producido un error al crear el usuario', error.message)
