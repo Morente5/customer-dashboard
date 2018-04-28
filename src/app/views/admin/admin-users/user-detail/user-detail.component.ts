@@ -32,7 +32,7 @@ export class UserDetailComponent implements OnInit {
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
-		private authService: AuthService,
+		public authService: AuthService,
 		private adminUsersService: AdminUsersService,
 		private modalService: NgbModal,
 		private notificationsService: NotificationsService

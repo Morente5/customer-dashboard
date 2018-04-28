@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SafeResourceUrl } from '@angular/platform-browser';
 
-import { ActivatedRoute, Params } from '@angular/router';
-
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 import { ProjectService } from './../services/project.service';
 import { Project } from '@bmc-core/model/project';

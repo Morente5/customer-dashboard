@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { NotificationsService } from 'angular2-notifications';
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
 
 	constructor(
 		public authService: AuthService,
-		private router: Router,
 		private notificationsService: NotificationsService,
 	) {
 
