@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as firebase from 'firebase/app';
-
-import { Router } from '@angular/router'
-
-import { SimpleNotificationsComponent, NotificationsService } from 'angular2-notifications';
-
 import { AuthService } from '@bmc-core/services/auth.service'
 
 @Component({
@@ -25,7 +19,6 @@ export class AppComponent implements OnInit {
 	}
 
 	constructor(
-		private router: Router,
 		public authService: AuthService,
 	) {
 		console.log(

@@ -6,7 +6,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, switchMap, map, tap } from 'rxjs/operators';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 
 import { PushNotificationsService } from 'ng-push';
@@ -17,10 +17,6 @@ import { Project } from '@bmc-core/model/project';
 @Injectable()
 export class AuthService {
 
-	// public readonly authState$: Observable<firebase.User>
-	// public authState: firebase.User = null
-
-	// public user$: Observable<User>
 	public currentUser: User = null
 	public currentUser$: Observable<User>
 	public currentUserProjects: Project[] = []
@@ -93,7 +89,6 @@ export class AuthService {
 		})
 
 		this.currentUserProjects$.subscribe(projects => {
-			console.log(projects)
 			this.currentUserProjects = projects
 		})
 
@@ -106,7 +101,7 @@ export class AuthService {
 			.then(() => {
 				return this.afAuth.auth.signInWithEmailAndPassword(email, password)
 			})
-			.then(userInfo => {
+			.then(() => {
 				this.router.navigate([''])
 			})
 	}

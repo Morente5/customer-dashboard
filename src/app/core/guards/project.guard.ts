@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { take, map, tap, switchMap } from 'rxjs/operators'
+import { take, tap, switchMap } from 'rxjs/operators'
 
 import { NotificationsService } from 'angular2-notifications';
 
@@ -31,6 +31,7 @@ export class ProjectGuard implements CanActivate {
 			}),
 			tap(allowed => {
 				if (!allowed) {
+					this.notificationsService.alert('This is not a valid project')
 					this.router.navigate([''])
 				}
 			})

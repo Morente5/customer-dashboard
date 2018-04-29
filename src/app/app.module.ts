@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NgModule, LOCALE_ID } from '@angular/core';
-
-import { environment } from '@bmc-environments/environment';
+import { NgModule } from '@angular/core';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';

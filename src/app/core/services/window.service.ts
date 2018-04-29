@@ -12,8 +12,8 @@ export class WindowService {
 	constructor(
 		private zone: NgZone
 	) {
-		window.addEventListener('resize', event => {
-			zone.run(() => {
+		window.addEventListener('resize', () => {
+			this.zone.run(() => {
 				this.windowWidth$.next(this.innerWidth())
 			});
 		});
