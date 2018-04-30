@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 
-import { AngularFireModule } from 'angularfire2';
-
 import { SharedModule } from '@bmc-shared/shared.module';
 
 
