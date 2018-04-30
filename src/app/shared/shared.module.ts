@@ -12,6 +12,7 @@ import { slugify } from './tools/tools.module';
 
 // import { RolesPipe } from './pipes/user-role.pipe';
 import { SectionPipe } from './pipes/section.pipe';
+import { InitialsPipe } from './pipes/initials.pipe';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SectionPipe } from './pipes/section.pipe';
 	],
 	declarations: [
 		SectionPipe,
+		InitialsPipe
 		// RolesPipe
 	],
 	exports: [
@@ -37,7 +39,8 @@ import { SectionPipe } from './pipes/section.pipe';
 
 		WidgetsModule,
 
-		SectionPipe
+		SectionPipe,
+		InitialsPipe
 		// RolesPipe
 	]
 })

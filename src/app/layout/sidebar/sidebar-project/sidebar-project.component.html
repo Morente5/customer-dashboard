@@ -15,12 +15,12 @@
 		class="project-logo background"
 		[title]="project.name"
 	>
-		{{ getInitials() }}
+		{{ project.name | initials }}
 	</div>
 	<span
 		class="project-name"
 	>
-		{{project.name}}
+		{{ project.name }}
 	</span>
 </a>
 </ng-template>
