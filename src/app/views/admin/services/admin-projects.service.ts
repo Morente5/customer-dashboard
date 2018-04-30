@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { slugify } from '@bmc-shared/tools/tools.module';
 import { Project } from '@bmc-core/model/project';
@@ -20,13 +21,15 @@ export class AdminProjectsService {
 	) {
 
 		const projectsCollection$ = afs.collection<Project>('projects').snapshotChanges()
-		this.projects$ = projectsCollection$.map(projects => {
-			return projects.map(u => {
-				const data = u.payload.doc.data() as Project
-				const id = u.payload.doc.id
-				return new Project({ id, ...data })
+		this.projects$ = projectsCollection$.pipe(
+			map(projects => {
+				return projects.map(u => {
+					const data = u.payload.doc.data() as Project
+					const id = u.payload.doc.id
+					return new Project({ id, ...data })
+				})
 			})
-		})
+		)
 
 		this.projects$.subscribe(projects => this.projects = projects)
 	}

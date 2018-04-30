@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { User } from '@bmc-core/model/user'
 
@@ -22,13 +23,15 @@ export class AdminUsersService {
 	) {
 
 		const usersCollection$ = this.afs.collection<User>('users').snapshotChanges()
-		this.users$ = usersCollection$.map(user => {
-			return user.map(u => {
-				const data = u.payload.doc.data() as User
-				const id = u.payload.doc.id
-				return new User({ id, ...data })
+		this.users$ = usersCollection$.pipe(
+			map(user => {
+				return user.map(u => {
+					const data = u.payload.doc.data() as User
+					const id = u.payload.doc.id
+					return new User({ id, ...data })
+				})
 			})
-		})
+		)
 
 		this.users$.subscribe(users => this.users = users)
 
