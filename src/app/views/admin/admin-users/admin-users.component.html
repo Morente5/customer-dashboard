@@ -21,10 +21,10 @@
 	</bmc-users-table>
 </nb-card>
 
-<ng-template #createUser let-c="close" let-d="dismiss">
+<ng-template #createUser let-createUser="close('Create User')" let-crossClick="dismiss('Cross click')" let-close="dismiss('Close Button')">
 	<div class="modal-header">
 		<h4 class="modal-title" i18n>Add New User</h4>
-		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+		<button type="button" class="close" aria-label="Close" (click)="crossClick">
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
@@ -67,7 +67,7 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-success" (click)="c('Create User')" i18n>Create User</button>
-		<button class="btn btn-secondary" (click)="d('Close Button')" i18n>Cancel</button>
+		<button type="button" class="btn btn-success" (click)="createUser" i18n>Create User</button>
+		<button class="btn btn-secondary" (click)="close" i18n>Cancel</button>
 	</div>
 </ng-template>

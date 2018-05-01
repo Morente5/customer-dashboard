@@ -185,10 +185,10 @@
 		</div>
 	</nb-card>
 
-	<ng-template #deleteUser let-c="close" let-d="dismiss">
+	<ng-template #deleteUser let-deleteUser="close('Delete User')" let-crossClick="dismiss('Cross click')" let-close="dismiss('Close Button')">
 		<div class="modal-header">
 			<h4 class="modal-title" i18n>Are you sure you want to delete this user?</h4>
-			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<button type="button" class="close" aria-label="Close" (click)="crossClick">
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
@@ -196,8 +196,8 @@
 			<p i18n>This action cannot be undone</p>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-danger" (click)="c('Deleted User')" i18n>Delete User</button>
-			<button class="btn btn-secondary" (click)="d('Close Button')" i18n>Cancel</button>
+			<button type="button" class="btn btn-danger" (click)="deleteUser" i18n>Delete User</button>
+			<button class="btn btn-secondary" (click)="close" i18n>Cancel</button>
 		</div>
 	</ng-template>
 
