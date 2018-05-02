@@ -42,7 +42,7 @@ export class TopbarComponent implements OnInit {
 		private router: Router,
 		private titleService: TitleService,
 		private menuService: NbMenuService
-	) {	}
+	) { }
 
 	ngOnInit() {
 		this.title$.subscribe(title => this.title = title);
