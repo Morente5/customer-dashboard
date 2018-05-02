@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, switchMap, map, tap } from 'rxjs/operators';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -36,18 +36,19 @@ export class AuthService {
 		this.afAuth.auth.useDeviceLanguage()
 
 		// Maps: Firebase Auth State Observable => User Observable
-		this.currentUser$ = this.afAuth.authState.pipe(
+		this.currentUser$ = this.afAuth.user.pipe(
 			switchMap(user => {
 				if (user && user.uid) {
 					const path = `users/${user.uid}`
-					return this.afs.doc(path).snapshotChanges()
-						.map(userData => {
+					return this.afs.doc(path).snapshotChanges().pipe(
+						map(userData => {
 							const data = userData.payload.data() as User
 							const id = userData.payload.id
 							return new User({ id, ...data })
 						})
+					)
 				} else {
-					return Observable.of(null)
+					return of(null)
 				}
 			})
 		)
@@ -60,15 +61,17 @@ export class AuthService {
 					const projectsCollection = this.currentUser.isAdmin ?
 						this.afs.collection('projects') :
 						this.afs.collection('projects', ref => ref.where(`users.${userID}`, '==', true))
-					return projectsCollection.snapshotChanges().map(project => {
-						return project.map(p => {
-							const data = p.payload.doc.data() as Project
-							const id = p.payload.doc.id
-							return new Project({ id, ...data })
+					return projectsCollection.snapshotChanges().pipe(
+						map(project => {
+							return project.map(p => {
+								const data = p.payload.doc.data() as Project
+								const id = p.payload.doc.id
+								return new Project({ id, ...data })
+							})
 						})
-					})
+					)
 				} else {
-					return Observable.of([])
+					return of([])
 				}
 			}),
 			tap(() => this.ready = true)

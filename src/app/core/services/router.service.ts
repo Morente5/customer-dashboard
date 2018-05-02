@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Router, NavigationStart, NavigationEnd, ActivatedRoute, Params } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { filter, map, tap, mergeMap, switchMap } from 'rxjs/operators';
 
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
@@ -64,13 +64,15 @@ export class RouterService {
 			switchMap(projectID => {
 				if (projectID) {
 					const path = `projects/${projectID}`
-					return this.afs.doc(path).snapshotChanges().map(project => {
-						const data = project.payload.data() as Project
-						const id = project.payload.id
-						return new Project({ id, ...data })
-					})
+					return this.afs.doc(path).snapshotChanges().pipe(
+						map(project => {
+							const data = project.payload.data() as Project
+							const id = project.payload.id
+							return new Project({ id, ...data })
+						})
+					)
 				}
-				return Observable.of(null)
+				return of(null)
 			})
 		)
 	}

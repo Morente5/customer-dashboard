@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { AngularFirestore } from 'angularfire2/firestore';
-import { DocumentSnapshot, DocumentData } from '@firebase/firestore-types';
+import { DocumentData } from '@firebase/firestore-types';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, distinctUntilChanged, switchMap } from 'rxjs/operators'
 
 import { WindowService } from '@bmc-core/services/window.service';
 import { Project } from '@bmc-core/model/project';
-import { PasswordGroup } from '@bmc-core/model/passwords';
 
 @Injectable()
 export class ProjectService {
@@ -24,27 +23,31 @@ export class ProjectService {
 	public project$(projectID: string): Observable<Project> {
 		if (projectID) {
 			const path = `projects/${projectID}`
-			return this.afs.doc(path).snapshotChanges().map(project => {
-				const data = project.payload.data() as Project
-				const id = project.payload.id
-				return new Project({ id, ...data })
-			})
+			return this.afs.doc(path).snapshotChanges().pipe(
+				map(project => {
+					const data = project.payload.data() as Project
+					const id = project.payload.id
+					return new Project({ id, ...data })
+				})
+			)
 		}
-		return Observable.of(null)
+		return of(null)
 	}
 
 	public actionsUrl$(projectID: string): Observable<SafeResourceUrl> {
 		if (projectID) {
 			const path = `projects/${projectID}/actions/data`
-			return this.afs.doc(path).snapshotChanges().map(actionsDocument => {
-				if (actionsDocument.payload.exists && 'url' in actionsDocument.payload.data()) {
-					return this.sanitize(actionsDocument.payload.data().url)
-				} else {
-					return undefined
-				}
-			})
+			return this.afs.doc(path).snapshotChanges().pipe(
+				map(actionsDocument => {
+					if (actionsDocument.payload.exists && 'url' in actionsDocument.payload.data()) {
+						return this.sanitize(actionsDocument.payload.data()['url'])
+					} else {
+						return undefined
+					}
+				})
+			)
 		}
-		return Observable.of(null)
+		return of(null)
 	}
 
 	private urlResponsive$(urlObj$: Observable<DocumentData>): Observable<SafeResourceUrl> {
@@ -55,25 +58,29 @@ export class ProjectService {
 			distinctUntilChanged(),
 			switchMap(res => {
 				if (res === 'mobile') {
-					return urlObj$.map(frame => {
-						if (frame && 'mobileUrl' in frame) {
-							return this.sanitize(frame.mobileUrl)
-						} else if (frame && 'desktopUrl' in frame) {
-							return this.sanitize(frame.desktopUrl)
-						} else {
-							return undefined
-						}
-					})
+					return urlObj$.pipe(
+						map(frame => {
+							if (frame && 'mobileUrl' in frame) {
+								return this.sanitize(frame.mobileUrl)
+							} else if (frame && 'desktopUrl' in frame) {
+								return this.sanitize(frame.desktopUrl)
+							} else {
+								return undefined
+							}
+						})
+					)
 				} else if (res === 'desktop') {
-					return urlObj$.map(frame => {
-						if (frame && 'desktopUrl' in frame) {
-							return this.sanitize(frame.desktopUrl)
-						} else if (frame && 'mobileUrl' in frame) {
-							return this.sanitize(frame.mobileUrl)
-						} else {
-							return undefined
-						}
-					})
+					return urlObj$.pipe(
+						map(frame => {
+							if (frame && 'desktopUrl' in frame) {
+								return this.sanitize(frame.desktopUrl)
+							} else if (frame && 'mobileUrl' in frame) {
+								return this.sanitize(frame.mobileUrl)
+							} else {
+								return undefined
+							}
+						})
+					)
 				}
 			})
 		)
@@ -82,30 +89,29 @@ export class ProjectService {
 	public adwordsUrl$(projectID: string): Observable<SafeResourceUrl> {
 		if (projectID) {
 			const path = `projects/${projectID}/ad-words/data`
-			const urlObj$ = this.afs.doc(path).snapshotChanges().map(adwordsDocument => {
-				return adwordsDocument.payload.data()
-			})
+			const urlObj$ = this.afs.doc(path).snapshotChanges().pipe(
+				map(adwordsDocument => {
+					return adwordsDocument.payload.data()
+				})
+			)
 			return this.urlResponsive$(urlObj$)
 		}
-		return Observable.of(null)
+		return of(null)
 	}
 
 	public analyticsUrl$(projectID: string): Observable<SafeResourceUrl> {
 		if (projectID) {
 			const path = `projects/${projectID}/analytics/data`
-			const urlObj$ = this.afs.doc(path).snapshotChanges().map(analyticsDocument => {
-				return analyticsDocument.payload.data()
-			})
+			const urlObj$ = this.afs.doc(path).snapshotChanges().pipe(
+				map(analyticsDocument => {
+					return analyticsDocument.payload.data()
+				})
+			)
 			return this.urlResponsive$(urlObj$)
 		}
-		return Observable.of(null)
+		return of(null)
 	}
 
-	public passwords$(projectID: string): Observable<PasswordGroup[]> {
-		const path = `projects/${projectID}/passwords`
-		return this.afs.collection(path).valueChanges()
-			.map(value => value as PasswordGroup[])
-	}
 
 	sanitize(url) {
 		return this.sanitizer.bypassSecurityTrustResourceUrl(url)
