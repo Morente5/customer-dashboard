@@ -1,6 +1,7 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
+		"baseUrl": "./",
 		"outDir": "./dist/out-tsc",
 		"sourceMap": true,
 		"declaration": false,
@@ -15,13 +16,12 @@
 			"esnext",
 			"dom"
 		],
-		"baseUrl": "src",
 		"paths": {
-			"@bmc-core/*": ["app/core/*"],
-			"@bmc-layout/*": ["app/layout/*"],
-			"@bmc-shared/*": ["app/shared/*"],
-			"@bmc-views/*": ["app/views/*"],
-			"@bmc-environments/*": ["environments/*"]
+			"@bmc-core/*": ["src/app/core/*"],
+			"@bmc-layout/*": ["src/app/layout/*"],
+			"@bmc-shared/*": ["src/app/shared/*"],
+			"@bmc-views/*": ["src/app/views/*"],
+			"@bmc-environments/*": ["src/environments/*"]
 		}
-  }
+	}
 }

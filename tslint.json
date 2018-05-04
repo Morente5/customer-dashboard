@@ -107,7 +107,6 @@
 				"variable-declaration": "nospace"
 			}
 		],
-		"typeof-compare": true,
 		"unified-signatures": true,
 		"variable-name": false,
 		"whitespace": [
@@ -117,18 +116,6 @@
 			"check-operator",
 			"check-separator",
 			"check-type"
-		],
-		"directive-selector": [
-			true,
-			"attribute",
-			"bmc",
-			"camelCase"
-		],
-		"component-selector": [
-			true,
-			"element",
-			"bmc",
-			"kebab-case"
 		],
 		"no-output-on-prefix": true,
 		"use-input-property-decorator": true,
