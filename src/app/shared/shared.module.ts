@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { MomentModule } from 'ngx-moment';
 
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { WidgetsModule } from './widgets/widgets.module';
 import { slugify } from './tools/tools.module';
@@ -23,6 +24,8 @@ import { InitialsPipe } from './pipes/initials.pipe';
 
 		MomentModule,
 
+		ClipboardModule,
+
 		WidgetsModule,
 	],
 	declarations: [
@@ -36,6 +39,8 @@ import { InitialsPipe } from './pipes/initials.pipe';
 		RouterModule,
 
 		MomentModule,
+
+		ClipboardModule,
 
 		WidgetsModule,
 

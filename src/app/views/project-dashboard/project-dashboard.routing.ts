@@ -5,12 +5,9 @@ import { ProjectDashboardComponent } from './project-dashboard.component';
 import { ActionsComponent } from './actions/actions.component';
 import { AdWordsComponent } from './ad-words/ad-words.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
-import { PasswordsComponent } from './passwords/passwords.component';
 import { SupportComponent } from './support/support.component';
 
 import { ProjectResolver } from '@bmc-views/project-dashboard/resolvers/project.resolver';
-import { UserAssignedResolver } from '@bmc-views/project-dashboard/resolvers/user-asigned.resolver';
-import { PasswordsResolver } from '@bmc-views/project-dashboard/resolvers/passwords.resolver';
 
 const routes: Routes = [
 	{
@@ -55,10 +52,9 @@ const routes: Routes = [
 		data: {
 			title: 'Passwords'
 		},
-		component: PasswordsComponent,
+		loadChildren: './passwords/passwords.module#PasswordsModule',
 		resolve: {
-			project: ProjectResolver,
-			passwords: PasswordsResolver
+			project: ProjectResolver
 		}
 	},
 	{
@@ -68,8 +64,7 @@ const routes: Routes = [
 		},
 		component: SupportComponent,
 		resolve: {
-			project: ProjectResolver,
-			userAssigned: UserAssignedResolver
+			project: ProjectResolver
 		}
 	},
 	{
@@ -83,9 +78,7 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 	providers: [
-		ProjectResolver,
-		UserAssignedResolver,
-		PasswordsResolver
+		ProjectResolver
 	]
 })
 export class ProjectDashboardRoutingModule { }
