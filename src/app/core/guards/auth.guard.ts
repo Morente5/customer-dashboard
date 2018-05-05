@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
 		return this.authService.currentUser$.pipe(
 			take(1),
 			map(user => {
-				return user.verified
+				return user && user.verified
 			}),
 			tap(verified => {
 				if (!verified) {

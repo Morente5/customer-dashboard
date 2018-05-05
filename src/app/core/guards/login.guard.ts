@@ -17,7 +17,6 @@ export class LoginGuard implements CanActivate {
 	) { }
 
 	canActivate(): Observable<boolean> {
-
 		return this.authService.currentUser$.pipe(
 			take(1),
 			map(user => !(user && user.id)),

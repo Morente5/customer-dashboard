@@ -21,8 +21,7 @@ export class ProjectGuard implements CanActivate {
 			take(1),
 			switchMap(user => {
 				if (user.isAdmin) {
-					return this.authService.currentUserProjects$
-						.map(projects => projects.findIndex(project => project.id === next.params.projectID) !== -1)
+					return Observable.of(!!this.authService.currentUserProjects.find(project => project.id === next.params.projectID))
 				}
 				if (user.verified) {
 					return Observable.of(next.params.projectID in user.projects && user.projects[next.params.projectID])
