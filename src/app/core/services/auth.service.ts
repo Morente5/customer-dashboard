@@ -39,11 +39,6 @@ export class AuthService {
 		this.currentUser$ = this.afAuth.authState.pipe(
 			switchMap(user => {
 				if (user && user.uid) {
-					// Request permission to push notifications
-					if (this.pushNotificationsService.isSupported()) {
-						this.pushNotificationsService.requestPermission()
-					}
-
 					const path = `users/${user.uid}`
 					return this.afs.doc(path).snapshotChanges()
 						.map(userData => {
@@ -103,6 +98,12 @@ export class AuthService {
 			})
 			.then(() => {
 				this.router.navigate([''])
+			})
+			.then(() => {
+				// Request permission to push notifications
+				if (this.pushNotificationsService.isSupported()) {
+					this.pushNotificationsService.requestPermission()
+				}
 			})
 	}
 
