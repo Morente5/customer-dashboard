@@ -15,6 +15,7 @@
 					type="email"
 					name="email"
 					placeholder="Email"
+					autocomplete="email"
 					i18n-placeholder
 					required
 					[(ngModel)]="loginFormData.email"
@@ -28,6 +29,7 @@
 					name="password"
 					placeholder="Password"
 					i18n-placeholder
+					autocomplete="current-password"
 					required
 					minlength="6"
 					[(ngModel)]="loginFormData.password"
