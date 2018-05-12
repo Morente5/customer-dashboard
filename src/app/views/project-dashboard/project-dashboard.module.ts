@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { SharedModule } from '@bmc-shared/shared.module';
 
 import { ProjectDashboardRoutingModule } from './project-dashboard.routing';
@@ -19,6 +22,8 @@ import { SupportComponent } from './support/support.component';
 @NgModule({
 	imports: [
 		CommonModule,
+		FormsModule,
+		ReactiveFormsModule,
 		ProjectDashboardRoutingModule,
 		SharedModule
 	],

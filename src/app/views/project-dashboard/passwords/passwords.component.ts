@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-import { ProjectService } from '@bmc-views/project-dashboard/services/project.service';
+import { PasswordsService } from '@bmc-views/project-dashboard/passwords/services/passwords.service';
 
 import { Observable } from 'rxjs';
 
-import { PasswordGroup, PasswordField } from '@bmc-core/model/passwords';
-import { NotificationsService } from 'angular2-notifications';
+import { PasswordGroup, PasswordField } from '@bmc-views/project-dashboard/passwords/model/passwords';
 import { Project } from '@bmc-core/model/project';
+import { AuthService } from '@bmc-core/services/auth.service';
 
 @Component({
 	selector: 'bmc-passwords',
@@ -21,29 +21,25 @@ export class PasswordsComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
-		private notificationsService: NotificationsService,
-		private projectService: ProjectService
+		public authService: AuthService,
+		private passwordsService: PasswordsService
 	) { }
 
 	ngOnInit() {
 		this.project = this.route.snapshot.data.project
-		this.passwords$(this.project.id).subscribe(passwords => {
-			this.passwords = passwords.map(group => {
-				if (group.groupFields) {
-					group.groupFields = group.groupFields.map(field => new PasswordField(field))
-				}
-				return group
-			})
+		this.passwordGroups$().subscribe(passwords => {
+			this.passwords = passwords
+			console.log(this.passwords)
 		})
 
 	}
 
-	private passwords$(projectID): Observable<PasswordGroup[]> {
-		return this.projectService.passwords$(projectID)
+	private passwordGroups$(): Observable<PasswordGroup[]> {
+		return this.passwordsService.passwordGroups$(this.project.id)
 	}
 
-	public hasCopied(fieldName): void {
-		this.notificationsService.success(`Campo: ${fieldName}`, 'Copiado al portapapeles')
+	get editPermission(): boolean {
+		return this.passwordsService.editPermission
 	}
 
 }
