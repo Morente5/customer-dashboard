@@ -7,7 +7,7 @@ import { distinctUntilChanged, switchMap, map, tap } from 'rxjs/operators';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import * as firebase from 'firebase/app';
+import { firebase } from '@firebase/app';
 
 import { PushNotificationsService } from 'ng-push';
 

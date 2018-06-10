@@ -4,7 +4,7 @@ import { environment } from '@bmc-environments/environment';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import * as firebase from 'firebase/app';
+import { firebase } from '@firebase/app';
 
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
