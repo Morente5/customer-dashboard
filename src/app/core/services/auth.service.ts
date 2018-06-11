@@ -10,6 +10,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { firebase } from '@firebase/app';
 
 import { PushNotificationsService } from 'ng-push';
+import { NotificationsService } from 'angular2-notifications';
 
 import { User } from '@bmc-core/model/user';
 import { Project } from '@bmc-core/model/project';
@@ -30,10 +31,16 @@ export class AuthService {
 		private router: Router,
 		private afAuth: AngularFireAuth,
 		private afs: AngularFirestore,
-		private pushNotificationsService: PushNotificationsService
+		private pushNotificationsService: PushNotificationsService,
+		private notificationsService: NotificationsService
 	) {
 
 		this.afAuth.auth.useDeviceLanguage()
+
+		this.afs.firestore.enablePersistence().catch(err => {
+			this.notificationsService.warn('You have multiple tabs opened at the same time', 'Only one tab is allowed at a time')
+			console.warn(err)
+		})
 
 		// Maps: Firebase Auth State Observable => User Observable
 		this.currentUser$ = this.afAuth.user.pipe(
@@ -124,9 +131,9 @@ export class AuthService {
 			photoURL: this.afAuth.auth.currentUser.photoURL
 		})
 		// Save name on Firestore (DB)
-		 const p2 = this.afs.doc(`users/${this.currentUser.id}`).set(
-			{displayName: newName},
-			{merge: true}
+		const p2 = this.afs.doc(`users/${this.currentUser.id}`).set(
+			{ displayName: newName },
+			{ merge: true }
 		)
 		return Promise.all([p1, p2])
 	}

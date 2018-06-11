@@ -47,7 +47,7 @@ import { NotificationsService } from 'angular2-notifications';
 		BrowserAnimationsModule,
 
 		AngularFireModule.initializeApp(environment.firebaseConfig),
-		AngularFirestoreModule.enablePersistence(),
+		AngularFirestoreModule,
 		AngularFireAuthModule,
 
 		SlimLoadingBarModule.forRoot(),
