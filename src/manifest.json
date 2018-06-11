@@ -1,20 +1,46 @@
 {
-	"name": "Client Dashboard",
-	"short_name": "CD",
-	"lang": "en",
-	"start_url": "/",
-	"scope": "/",
+	"name": "Customer Dashboard",
+	"short_name": "Dashboard",
+	"theme_color": "#008CBA",
+	"background_color": "#E9F1F7",
 	"display": "standalone",
-	"theme_color": "#eda217",
-	"orientation": "any",
-	"description": "Client dashboard and administration panel",
-	"background_color": "#008CBA",
-	"related_applications": [],
-	"prefer_related_applications": false,
+	"description": "Customer dashboard and administration panel",
+	"scope": "/",
+	"start_url": "/",
 	"icons": [
+		{
+			"src": "assets/icons/icon-36x36.png",
+			"sizes": "36x36",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/icons/icon-48x48.png",
+			"sizes": "48x48",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/icons/icon-57x57.png",
+			"sizes": "57x57",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/icons/icon-60x60.png",
+			"sizes": "60x60",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/icons/icon-70x70.png",
+			"sizes": "70x70",
+			"type": "image/png"
+		},
 		{
 			"src": "assets/icons/icon-72x72.png",
 			"sizes": "72x72",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/icons/icon-76x76.png",
+			"sizes": "76x76",
 			"type": "image/png"
 		},
 		{
@@ -23,8 +49,13 @@
 			"type": "image/png"
 		},
 		{
-			"src": "assets/icons/icon-128x128.png",
-			"sizes": "128x128",
+			"src": "assets/icons/icon-114x114.png",
+			"sizes": "114x114",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/icons/icon-120x120.png",
+			"sizes": "120x120",
 			"type": "image/png"
 		},
 		{
@@ -33,8 +64,18 @@
 			"type": "image/png"
 		},
 		{
+			"src": "assets/icons/icon-150x150.png",
+			"sizes": "150x150",
+			"type": "image/png"
+		},
+		{
 			"src": "assets/icons/icon-152x152.png",
 			"sizes": "152x152",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/icons/icon-180x180.png",
+			"sizes": "180x180",
 			"type": "image/png"
 		},
 		{
@@ -43,8 +84,8 @@
 			"type": "image/png"
 		},
 		{
-			"src": "assets/icons/icon-384x384.png",
-			"sizes": "384x384",
+			"src": "assets/icons/icon-310x310.png",
+			"sizes": "310x310",
 			"type": "image/png"
 		},
 		{

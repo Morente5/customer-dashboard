@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
 
+import { environment } from '../environments/environment';
+
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import localeEsExtra from '@angular/common/locales/extra/es';
@@ -38,6 +42,8 @@ import { CoreModule } from '@bmc-core/core.module';
 		SharedModule,
 
 		CoreModule.withProviders(),
+
+		ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
 	],
 	providers: [
 		// Global Services

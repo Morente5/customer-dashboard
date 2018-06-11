@@ -30,6 +30,11 @@
 								"glob": "manifest.json",
 								"input": "src",
 								"output": "/"
+							},
+							{
+								"glob": "robots.txt",
+								"input": "src",
+								"output": "/"
 							}
 						],
 						"styles": [
