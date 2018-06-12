@@ -141,3 +141,12 @@ nb-card .header {
 .nb-theme-default nb-layout-header nb-actions nb-action {
 	padding: 0 .5rem
 }
+
+.nb-theme-default nb-layout-header nav {
+	align-items: inherit;
+}
+
+ng2-smart-table {
+	display: block;
+	overflow: auto;
+}
