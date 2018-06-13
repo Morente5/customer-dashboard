@@ -7,11 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BackButtonComponent implements OnInit {
 
-	@Input() route: string;
+	@Input() route: string[];
 	@Input() title: string;
+
 	constructor() { }
 
 	ngOnInit() {
+	}
+
+	get parsedRoute() {
+		return `/${this.route.join('/')}`
 	}
 
 }
