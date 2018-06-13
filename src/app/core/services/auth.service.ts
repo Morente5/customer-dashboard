@@ -1,13 +1,14 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Router } from '@angular/router';
 
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, switchMap, map, tap } from 'rxjs/operators';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { firebase } from '@firebase/app';
+import { User as FirebaseUser } from 'firebase/app';
 
 import { PushNotificationsService } from 'ng-push';
 import { NotificationsService } from 'angular2-notifications';
@@ -23,7 +24,7 @@ export class AuthService {
 	public currentUserProjects: Project[] = []
 	public currentUserProjects$: Observable<Project[]>
 
-	public loggedInUser$: ReplaySubject<string> = new ReplaySubject()  // Hot Observable
+	public loggedInUser$: ReplaySubject<User> = new ReplaySubject()  // Hot Observable
 
 	ready = false
 
@@ -44,50 +45,20 @@ export class AuthService {
 
 		// Maps: Firebase Auth State Observable => User Observable
 		this.currentUser$ = this.afAuth.user.pipe(
-			switchMap(user => {
-				if (user && user.uid) {
-					const path = `users/${user.uid}`
-					return this.afs.doc(path).snapshotChanges().pipe(
-						map(userData => {
-							const data = userData.payload.data() as User
-							const id = userData.payload.id
-							return new User({ id, ...data })
-						})
-					)
-				} else {
-					return of(null)
-				}
-			})
+			switchMap(firebaseUser => this.getUser$(firebaseUser))
 		)
 
 		this.currentUserProjects$ = this.loggedInUser$.pipe(
 			// map(user => user.id),
 			distinctUntilChanged(),
-			switchMap(userID => {
-				if (userID) {
-					const projectsCollection = this.currentUser.isAdmin ?
-						this.afs.collection('projects') :
-						this.afs.collection('projects', ref => ref.where(`users.${userID}`, '==', true))
-					return projectsCollection.snapshotChanges().pipe(
-						map(project => {
-							return project.map(p => {
-								const data = p.payload.doc.data() as Project
-								const id = p.payload.doc.id
-								return new Project({ id, ...data })
-							})
-						})
-					)
-				} else {
-					return of([])
-				}
-			}),
+			switchMap(user => this.userProjects$(user)),
 			tap(() => this.ready = true)
 		)
 
 		this.currentUser$.subscribe(user => {
 			this.currentUser = user
-			if (user) {
-				this.loggedInUser$.next(user.id)
+			if (user && user.id) {
+				this.loggedInUser$.next(user)
 			} else {
 				this.loggedInUser$.next(null)
 			}
@@ -97,7 +68,52 @@ export class AuthService {
 			this.currentUserProjects = projects
 		})
 
+	}
 
+	private userProjects$(user: User): Observable<Project[]> {
+		if (user && user.id) {
+			const userProjectsIDs: string[] = Object.keys(user.projects).filter(projectID => user.projects[projectID])
+			if (user.isAdmin) {
+				return this.afs.collection('projects')
+					.snapshotChanges().pipe(
+						map(projects => {
+							return projects.map(project => {
+								const data = project.payload.doc.data() as Project
+								const id = project.payload.doc.id
+								return new Project({ id, ...data })
+							})
+						})
+					)
+			} else if (user.projects && userProjectsIDs) {
+				const userProjects$Array = userProjectsIDs.map(projectID => {
+					return this.afs.doc(`projects/${projectID}`)
+						.snapshotChanges().pipe(
+							map(project => {
+								const data = project.payload.data() as Project
+								const id = project.payload.id
+								return new Project({ id, ...data })
+							})
+						)
+				})
+				return combineLatest(userProjects$Array)
+			}
+		}
+		return of([])
+	}
+
+	private getUser$(firebaseUser: FirebaseUser): Observable<User> {
+		if (firebaseUser && firebaseUser.uid) {
+			const path = `users/${firebaseUser.uid}`
+			return this.afs.doc(path).snapshotChanges().pipe(
+				map(userData => {
+					const data = userData.payload.data() as User
+					const id = userData.payload.id
+					return new User({ id, ...data })
+				})
+			)
+		} else {
+			return of(null)
+		}
 	}
 
 	public signIn(email: string, password: string, remember: boolean): Promise<any> {
@@ -120,7 +136,7 @@ export class AuthService {
 	public signOut(): Promise<any> {
 		return this.afAuth.auth.signOut()
 			.then(() => {
-				this.router.navigate(['/login'])
+				location.reload()
 			})
 	}
 
@@ -131,10 +147,11 @@ export class AuthService {
 			photoURL: this.afAuth.auth.currentUser.photoURL
 		})
 		// Save name on Firestore (DB)
-		const p2 = this.afs.doc(`users/${this.currentUser.id}`).set(
-			{ displayName: newName },
-			{ merge: true }
+		 const p2 = this.afs.doc(`users/${this.currentUser.id}`).set(
+			{displayName: newName},
+			{merge: true}
 		)
 		return Promise.all([p1, p2])
 	}
+
 }
