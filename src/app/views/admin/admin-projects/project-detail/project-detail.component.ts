@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AdminProjectsService } from '@bmc-views/admin/services/admin-projects.service';
 import { AdminUsersService } from '@bmc-views/admin/services/admin-users.service';
 
-import { AngularFirestoreDocument } from 'angularfire2/firestore';
 // import { RolesPipe } from '@bmc-shared/pipes/project-role.pipe';
 import { Project } from '@bmc-core/model/project';
 
@@ -65,6 +64,10 @@ export class ProjectDetailComponent implements OnInit {
 
 	sectionNames() {
 		return this.projectData.sections ? Object.keys(this.projectData.sections) : undefined
+	}
+
+	assignableUsers() {
+		return this.adminUsersService.users.filter(user => user.isAdmin || user.isAuthor)
 	}
 
 	setName(): Promise<any> {

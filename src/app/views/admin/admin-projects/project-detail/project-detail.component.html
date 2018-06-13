@@ -91,7 +91,7 @@
 				<h5 i18n>User assigned</h5>
 				<form #userAssignedForm="ngForm" class="detail input-group input-group-sm ml-auto text-right">
 					<select name="userAssigned" class="form-control" [(ngModel)]="projectData.userAssigned" #userAssigned="ngModel">
-						<option *ngFor="let user of adminUsersService.users" [value]="user.id">{{user.displayName}}</option>
+						<option *ngFor="let user of assignableUsers()" [value]="user.id">{{user.displayName}}</option>
 					</select>
 
 					<button
