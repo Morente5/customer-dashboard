@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,20 +14,28 @@ import { Project } from '@bmc-core/model/project';
 })
 export class ActionsComponent implements OnInit {
 
+	gDocsID: string
 	url: SafeResourceUrl
 	project: Project
 
 	constructor(
 		private route: ActivatedRoute,
-		private projectService: ProjectService
+		private projectService: ProjectService,
+		private sanitizer: DomSanitizer
 	) { }
 
 	ngOnInit() {
 		this.project = this.route.snapshot.data.project
 
-		this.projectService.actionsUrl$(this.project.id)
-			.subscribe(url => this.url = url)
+		this.projectService.gDocsID$(this.project.id)
+			.subscribe(gDocsID => {
+				this.gDocsID = gDocsID
+				this.url = this.sanitizer.bypassSecurityTrustResourceUrl(`https://docs.google.com/spreadsheets/d/e/${gDocsID}/pubhtml`)
+			})
+	}
 
+	get editPermission(): boolean {
+		return this.projectService.editPermission
 	}
 
 }

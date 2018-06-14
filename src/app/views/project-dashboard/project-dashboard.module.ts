@@ -18,6 +18,7 @@ import { ActionsComponent } from './actions/actions.component';
 import { AdWordsComponent } from './ad-words/ad-words.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { SupportComponent } from './support/support.component';
+import { IdFieldComponent } from './widgets/id-field/id-field.component';
 
 @NgModule({
 	imports: [
@@ -33,6 +34,7 @@ import { SupportComponent } from './support/support.component';
 		AdWordsComponent,
 		AnalyticsComponent,
 		SupportComponent,
+		IdFieldComponent,
 	],
 	providers: [
 		ProjectService,

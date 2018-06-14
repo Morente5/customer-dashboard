@@ -1,12 +1,18 @@
 <bmc-back-button [route]="['project', project.id]" [title]="project.name"></bmc-back-button>
 
 <nb-card class="full-card">
-	<ng-container *ngIf="url">
-		<iframe class="full-frame" frameborder="0" style="border:0" [src]="url"></iframe>
-	</ng-container>
-	<ng-container *ngIf="!url">
-		<nb-card-header class="m-auto">
-			<h4 i18n>There's no data</h4>
-		</nb-card-header>
-	</ng-container>
+	<nb-card-body>
+		<div *ngIf="editPermission">
+			<bmc-id-field [label]="'Data Studio Desktop ID'" [value]="dataStudioObj?.desktopID" [type]="'analytics'" [key]="'desktopID'"></bmc-id-field>
+			<bmc-id-field [label]="'Data Studio Mobile ID'" [value]="dataStudioObj?.mobileID" [type]="'analytics'" [key]="'mobileID'"></bmc-id-field>
+		</div>
+		<ng-container *ngIf="dataStudioID">
+			<iframe class="full-frame" frameborder="0" style="border:0" [src]="url"></iframe>
+		</ng-container>
+		<ng-container *ngIf="!dataStudioID">
+			<nb-card-header class="m-auto">
+				<h4 i18n>There's no data</h4>
+			</nb-card-header>
+		</ng-container>
+	</nb-card-body>
 </nb-card>

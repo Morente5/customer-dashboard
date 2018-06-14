@@ -1,3 +1,4 @@
+import { AuthService } from './../../../core/services/auth.service';
 import { Injectable } from '@angular/core';
 
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -17,7 +18,8 @@ export class ProjectService {
 	constructor(
 		private afs: AngularFirestore,
 		private sanitizer: DomSanitizer,
-		private windowService: WindowService
+		private windowService: WindowService,
+		private authService: AuthService
 	) { }
 
 	public project$(projectID: string): Observable<Project> {
@@ -34,13 +36,13 @@ export class ProjectService {
 		return of(null)
 	}
 
-	public actionsUrl$(projectID: string): Observable<SafeResourceUrl> {
+	public gDocsID$(projectID: string): Observable<string> {
 		if (projectID) {
 			const path = `projects/${projectID}/actions/data`
 			return this.afs.doc(path).snapshotChanges().pipe(
 				map(actionsDocument => {
-					if (actionsDocument.payload.exists && 'url' in actionsDocument.payload.data()) {
-						return this.sanitize(actionsDocument.payload.data()['url'])
+					if (actionsDocument.payload.exists && 'ID' in actionsDocument.payload.data()) {
+						return actionsDocument.payload.data()['ID']
 					} else {
 						return undefined
 					}
@@ -50,7 +52,7 @@ export class ProjectService {
 		return of(null)
 	}
 
-	private urlResponsive$(urlObj$: Observable<DocumentData>): Observable<SafeResourceUrl> {
+	private idResponsive$(idObj$: Observable<DocumentData>): Observable<string> {
 		return this.windowService.windowWidth$.pipe(
 			map(width => {
 				return width <= 768 ? 'mobile' : 'desktop'
@@ -58,24 +60,24 @@ export class ProjectService {
 			distinctUntilChanged(),
 			switchMap(res => {
 				if (res === 'mobile') {
-					return urlObj$.pipe(
-						map(frame => {
-							if (frame && 'mobileUrl' in frame) {
-								return this.sanitize(frame.mobileUrl)
-							} else if (frame && 'desktopUrl' in frame) {
-								return this.sanitize(frame.desktopUrl)
+					return idObj$.pipe(
+						map(idObj => {
+							if (idObj && 'mobileID' in idObj) {
+								return idObj.mobileID
+							} else if (idObj && 'desktopID' in idObj) {
+								return idObj.desktopID
 							} else {
 								return undefined
 							}
 						})
 					)
 				} else if (res === 'desktop') {
-					return urlObj$.pipe(
-						map(frame => {
-							if (frame && 'desktopUrl' in frame) {
-								return this.sanitize(frame.desktopUrl)
-							} else if (frame && 'mobileUrl' in frame) {
-								return this.sanitize(frame.mobileUrl)
+					return idObj$.pipe(
+						map(idObj => {
+							if (idObj && 'desktopID' in idObj) {
+								return idObj.desktopID
+							} else if (idObj && 'mobileID' in idObj) {
+								return idObj.mobileID
 							} else {
 								return undefined
 							}
@@ -86,35 +88,46 @@ export class ProjectService {
 		)
 	}
 
-	public adwordsUrl$(projectID: string): Observable<SafeResourceUrl> {
+	public dataStudioID$(projectID: string, type: 'ad-words' | 'analytics'): Observable<string> {
 		if (projectID) {
-			const path = `projects/${projectID}/ad-words/data`
-			const urlObj$ = this.afs.doc(path).snapshotChanges().pipe(
-				map(adwordsDocument => {
-					return adwordsDocument.payload.data()
-				})
-			)
-			return this.urlResponsive$(urlObj$)
-		}
-		return of(null)
-	}
-
-	public analyticsUrl$(projectID: string): Observable<SafeResourceUrl> {
-		if (projectID) {
-			const path = `projects/${projectID}/analytics/data`
-			const urlObj$ = this.afs.doc(path).snapshotChanges().pipe(
+			const path = `projects/${projectID}/${type}/data`
+			const dataStudioIDObj$ = this.afs.doc(path).snapshotChanges().pipe(
 				map(analyticsDocument => {
 					return analyticsDocument.payload.data()
 				})
 			)
-			return this.urlResponsive$(urlObj$)
+			return this.idResponsive$(dataStudioIDObj$)
 		}
 		return of(null)
+	}
+
+	public dataStudioIDObj$(projectID: string, type: 'ad-words' | 'analytics'): Observable<any> {
+		if (projectID) {
+			const path = `projects/${projectID}/${type}/data`
+			return this.afs.doc(path).snapshotChanges().pipe(
+				map(analyticsDocument => {
+					return analyticsDocument.payload.data()
+				})
+			)
+		}
+		return of(null)
+	}
+
+	public setID(projectID: string, type: string, value: {ID?: string, mobileID?: string, desktopID?: string}): Promise<any> {
+		// Save doc ID on Firestore (DB)
+		return this.afs.doc(`projects/${projectID}/${type}/data`).set(
+			value,
+			{ merge: true }
+		)
 	}
 
 
 	sanitize(url) {
 		return this.sanitizer.bypassSecurityTrustResourceUrl(url)
+	}
+
+	get editPermission(): boolean {
+		return this.authService.currentUser.isAuthor || this.authService.currentUser.isAdmin
 	}
 
 }

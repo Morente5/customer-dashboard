@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,20 +14,33 @@ import { Project } from '@bmc-core/model/project';
 })
 export class AdWordsComponent implements OnInit {
 
+	dataStudioID: string
+	dataStudioObj: { ['desktopID']: string, ['mobileID']: string }
 	url: SafeResourceUrl
 	project: Project
 
 	constructor(
 		private route: ActivatedRoute,
-		private projectService: ProjectService
+		private projectService: ProjectService,
+		private sanitizer: DomSanitizer
 	) { }
 
 	ngOnInit() {
 		this.project = this.route.snapshot.data.project
 
-		this.projectService.adwordsUrl$(this.project.id)
-			.subscribe(url => this.url = url)
+		this.projectService.dataStudioID$(this.project.id, 'ad-words')
+			.subscribe(dataStudioID => {
+				this.dataStudioID = dataStudioID
+				this.url = this.sanitizer.bypassSecurityTrustResourceUrl(`https://datastudio.google.com/embed/reporting/${dataStudioID}`)
+			})
+		this.projectService.dataStudioIDObj$(this.project.id, 'ad-words')
+			.subscribe(dataStudioObj => {
+				this.dataStudioObj = dataStudioObj
+			})
+	}
 
+	get editPermission(): boolean {
+		return this.projectService.editPermission
 	}
 
 }
