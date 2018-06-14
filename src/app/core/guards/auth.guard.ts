@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { take, map, tap } from 'rxjs/operators'
@@ -12,7 +12,6 @@ import { AuthService } from '@bmc-core/services/auth.service';
 export class AuthGuard implements CanActivate {
 
 	constructor(
-		private router: Router,
 		private authService: AuthService,
 		private notificationsService: NotificationsService
 	) { }
@@ -26,7 +25,6 @@ export class AuthGuard implements CanActivate {
 			tap(verified => {
 				if (!verified) {
 					this.notificationsService.alert('You have to sign in first')
-					this.router.navigate(['login'])
 				}
 			})
 		)
