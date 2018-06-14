@@ -39,7 +39,7 @@ export class PasswordFieldComponent implements OnInit {
 	}
 
 	public hasCopied(fieldName): void {
-		this.notificationsService.success(`Campo: ${fieldName}`, 'Copiado al portapapeles')
+		this.notificationsService.success(`Field: ${fieldName}`, 'Copied to clipboard')
 	}
 
 	public toggleVisibility(): void {

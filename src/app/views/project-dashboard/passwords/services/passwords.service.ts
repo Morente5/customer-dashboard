@@ -20,7 +20,6 @@ export class PasswordsService {
 		const path = `projects/${projectID}/passwords`
 		return this.afs.collection(path).snapshotChanges().pipe(
 			map(passwords => {
-				console.log('passwords collection changes')
 				return passwords.map(group => {
 					const groupData = group.payload.doc.data() as PasswordGroup;
 					const groupId = group.payload.doc.id;
@@ -34,7 +33,6 @@ export class PasswordsService {
 		const path = `projects/${projectID}/passwords`
 		return this.afs.collection(path).doc(groupID).collection('groupFields').snapshotChanges().pipe(
 			map(fields => {
-				console.log('passwords fields changes')
 				return fields.map(field => {
 					const fieldData = field.payload.doc.data() as PasswordField;
 					const fieldId = field.payload.doc.id;

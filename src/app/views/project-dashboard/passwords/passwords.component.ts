@@ -29,7 +29,6 @@ export class PasswordsComponent implements OnInit {
 		this.project = this.route.snapshot.data.project
 		this.passwordGroups$().subscribe(passwords => {
 			this.passwords = passwords
-			console.log(this.passwords)
 		})
 
 	}
