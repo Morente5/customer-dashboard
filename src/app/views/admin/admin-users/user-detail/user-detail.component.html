@@ -178,7 +178,7 @@
 
 	<nb-card>
 		<div class="d-flex align-items-center flex-row m-2">
-			<button [disabled]="!userData.isMaster" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)">
+			<button [disabled]="userData.isMaster" class="btn btn-danger btn-icon btn-xl" (click)="open(deleteUser)">
 				<i class="nb-trash"></i>
 			</button>
 			<div class="p-2" i18n>Delete User</div>
