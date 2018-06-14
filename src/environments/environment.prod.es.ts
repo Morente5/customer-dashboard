@@ -3,11 +3,11 @@ export const environment = {
 	language: 'es',
 
 	firebaseConfig: {
-		apiKey: 'AIzaSyBpzP5Elt_aSv3KB87n_VRVvuJ7ZeXHugM',
-		authDomain: 'dashboard-braun-marketing.firebaseapp.com',
-		databaseURL: 'https://dashboard-braun-marketing.firebaseio.com',
-		projectId: 'dashboard-braun-marketing',
-		storageBucket: 'dashboard-braun-marketing.appspot.com',
-		messagingSenderId: '774638353867'
+		apiKey: 'AIzaSyB5QWA9AeUfSxoBmQdBZmH1mbWmc99bNAQ',
+		authDomain: 'customer-dashboard-app.firebaseapp.com',
+		databaseURL: 'https://customer-dashboard-app.firebaseio.com',
+		projectId: 'customer-dashboard-app',
+		storageBucket: '',
+		messagingSenderId: '127166741388'
 	}
 };

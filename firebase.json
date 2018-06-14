@@ -5,9 +5,10 @@
 	},
 	"functions": {
 		"predeploy": [
-			"npm --prefix functions run lint",
-			"npm --prefix functions run build"
-		]
+			"npm --prefix \"$RESOURCE_DIR\" run lint",
+			"npm --prefix \"$RESOURCE_DIR\" run build"
+		],
+		"source": "functions"
 	},
 	"hosting": {
 		"public": "dist",
@@ -17,10 +18,10 @@
 			"**/node_modules/**"
 		],
 		"rewrites": [
-			{
-				"source": "**",
-				"destination": "/index.html"
-			}
+			// {
+			// 	"source": "**",
+			// 	"destination": "/index.html"
+			// }
 		]
 	}
 }
