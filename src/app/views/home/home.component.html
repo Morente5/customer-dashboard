@@ -10,20 +10,16 @@
 	</nb-card-header>
 
 	<nb-card-body>
-		<p
-			class="text-center"
-			i18n
-		>Description of the app, the service or whatever we decide to put in here</p>
-		<p
-			class="text-center"
-			i18n
-		>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, repellat rem aliquam ea autem nihil dolor blanditiis dignissimos consectetur accusantium quasi laudantium. Libero repellendus sapiente pariatur velit quam possimus exercitationem obcaecati delectus blanditiis non necessitatibus, dolor est quae architecto rerum beatae consequuntur dolores asperiores quibusdam reiciendis iusto. Sunt aliquid quasi voluptatibus similique impedit incidunt neque aperiam numquam, nisi excepturi atque.</p>
 
 		<ng-container
 			*ngIf="authService.currentUser$ | async as user; then homeTemplate; else loginTemplate"
 		></ng-container>
 
 		<ng-template #loginTemplate>
+			<p
+				class="text-center"
+				i18n
+			>This Customer Dashboard app is a solution to manage the company private content and share with our customers their projects tasks, passwords, summaries and other useful information.</p>
 			<a
 				[routerLink]="[ '/login' ]"
 				class="btn btn-block btn-hero-success"
@@ -36,8 +32,13 @@
 				class="h3 text-center"
 				i18n
 			>Welcome</h2>
+			<p class="text-center h5">
+				{{authService.currentUser.displayName}}
+			</p>
 			<p
-				class="text-center h5">{{authService.currentUser.displayName}}</p>
+				class="text-center"
+				i18n
+			>This Customer Dashboard app is a solution to manage the company private content and share with our customers their projects tasks, passwords, summaries and other useful information.</p>
 		</ng-template>
 
 	</nb-card-body>
