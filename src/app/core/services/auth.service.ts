@@ -39,7 +39,6 @@ export class AuthService {
 		this.afAuth.auth.useDeviceLanguage()
 
 		this.afs.firestore.enablePersistence().catch(err => {
-			this.notificationsService.warn('You have multiple tabs opened at the same time', 'Only one tab is allowed at a time')
 			console.warn(err)
 		})
 
