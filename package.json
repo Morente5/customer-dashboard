@@ -10,8 +10,8 @@
 		"lint": "ng lint",
 		"e2e": "ng e2e",
 		"compodoc": "compodoc -p src/tsconfig.app.json",
-		"locale": "ng xi18n --locale en --outputPath src/locale --outFile source.xlf",
-		"serve-es": "ng serve --aot --locale es --i18nFile src/locale/source.es.xlf --i18nFormat xlf --missingTranslation error"
+		"locale": "ng xi18n --i18n-locale en --output-path locale --out-file source.xlf",
+		"serve-es": "ng serve --configuration prod.es"
 	},
 	"private": true,
 	"dependencies": {
