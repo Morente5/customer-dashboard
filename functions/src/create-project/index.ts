@@ -10,7 +10,6 @@ export const newProject = functions.firestore.document('projects/{projectID}').o
 		admin.firestore().collection(`projects/${projectID}/actions`).doc('data').set({ID: null}),
 		admin.firestore().collection(`projects/${projectID}/ad-words`).doc('data').set({mobileID: null, desktopID: null}),
 		admin.firestore().collection(`projects/${projectID}/analytics`).doc('data').set({mobileID: null, desktopID: null}),
-		admin.firestore().collection(`projects/${projectID}/support`).doc('data').set({user: null}),
 	]
 
 	// Return a promise from an array of promises
