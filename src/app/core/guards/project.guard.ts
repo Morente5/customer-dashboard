@@ -18,13 +18,12 @@ export class ProjectGuard implements CanActivate {
 
 	canActivate(next: ActivatedRouteSnapshot): Observable<boolean> {
 		return this.authService.currentUser$.pipe(
-			take(1),
 			switchMap(user => {
 				if (user.isAdmin) {
-					this.authService.currentUserProjects$.pipe(
+					return this.authService.currentUserProjects$.pipe(
 						skipWhile(projects => projects.length === 0),
 						take(1),
-						map(projects => projects.find(project => project.id === next.params.projectID))
+						map(projects => !!projects.find(project => project.id === next.params.projectID))
 					)
 				}
 				if (user.verified) {
@@ -32,6 +31,7 @@ export class ProjectGuard implements CanActivate {
 				}
 				return of(false)
 			}),
+			take(1),
 			tap(allowed => {
 				if (!allowed) {
 					this.notificationsService.alert('This is not a valid project')
