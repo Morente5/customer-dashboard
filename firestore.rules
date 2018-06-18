@@ -1,7 +1,59 @@
 service cloud.firestore {
 	match /databases/{database}/documents {
-		match /{document=**} {
-			allow read, write;
+
+		match /users/{userId} {
+			allow read: if hasAccess() || isSelf();
+			allow update: if hasAccess() ||
+				// Only able to change own displayName
+				(isOwner() && (request.writeFields.size() == 1) && ('displayName' in request.writeFields));
+			allow create, delete: if isAdmin();
+
+			function isSelf() {
+				return request.auth.uid == userId;
+			}
+
+		}
+
+
+		match /projects/{projectId} {
+			allow read: if hasAccess() || userCanAccess();
+			allow update: if hasAccess();
+			allow create, delete: if isAdmin();
+
+			function userCanAccess() {
+				return getProjectData().users[request.auth.uid] == true
+			}
+
+			function getProjectData() {
+				return get(/databases/$(database)/documents/projects/$(projectId)).data
+			}
+
+			match /{projectDetailCollections=**} {
+				allow read: if hasAccess() || userCanAccess();
+				allow update, create, delete: if hasAccess();
+			}
+		}
+
+		function isSignedIn() {
+			return request.auth != null;
+		}
+
+		function getUserData() {
+			return get(/databases/$(database)/documents/users/$(request.auth.uid)).data
+		}
+
+		function access(role) {
+			return getUserData()['access'] == role;
+		}
+		function isAdmin() {
+			return access('admin') || access('master');
+		}
+		function isAuthor() {
+			return access('author');
+		}
+		function hasAccess() {
+			return isAdmin() || isAuthor();
 		}
 	}
+
 }
