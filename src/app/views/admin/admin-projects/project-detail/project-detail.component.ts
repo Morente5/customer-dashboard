@@ -73,10 +73,10 @@ export class ProjectDetailComponent implements OnInit {
 	setName(): Promise<any> {
 		return this.adminProjectsService.setName(this.projectData.id, this.projectData.name)
 			.then(() => {
-				this.notificationsService.success('Se ha modificado el nombre correctamente', this.projectData.name)
+				this.notificationsService.success('Name modified', this.projectData.name)
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al modificar el nombre', error)
+				this.notificationsService.error('Error trying to modify name', error)
 			})
 	}
 
@@ -106,20 +106,20 @@ export class ProjectDetailComponent implements OnInit {
 	setSections(): Promise<any> {
 		return this.adminProjectsService.setSections(this.projectData.id, this.projectData.sections)
 			.then(() => {
-				this.notificationsService.success('Se han modificado las secciones del proyecto')
+				this.notificationsService.success('Project sections modified')
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al modificar las secciones', error)
+				this.notificationsService.error('Error trying to modify project sections', error)
 			})
 	}
 
 	setUserAssigned(): Promise<any> {
 		return this.adminProjectsService.setUserAssigned(this.projectData.id, this.projectData.userAssigned)
 			.then(() => {
-				this.notificationsService.success('Se ha modificado el usuario asignado al proyecto')
+				this.notificationsService.success('User assigned to project modified')
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al modificar el usuario asignado al proyecto', error)
+				this.notificationsService.error('Error trying to modify user assigned to project', error)
 			})
 	}
 
@@ -127,11 +127,11 @@ export class ProjectDetailComponent implements OnInit {
 		const name = this.projectData.name.slice()  // Copy it since it's going to be deleted
 		return this.adminProjectsService.deleteProject(this.projectData.id)
 			.then(() => {
-				this.notificationsService.success('Se ha borrado el proyecto', name)
+				this.notificationsService.success('Deleted project', name)
 				this.router.navigate(['admin', 'projects'])
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al borrar el proyect', name)
+				this.notificationsService.error('Error trying to delete project', name)
 			})
 	}
 

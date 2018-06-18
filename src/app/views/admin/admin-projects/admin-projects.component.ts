@@ -28,10 +28,10 @@ export class AdminProjectsComponent implements OnInit {
 	createProject(name: string): Promise<any> {
 		return this.adminProjectsService.createProject(name)
 			.then(() => {
-				this.notificationsService.success('Se ha creado el proyecto', name)
+				this.notificationsService.success('Project created', name)
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al crear el proyecto', error.message)
+				this.notificationsService.error('Error trying to create project', error.message)
 			})
 	}
 

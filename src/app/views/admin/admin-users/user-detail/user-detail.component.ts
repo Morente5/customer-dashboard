@@ -59,10 +59,10 @@ export class UserDetailComponent implements OnInit {
 	setName(): Promise<any> {
 		return this.adminUsersService.setName(this.userData.id, this.userData.displayName)
 			.then(() => {
-				this.notificationsService.success('Se ha modificado el nombre correctamente', this.userData.displayName)
+				this.notificationsService.success('Name modified', this.userData.displayName)
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al modificar el nombre', error)
+				this.notificationsService.error('Error trying to modify name', error)
 			})
 	}
 	setEmail() {
@@ -71,19 +71,19 @@ export class UserDetailComponent implements OnInit {
 	setAccess(): Promise<any> {
 		return this.adminUsersService.setAccess(this.userData.id, this.userData.access)
 			.then(() => {
-				this.notificationsService.success('Se ha modificado el acceso del usuario', this.userData.displayName)
+				this.notificationsService.success('Access modified', this.userData.displayName)
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al modificar el acceso', error)
+				this.notificationsService.error('Error trying to modify access', error)
 			})
 	}
 	setProjects(): Promise<any> {
 		return this.adminUsersService.setProjects(this.userData.id, this.userData.projects)
 			.then(() => {
-				this.notificationsService.success('Se han modificado los proyectos del usuario')}
+				this.notificationsService.success('User projects modified')}
 			)
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al modificar los proyectos', error)}
+				this.notificationsService.error('Error trying to modify user projects', error)}
 			)
 	}
 
@@ -91,11 +91,11 @@ export class UserDetailComponent implements OnInit {
 		const email = this.userData.email.slice()  // Copy it since it's going to be deleted
 		return this.adminUsersService.deleteUser(this.userData.id)
 			.then(() => {
-				this.notificationsService.success('Se ha borrado el usuario', email)
+				this.notificationsService.success('Deleted user', email)
 				this.router.navigate(['admin', 'users'])
 			})
 			.catch(error => {
-				this.notificationsService.error('Se ha producido un error al borrar el usuario', email)
+				this.notificationsService.error('Error trying to delete user', email)
 			})
 	}
 
