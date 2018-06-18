@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { environment } from '@bmc-environments/environment';
 
+import { Router } from '@angular/router';
+
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { firebase } from '@firebase/app';
@@ -19,7 +21,8 @@ export class AdminUsersService {
 	public users: User[]
 	constructor(
 		public afAuth: AngularFireAuth,
-		private afs: AngularFirestore
+		private afs: AngularFirestore,
+		private router: Router
 	) {
 
 		const usersCollection$ = this.afs.collection<User>('users').snapshotChanges()
@@ -46,7 +49,8 @@ export class AdminUsersService {
 		return createUserFirebaseApp.auth().createUserWithEmailAndPassword(em, pwd)
 			.then(firebaseUser => {
 				createUserFirebaseApp.auth().currentUser.sendEmailVerification()
-				return firebaseUser.uid
+				this.router.navigate(['/admin/users', createUserFirebaseApp.auth().currentUser.uid])
+				return createUserFirebaseApp.auth().currentUser.uid
 			})
 			.finally(() => {
 				createUserFirebaseApp.auth().signOut()
