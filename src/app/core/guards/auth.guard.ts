@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, CanLoad } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { take, map, tap } from 'rxjs/operators'
@@ -9,7 +9,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { AuthService } from '@bmc-core/services/auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
 
 	constructor(
 		private authService: AuthService,
@@ -28,5 +28,9 @@ export class AuthGuard implements CanActivate {
 				}
 			})
 		)
+	}
+
+	canLoad(): Observable<boolean> {
+		return this.canActivate()
 	}
 }

@@ -23,6 +23,7 @@ const routes: Routes = [
 	{
 		path: 'login',
 		canActivate: [LoginGuard],
+		canLoad: [LoginGuard],
 		data: {
 			title: 'Sign In'
 		},
@@ -31,6 +32,7 @@ const routes: Routes = [
 	{
 		path: 'profile',
 		canActivate: [AuthGuard],
+		canLoad: [AuthGuard],
 		data: {
 			title: 'Profile'
 		},
@@ -39,6 +41,7 @@ const routes: Routes = [
 	{
 		path: 'admin',
 		canActivate: [AuthGuard, AdminGuard],
+		canLoad: [AuthGuard, AdminGuard],
 		data: {
 			title: 'Admin Panel'
 		},
@@ -47,6 +50,7 @@ const routes: Routes = [
 	{
 		path: 'project/:projectID',
 		canActivate: [AuthGuard, ProjectGuard],
+		canLoad: [AuthGuard],
 		data: {
 			title: 'Project Dashboard'
 		},

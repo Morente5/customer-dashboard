@@ -28,4 +28,7 @@ export class LoginGuard implements CanActivate {
 		)
 	}
 
+	canLoad(): Observable<boolean> {
+		return this.canActivate()
+	}
 }
