@@ -5,7 +5,7 @@ service cloud.firestore {
 			allow read: if hasAccess() || isSelf();
 			allow update: if hasAccess() ||
 				// Only able to change own displayName
-				(isOwner() && (request.writeFields.size() == 1) && ('displayName' in request.writeFields));
+				(isSelf() && (request.writeFields.size() == 1) && ('displayName' in request.writeFields));
 			allow create, delete: if isAdmin();
 
 			function isSelf() {
